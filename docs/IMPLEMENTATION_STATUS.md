@@ -1,6 +1,14 @@
 # Stato implementazione
 
-Aggiornato il 30 ottobre 2026. Versione 0.4.2: continuità del giorno nel calendario e proposta del giorno successivo dalle 21. Restano planner e spesa, porzioni personali, schede V21/personali e ricettario. Il sito è pubblicato su GitHub Pages; nessun servizio a pagamento attivato.
+Aggiornato il 30 ottobre 2026. Versione 0.4.3: accesso esplicito a tutti i giorni della settimana, continuità del giorno nel calendario e proposta del giorno successivo dalle 21. Restano planner e spesa, porzioni personali, schede V21/personali e ricettario. Il sito è pubblicato su GitHub Pages; nessun servizio a pagamento attivato.
+
+## Accesso a tutti i giorni — 0.4.3
+
+- Segnalazione: si vedono ricette soltanto per venerdì. Il codice continuava a generare tutti i giorni della settimana, ma il riallineamento al venerdì lasciava i precedenti fuori vista nella griglia mobile. Il diario privato dell'utente non è stato letto: non viene dichiarato recuperato un dato che non è stato verificato.
+- Aggiunto il selettore completo della settimana con data e numero di ricette pianificate. Tutti i sette pulsanti sono visibili senza scroll orizzontale, su due righe su smartphone, e portano alla data corrispondente. Restano giorno selezionato e soglia delle 21.
+- La guida è apribile per dare precedenza ai giorni. Il testo dello scorrimento ora indica entrambe le direzioni, anziché solo destra. Nessuna copia di pasti, modifica al diario o migrazione.
+- Verifiche: 67 test automatici; 57 controlli browser nuovi su ingresso dal venerdì, tutti i giorni accessibili a 320/390/768/1440 px, contatori, ricette del lunedì/mercoledì/venerdì/domenica e identità dei byte del diario prima/dopo navigazione. Ancora superati i 18 controlli su giorno e soglia delle 21. Ispezione visiva mobile eseguita; telefono fisico e Safari non verificati.
+- La 0.4.2 d63254e è stata pubblicata con workflow 40971888507 riuscito; questa modifica prepara l'aggiornamento successivo.
 
 ## Giorno selezionato e soglia delle 21 — 0.4.2
 

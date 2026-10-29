@@ -2,6 +2,7 @@ import { clone, localDate, isDate, dateObject, addDays, weekDates, formatDate, u
 import { Repository, STORAGE_KEY } from './storage.js';
 import { loadCatalog, renderRecipeLibrary } from './recipes.js';
 import { icon } from './ui.js';
+import { recipeMatchesMeal } from './recipe-tags.js';
 import { createMeal, validateBatchPortions } from './meals.js';
 import { renderMeals } from './meal-ui.js';
 import { templateWorkspace } from './templates-ui.js';
@@ -26,6 +27,7 @@ let recipeLoadError = '';
 let recipeLoading = false;
 let recipeQuery = '';
 let recipeCategory = '';
+let recipeMealSlot = '';
 let selectedRecipe = null;
 let recipeMultiplier = 1;
 let plannerTab = 'menu';
@@ -118,6 +120,13 @@ function renderWorkout() {
   if (!session) return `<section class="panel workout">${header}<div class="empty-state"><div class="empty-symbol">${icon('dumbbell')}</div><h3>${selectedDate > localDate() ? 'Prepara la prossima seduta' : 'Ogni serie ha la sua storia'}</h3><p>${day?.assignment?.kind === 'rest' ? 'Hai programmato riposo. Puoi scegliere un’altra attività dal piano.' : 'Scegli una scheda nel piano, poi avvia la seduta per registrare i risultati.'}</p>${canStart ? '<button class="primary" data-action="start-session">Inizia seduta</button>' : ''}<button class="text-button" data-view="templates">Configura le mie schede →</button></div><div class="info-note">Target e risultati sono distinti. Le basi V21 sono preimpostate: puoi personalizzarle, creare altre schede o aggiungere esercizi durante la seduta.</div></section>`;
   return `<section class="panel workout">${header}<div class="session-switch">${sessions.map(s => `<button class="secondary ${s.id === session.id ? 'chosen' : ''}" data-session="${s.id}">${safe(s.title)} · ${s.status === 'completed' ? 'Completata' : 'Bozza'}</button>`).join('')}</div><form id="session-form"><div class="section-line"><h3>${safe(session.title)}</h3><span class="pill ${session.status === 'completed' ? 'complete' : 'draft'}">${session.status === 'completed' ? 'Completata' : 'Bozza'}</span></div><p class="hint">Target copiati all’avvio · versione ${session.templateVersion}. Le modifiche alla scheda non cambiano questa seduta. Il trattino indica un dato mancante; 0 è un valore esplicito.</p>${session.exercises.map((e, i) => `<article class="exercise"><div class="section-line"><div><h3>${safe(e.name)}</h3><p class="hint">${safe(e.equipment) || 'Attrezzatura non specificata'} · ${e.mode === 'cardio' ? 'Cardio' : 'Pesi / corpo libero'}</p></div><button type="button" class="text-button" data-action="add-set" data-index="${i}">+ Serie</button></div><div class="sets-columns"><div><h4>Target</h4>${setFields(e, i, 'target', false)}</div><div><h4>Risultato effettivo</h4>${setFields(e, i, 'result')}</div></div></article>`).join('')}${addExerciseForm()}<div class="add-grid"><label>Durata effettiva (min)<input type="number" id="session-duration" min="0" max="1440" step="any" value="${session.durationMinutes ?? ''}" placeholder="Non registrata"></label><label>Stato della seduta<select id="session-status"><option value="draft" ${session.status === 'draft' ? 'selected' : ''}>Bozza / parziale</option><option value="completed" ${session.status === 'completed' ? 'selected' : ''}>Completata</option></select></label></div><label for="session-notes">Note della seduta</label><textarea id="session-notes" maxlength="4000" rows="2">${safe(session.notes)}</textarea><div class="save-line"><button class="primary" type="submit">Salva seduta</button><span class="hint">Per completare: almeno un risultato o una durata positiva. I campi mancanti restano mancanti.</span></div></form>${canStart ? '<button class="text-button" data-action="start-session">+ Un’altra seduta in questa data</button>' : ''}</section>`;
 }
+function renderMenu() {
+  return `${pageHeading('DALLA CUCINA ALLA SPESA', 'Menu e spesa.', 'Scegli colazione, pranzo e cena. Gli ingredienti si sommano nella lista della settimana.')}<div class="day-toolbar"><div class="date-picker"><label for="selected-date">Settimana della data</label>${dateInput('selected-date',selectedDate)}<button class="secondary" data-action="today">Questa settimana</button></div></div>${renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError})}${plannerTab==='menu' ? renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true}) : ''}`;
+}
+function mealShortcut() {
+  const report=shoppingForWeek(repo.state,localDate());
+  return `<section class="meal-shortcut" aria-label="Organizza menu e spesa"><div><p class="eyebrow">COSA MANGIAMO QUESTA SETTIMANA?</p><h2>Prima scegli i pasti, poi fai la spesa.</h2><p>${report.filledSlots} pasti con ricette questa settimana. Puoi iniziare anche da un solo pasto.</p></div><div class="inline"><button class="primary" data-view="menu" data-open-planner="menu">${icon('plate')} Scegli i pasti</button><button class="secondary" data-view="menu" data-open-planner="shopping">${icon('cart')} Lista della spesa</button></div></section>`;
+}
 function renderToday() {
   const completed = Object.values(repo.state.days).flatMap(d => d.sessions).filter(s => s.status === 'completed').length;
   const drafts = Object.values(repo.state.days).flatMap(d => d.sessions).filter(s => s.status === 'draft').length;
@@ -126,7 +135,7 @@ function renderToday() {
   const today = repo.state.days[localDate()];
   const meals = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:view==='calendar'});
   const hero = view === 'today' ? `<section class="today-hero"><div class="hero-copy"><span class="hero-label">${icon('spark')} IL TUO PROSSIMO PASSO</span><h2>Trova il tuo ritmo.<br><span>Allenamento e cucina, al ritmo tuo.</span></h2><p>Organizza quello che vuoi fare.<br>Ritrova quello che hai fatto davvero.</p><div class="hero-actions"><button class="primary" data-view="calendar">Pianifica la settimana ${icon('arrow')}</button><button class="hero-link" data-view="recipes">Esplora le ricette ${icon('arrowUp')}</button></div></div><div class="hero-visual" aria-hidden="true"><span class="hero-orbit hero-orbit-one"></span><span class="hero-orbit hero-orbit-two"></span><div class="hero-emblem">${icon('dumbbell')}</div><div class="hero-float float-top">${icon('leaf')} Mangia con gusto</div><div class="hero-float float-bottom">${icon('check')} Segui il tuo ritmo</div></div><div class="hero-day"><span class="hero-day-icon">${icon('calendar')}</span><div><span>${formatDate(localDate(),{weekday:'long',day:'numeric',month:'long'})}</span><strong>${safe(assignmentName(today))}</strong></div><span class="hero-day-status">${dayStatus(today)}</span></div></section>` : '';
-  return `${heading}${hero}<div class="stats"><div><span class="stat-icon">${icon('check')}</span><div><strong>${completed}</strong><span>Sedute completate · archivio</span></div></div><div><span class="stat-icon blue">${icon('calendar')}</span><div><strong>${plans}</strong><span>Allenamenti pianificati da oggi</span></div></div><div><span class="stat-icon amber">${icon('clock')}</span><div><strong>${drafts}</strong><span>Sedute in bozza · archivio</span></div></div></div><div class="day-toolbar"><div><span class="toolbar-icon">${icon('calendar')}</span><span>La tua agenda</span></div><div class="date-picker"><label for="selected-date">Vai alla data</label>${dateInput('selected-date', selectedDate)}<button class="secondary" data-action="today">Oggi</button></div></div>${view === 'calendar' ? renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError}) : renderWeek()}${view === 'calendar' ? `<details class="monthly-disclosure"><summary>Apri calendario mensile</summary>${renderCalendar()}</details>${meals}` : ''}<div class="day-layout">${renderDay()}${renderWorkout()}</div>${view === 'today' ? meals : ''}<details class="next-phase"><summary>Cosa arriverà in Coach OS ${icon('arrow')}</summary><p>Diario alimentare, energia e peso, andamento delle prestazioni.</p><span class="hint">Non ancora disponibili. Nessuna stima scientifica attiva in questa versione.</span></details>`;
+  return `${heading}${hero}${view==='today' ? mealShortcut() : ''}<div class="stats"><div><span class="stat-icon">${icon('check')}</span><div><strong>${completed}</strong><span>Sedute completate · archivio</span></div></div><div><span class="stat-icon blue">${icon('calendar')}</span><div><strong>${plans}</strong><span>Allenamenti pianificati da oggi</span></div></div><div><span class="stat-icon amber">${icon('clock')}</span><div><strong>${drafts}</strong><span>Sedute in bozza · archivio</span></div></div></div><div class="day-toolbar"><div><span class="toolbar-icon">${icon('calendar')}</span><span>La tua agenda</span></div><div class="date-picker"><label for="selected-date">Vai alla data</label>${dateInput('selected-date', selectedDate)}<button class="secondary" data-action="today">Oggi</button></div></div>${view === 'calendar' ? renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError}) : renderWeek()}${view === 'calendar' ? `<details class="monthly-disclosure"><summary>Apri calendario mensile</summary>${renderCalendar()}</details>${meals}` : ''}<div class="day-layout">${renderDay()}${renderWorkout()}</div>${view === 'today' ? meals : ''}<details class="next-phase"><summary>Cosa arriverà in Coach OS ${icon('arrow')}</summary><p>Diario alimentare, energia e peso, andamento delle prestazioni.</p><span class="hint">Non ancora disponibili. Nessuna stima scientifica attiva in questa versione.</span></details>`;
 }
 function getTemplateDraft() {
   if (!templateDraft) templateDraft = clone(repo.state.templates.find(t => t.id === selectedTemplate));
@@ -157,10 +166,10 @@ function render() {
     if (button.dataset.view === view) button.setAttribute('aria-current', 'page');
     else button.removeAttribute('aria-current');
   });
-  document.querySelector('#current-section').textContent = ({today:'Oggi',calendar:'Calendario',templates:'Le mie schede',recipes:'Ricettario',data:'Profilo e dati'})[view];
+  document.querySelector('#current-section').textContent = ({today:'Oggi',calendar:'Calendario',menu:'Menu e spesa',templates:'Le mie schede',recipes:'Ricettario',data:'Profilo e dati'})[view];
   document.body.dataset.view = view;
-  main.innerHTML = view === 'recipes' ? renderRecipeLibrary({catalog:recipeCatalog,error:recipeLoadError,query:recipeQuery,category:recipeCategory,selectedId:selectedRecipe,multiplier:recipeMultiplier}) : view === 'templates' ? renderTemplates() : view === 'data' ? renderData() : renderToday();
-  if (['recipes','calendar'].includes(view) && !recipeCatalog && !recipeLoadError && !recipeLoading) fetchRecipes();
+  main.innerHTML = view === 'menu' ? renderMenu() : view === 'recipes' ? renderRecipeLibrary({catalog:recipeCatalog,error:recipeLoadError,query:recipeQuery,category:recipeCategory,mealSlot:recipeMealSlot,selectedId:selectedRecipe,multiplier:recipeMultiplier}) : view === 'templates' ? renderTemplates() : view === 'data' ? renderData() : renderToday();
+  if (['recipes','calendar','menu'].includes(view) && !recipeCatalog && !recipeLoadError && !recipeLoading) fetchRecipes();
 }
 async function fetchRecipes() {
   if (recipeLoading) return;
@@ -170,6 +179,7 @@ async function fetchRecipes() {
   finally {
     recipeLoading = false;
     if (view === 'recipes') render();
+    else if (view === 'menu') render();
     else if (view === 'calendar') {
       const section = main.querySelector('#meal-section');
       if (section) section.outerHTML = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true});
@@ -234,7 +244,7 @@ function protectOtherForms(formId) {
 document.addEventListener('input', event => {
   const form = event.target.closest('form');
   if (form && !['recipe-filter-form','recipe-scale-form'].includes(form.id)) { dirty = true; dirtyForms.add(form.id); }
-  if(event.target.id==='planner-search') document.querySelector('#planner-results').innerHTML=pickerRecipeResults(recipeCatalog,event.target.value,mealPicker.recipeId);
+  if(event.target.id==='planner-search') document.querySelector('#planner-results').innerHTML=pickerRecipeResults(recipeCatalog,event.target.value,mealPicker.recipeId,mealPicker.slot);
 });
 document.addEventListener('change', async event => {
   const target = event.target;
@@ -285,7 +295,7 @@ document.addEventListener('submit', event => {
   if(event.target.id==='weekly-meal-form') {
     try {
       const recipe=recipeCatalog?.recipes.find(r=>r.id===mealPicker?.recipeId);
-      if(!recipe) throw Error('Scegli una ricetta.');
+      if(!recipe || !recipeMatchesMeal(recipe,mealPicker.slot)) throw Error('Scegli una ricetta per questo pasto.');
       const portions=validateBatchPortions(Number(document.querySelector('#planner-portions').value));
       const dates=[...event.target.querySelectorAll('input[name=dates]:checked')].map(input=>input.value);
       if(!dates.length) throw Error('Seleziona almeno un giorno.');
@@ -301,6 +311,7 @@ document.addEventListener('submit', event => {
   if (event.target.id === 'recipe-filter-form') {
     recipeQuery = main.querySelector('#recipe-search').value;
     recipeCategory = main.querySelector('#recipe-category').value;
+    recipeMealSlot = main.querySelector('#recipe-meal').value;
     render(); return;
   }
   if (event.target.id === 'recipe-scale-form') {
@@ -312,7 +323,7 @@ document.addEventListener('submit', event => {
   try {
     if (event.target.dataset.mealSlot) {
       const recipe = recipeCatalog?.recipes.find(r=>r.id===event.target.elements.recipeId.value);
-      if (!recipe) throw Error('Scegli una ricetta disponibile.');
+      if (!recipe || !recipeMatchesMeal(recipe,event.target.dataset.mealSlot)) throw Error('Scegli una ricetta disponibile per questo pasto.');
       const portions = validateBatchPortions(Number(event.target.elements.batchPortions.value));
       const meal = createMeal(recipe,event.target.dataset.mealSlot,portions);
       save(state=>{
@@ -375,6 +386,7 @@ document.addEventListener('click', event => {
     if(button.dataset.planDate) {openMealPicker(button.dataset.planDate,button.dataset.planSlot);return;}
     if(button.dataset.pickRecipe) {
       const recipe=recipeCatalog.recipes.find(r=>r.id===button.dataset.pickRecipe);
+      if(!recipe || !recipeMatchesMeal(recipe,mealPicker.slot)) return;
       mealPicker.recipeId=recipe.id;
       const dialog=document.querySelector('#meal-picker');
       dialog.querySelector('#picker-selection').hidden=false;
@@ -404,6 +416,7 @@ document.addEventListener('click', event => {
       event.preventDefault();
       if (!discard()) return;
       view = button.dataset.view || 'today';
+      if (button.dataset.openPlanner) { plannerTab=button.dataset.openPlanner; selectedDate=localDate(); }
       if (view === 'today') selectedDate = localDate();
       render(); main.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); return;
     }
@@ -449,6 +462,7 @@ document.addEventListener('click', event => {
     if (action === 'retry-recipes') {
       recipeLoadError = ''; fetchRecipes();
       if (view === 'recipes') render();
+      else if (view === 'menu') render();
       else if (view === 'calendar') {
         main.querySelector('#meal-section').outerHTML = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,editable:true});
         refreshPlanner();
@@ -456,7 +470,7 @@ document.addEventListener('click', event => {
       return;
     }
     if (action === 'recipe-back') { selectedRecipe = null; render(); return; }
-    if (action === 'recipe-reset') { recipeQuery = ''; recipeCategory = ''; selectedRecipe = null; render(); return; }
+    if (action === 'recipe-reset') { recipeQuery = ''; recipeCategory = ''; recipeMealSlot = ''; selectedRecipe = null; render(); return; }
     if (action === 'recipe-export') { download(JSON.stringify(recipeCatalog,null,2),'coach-os-ricettario.json'); return; }
     if (['today', 'week-prev', 'week-next', 'month-prev', 'month-next'].includes(action)) {
       if (!discard()) return;
@@ -515,8 +529,8 @@ window.addEventListener('storage', event => {
   if (event.key === STORAGE_KEY || event.key === null) notify('Archivio modificato da un’altra scheda. Copia eventuali campi non salvati, poi ricarica prima di salvare.', true);
 });
 document.querySelectorAll('nav [data-view]').forEach(button => {
-  button.querySelector('.nav-icon').innerHTML = icon(({today:'home',calendar:'calendar',templates:'dumbbell',recipes:'book',data:'data'})[button.dataset.view]);
-  button.title = button.querySelector('.nav-text').textContent;
+  button.querySelector('.nav-icon').innerHTML = icon(({today:'home',calendar:'calendar',menu:'cart',templates:'dumbbell',recipes:'book',data:'data'})[button.dataset.view]);
+  button.title = button.getAttribute('aria-label');
 });
 document.querySelector('.privacy-icon').innerHTML = icon('shield');
 document.querySelector('#topbar-date').textContent = formatDate(localDate(),{day:'numeric',month:'short',year:'numeric'});

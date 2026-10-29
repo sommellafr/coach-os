@@ -2,7 +2,7 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b1020">
     <meta name="description" content="Coach OS: allenamenti, ricette in dose singola e menu per data, nel tuo spazio personale con backup locali.">
     <title>Coach OS · Il tuo diario</title>
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./src/styles.css">
     <link rel="stylesheet" href="./src/app-theme.css">
     <link rel="stylesheet" href="./src/planner.css">
+    <link rel="stylesheet" href="./src/mobile.css">
     <script type="module" src="./src/app.js"></script>
   </head>
   <body>
@@ -18,11 +19,12 @@
       <a class="brand" href="#oggi" aria-label="Coach OS, oggi"><span class="brand-symbol"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M21 7a10 10 0 1 0 0 18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="m17 10-4 6h7l-4 7" stroke="#c3f17d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>coach<span class="blue">OS</span><small>IL TUO SPAZIO PERSONALE</small></span></a>
       <p class="nav-label">LA TUA ROUTINE</p>
       <nav aria-label="Navigazione principale">
-        <button data-view="today"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Oggi</span></button>
-        <button data-view="calendar"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Calendario</span></button>
-        <button data-view="templates"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Le mie schede</span></button>
-        <button data-view="recipes"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Ricettario</span></button>
-        <button data-view="data"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Profilo e dati</span></button>
+        <button data-view="today" aria-label="Oggi"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Oggi</span><span class="nav-short" aria-hidden="true">Oggi</span></span></button>
+        <button data-view="calendar" aria-label="Calendario"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Calendario</span><span class="nav-short" aria-hidden="true">Agenda</span></span></button>
+        <button data-view="menu" aria-label="Menu e spesa"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Menu e spesa</span><span class="nav-short" aria-hidden="true">Pasti</span></span></button>
+        <button data-view="templates" aria-label="Le mie schede"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Le mie schede</span><span class="nav-short" aria-hidden="true">Schede</span></span></button>
+        <button data-view="recipes" aria-label="Ricettario"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Ricettario</span><span class="nav-short" aria-hidden="true">Ricette</span></span></button>
+        <button data-view="data" aria-label="Profilo e dati"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text"><span class="nav-full">Profilo e dati</span><span class="nav-short" aria-hidden="true">Dati</span></span></button>
       </nav>
       <div class="sidebar-footer"><div class="privacy-icon" aria-hidden="true"></div><strong>Il tuo spazio personale</strong><p>Archivio su questo browser.<br>Portalo con te con un backup.</p><button class="text-button" data-view="data">Gestisci i tuoi dati <span aria-hidden="true">↗</span></button><span class="version">COACH OS · v0.4</span></div>
     </aside>

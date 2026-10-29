@@ -48,7 +48,7 @@ body[data-view=calendar] .day-toolbar { justify-content:flex-end; }
 #picker-error { font-size:12px; color:#ffd2df; line-height:1.8; margin:12px 0; }
 .picker-footer { position:sticky; bottom:0; display:flex; align-items:center; justify-content:space-between; gap:15px; padding:17px 0; border-top:1px solid #425677; background:#17233af2; backdrop-filter:blur(10px); }.picker-footer .ui-icon { width:17px; height:17px; }
 @media(max-width:1200px) { .weekly-planner { padding:22px; }.weekly-menu-grid { grid-template-columns:repeat(7,minmax(145px,1fr)); }.planner-heading h2 { font-size:23px; }.shopping-heading { align-items:start; }.shopping-export .primary,.shopping-export .secondary { min-height:41px; padding:10px 12px; } }
-@media(max-width:700px) {
+@media(max-width:700px), (max-width:1000px) and (max-height:500px) and (pointer:coarse) {
   .weekly-planner { padding:19px 14px; border-radius:17px; margin-bottom:20px; }.planner-heading { gap:12px; align-items:start; margin-bottom:18px; }.planner-heading .eyebrow { font-size:8px; letter-spacing:1px; }.planner-heading h2 { font-size:22px; letter-spacing:-.6px; line-height:1.35; }.planner-heading>div>p:last-child { font-size:10px; line-height:1.8; }.planner-heading>.inline { gap:5px; padding-top:3px; }.planner-heading .icon-button { min-width:30px; min-height:35px; padding:3px 7px; }
   .planner-tabs { gap:5px; padding-bottom:14px; flex-wrap:nowrap; }.planner-tabs>button { gap:4px; font-size:10px; padding:9px 6px; flex:1 1 0; min-width:0; justify-content:center; white-space:nowrap; }.planner-tabs .ui-icon { width:16px; height:16px; }.planner-tabs>button>span { font-size:9px; padding:2px 4px; }
   .planner-menu-tools { display:block; margin:12px 0 17px; }.planner-menu-tools p { font-size:10px; margin-bottom:12px; line-height:1.8; }.planner-menu-tools .secondary { width:100%; min-height:40px; font-size:10px; }.weekly-menu-grid { grid-template-columns:repeat(7,156px); gap:8px; padding-bottom:12px; }.weekly-menu-slot { min-height:122px; padding:13px 11px; }.weekly-date>strong { font-size:17px; }.slot-label { font-size:11px; }.weekly-dish { font-size:12px; padding:11px 9px; }.weekly-add>span { font-size:10px; }.weekly-add { min-height:41px; }
@@ -58,3 +58,15 @@ body[data-view=calendar] .day-toolbar { justify-content:flex-end; }
 }
 @media(max-width:360px) { .planner-tabs>button { font-size:10px; padding:9px 7px; }.planner-tabs>button>span { display:none; }.planner-heading h2 { font-size:20px; }.planner-heading .eyebrow { font-size:7px; }.shopping-check { gap:8px; }.shopping-check b { max-width:77px; font-size:11px; }.shopping-optional { font-size:10px; }.picker-dates>div { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 @media(prefers-reduced-motion:reduce) { #meal-picker::backdrop { backdrop-filter:none; } }
+
+/* Accessi espliciti al percorso pasti -> spesa, senza cambiare i dati. */
+.meal-shortcut { display:flex; align-items:center; justify-content:space-between; gap:22px; padding:24px; margin:24px 0; border:1px solid #536e58; border-radius:18px; background:#1b2b2e; }
+.meal-shortcut h2 { font-size:22px; margin:8px 0; }.meal-shortcut p:last-child { color:#b7c9c1; font-size:13px; line-height:1.7; }.meal-shortcut .inline { flex-wrap:wrap; }.meal-shortcut .ui-icon { width:19px; height:19px; }
+.planner-guide { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; list-style:none; padding:0; margin:16px 0; }.planner-guide li { padding:14px; background:#0d182a; border-radius:10px; }.planner-guide strong { display:block; font-size:13px; color:#d4e9bc; }.planner-guide span { display:block; font-size:12px; color:#b5c7df; line-height:1.7; margin-top:7px; }
+.planner-scroll-hint { display:none; color:#c6d9f5; font-size:12px; }
+@media(max-width:1200px) { .planner-scroll-hint { display:block; } }
+@media(max-width:700px), (max-width:1000px) and (max-height:500px) and (pointer:coarse) {
+  nav { grid-template-columns:repeat(6,minmax(0,1fr)); } nav button .nav-text { font-size:8px; }
+  .meal-shortcut { display:block; padding:20px 16px; }.meal-shortcut h2 { font-size:21px; }.meal-shortcut .inline { margin-top:16px; }.meal-shortcut button { flex:1; font-size:12px; padding:11px 8px; }
+  .planner-guide { grid-template-columns:1fr; gap:7px; }.planner-guide li { padding:11px; }.planner-guide span { margin-top:3px; }
+}

@@ -10,6 +10,12 @@ Prima del passaggio dal sito locale a quello GitHub, esportare il diario da **Pr
 
 ## Versione locale 0.4 · pianifica la settimana e prepara la spesa
 
+**Accesso rapido aggiornato:** aprire **Menu e spesa** dalla navigazione, oppure **Scegli i pasti** / **Lista della spesa** in Oggi. La pagina dedicata mostra il menu e gli ingredienti della settimana senza i moduli di allenamento. La guida in tre passaggi spiega scelta delle ricette, ripetizione su più giorni e spesa. Calendario conserva gli stessi dati e gli accessi già presenti.
+
+**Ricette per pasto:** scegliendo Colazione si vedono soltanto le ricette etichettate Colazione; Pranzo e Cena mostrano quelle con la rispettiva etichetta. Il filtro vale nel selettore settimanale, nella ricerca per ingrediente e nei menu del singolo giorno. Nel Ricettario sono visibili le etichette ed è disponibile il filtro **Pasto**. Classificazione redazionale iniziale: 7 ricette Colazione e 27 Pranzo + Cena; non è una prescrizione nutrizionale. Dettagli in [docs/RECIPE_MEAL_TAGS.md](docs/RECIPE_MEAL_TAGS.md). I pasti già salvati rimangono consultabili anche quando non corrispondono alle nuove etichette.
+
+**Smartphone:** navigazione inferiore con nomi brevi (Oggi, Agenda, Pasti, Schede, Ricette, Dati), controlli principali dei pasti e della spesa da almeno 44 px, data leggibile e selettore ricette utilizzabile anche in orizzontale. Verificato con touch simulato a 320/360/390/430 px e 844×390, non su telefono fisico o Safari. Dettagli e limiti in [docs/MOBILE_VALIDATION.md](docs/MOBILE_VALIDATION.md).
+
 Il percorso principale è **Calendario → Menu settimanale → Lista della spesa**. Da Oggi, **Pianifica la settimana** apre direttamente il calendario. I sette giorni mostrano colazione, pranzo e cena insieme; sul telefono il menu scorre orizzontalmente. Il calendario mensile rimane disponibile in una sezione apribile.
 
 1. Tocca **Scegli ricetta** nella casella del pasto e del giorno.

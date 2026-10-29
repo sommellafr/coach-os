@@ -2,6 +2,30 @@
 
 Aggiornato il 29 ottobre 2026. Versione 0.4: planner settimanale e lista della spesa, oltre a menu in dose singola, schede V21/personali e grafica rinnovata. Nessuna pubblicazione o attivazione di servizi.
 
+## Accesso diretto a menu e spesa — 29 ottobre 2026
+
+- Richiesta: trovare la selezione di colazione, pranzo e cena e la spesa derivata; rendere più semplice il percorso settimanale.
+- Implementazione reversibile: voce **Menu e spesa**, pulsanti **Scegli i pasti** e **Lista della spesa** in Oggi, pagina dedicata senza moduli allenamento, icona carrello e guida in tre passaggi. L'accesso dalla home usa la settimana corrente; la navigazione conserva la settimana consultata. Su mobile è esplicito lo scorrimento dei sette giorni.
+- Nessun cambiamento al formato dati, alle quantità, alle fonti o alle regole della spesa. Restano ricerca per ingrediente, selezione di più giorni, dosi singole, copia nei pasti liberi e lista spuntabile/scaricabile; nessun acquisto online.
+- Verifiche: sintassi, suite automatica, build, verifica risorse e hash delle 31 immagini superati. Browser Chromium isolato: 48 controlli del flusso settimanale esistente e 16 sul nuovo accesso (salvataggio pasto, spesa, spunta, collegamenti dalla home, navigazione e assenza overflow a 1440/768/390/320 px). Nessun errore JavaScript. Ispezione visiva mobile eseguita; non verificati telefono fisico e screen reader.
+- L'utente riferisce di aver pubblicato la versione precedente su GitHub Pages. Queste modifiche sono locali e non sono state pubblicate né inviate al repository remoto.
+
+## Etichette Colazione / Pranzo / Cena — 29 ottobre 2026
+
+- Richiesta esplicita: etichettare le ricette per pasto e filtrare automaticamente la scelta.
+- Copertura completa delle 34 ricette con metadati redazionali separati in `src/recipe-tags.js`: 7 Colazione, 27 Pranzo e Cena. Assegnazione iniziale reversibile, documentata in RECIPE_MEAL_TAGS.md; non è testo estratto o valutazione nutrizionale.
+- Filtro coerente nel selettore settimanale, durante la ricerca e nei select giornalieri. Badge visibili in ricettario, dettaglio e selettore; nuovo filtro Pasto combinabile con categoria e ricerca. Reset ripristina tutti i filtri.
+- Nessuna modifica alle fonti, al catalogo estratto o ai pasti già salvati. Le assegnazioni storiche fuori etichetta restano consultabili e incluse nella spesa; nessuna migrazione.
+- Verifiche: 54 test automatici del progetto superati (4 nuovi su copertura etichette, filtri combinati, selettori coerenti e conservazione storico), sintassi, build e verify:site (52 file), integrità delle 31 immagini. Chromium isolato: 30 controlli nuovi su tutti i pasti, ricerca vuota/coerente, salvataggio, spesa, persistenza, badge, reset e layout ricettario 1440/768/390/320 px; ancora superati i 48 controlli del flusso settimanale. Nessun errore JavaScript. Ispezione visiva mobile; telefono fisico e screen reader non verificati.
+- Modifiche solo locali: nessun push o deploy effettuato.
+
+## Smartphone prima del deploy — 29 ottobre 2026
+
+- Richiesta: aggiornare GitHub e fare deploy, verificando prima l'esperienza smartphone.
+- Sistemati nomi della navigazione mobile, controlli principali pasti/spesa da almeno 44 px, data a 16 px non compressa, aree sicure e selettore utilizzabile in orizzontale. Dettagli in MOBILE_VALIDATION.md e verifiche ripetibili in scripts/browser-mobile-qa.js.
+- Superati 106 controlli browser con touch simulato in cinque formati verticali/orizzontali, 48 del flusso settimanale e 54 test del progetto. Rimangono non verificati telefono fisico e Safari; nessuna certificazione di compatibilità universale.
+- La cronologia remota main è stata letta e confrontata con la baseline locale, senza cambiare sorgenti storiche e immagini. L'accesso GitHub disponibile è di sola lettura sul repository: push e deploy richiedono il collegamento di un account autorizzato. Nessun deploy di questo aggiornamento eseguito.
+
 ## Preparazione GitHub / GitHub Pages
 
 - Richiesta: preparare tutto per caricare e lanciare il progetto su GitHub. Repository locale pronto, nessun remote ancora collegato e nessun push/deploy effettuato.

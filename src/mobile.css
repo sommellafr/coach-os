@@ -1,0 +1,51 @@
+/* Migliorie smartphone: etichette leggibili, bersagli tattili e spazio sicuro. */
+.nav-short { display:none; }
+nav button .nav-full,nav button .nav-short { font-size:inherit; width:auto; line-height:inherit; font-weight:inherit; }
+@media (max-width:700px), (max-width:1000px) and (max-height:500px) and (pointer:coarse) {
+  nav { grid-template-columns:repeat(6,minmax(0,1fr)); }
+  nav button { min-width:44px; }
+  nav button .nav-text { font-size:10px; }
+  .nav-full { display:none; }
+  .nav-short { display:inline; }
+  main { padding-left:max(14px,env(safe-area-inset-left)); padding-right:max(14px,env(safe-area-inset-right)); }
+  .day-toolbar .date-picker,.day-toolbar>.date-picker:first-child { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; }
+  .date-picker label { grid-column:1/-1; font-size:13px; }
+  .date-picker input { width:100%; font-size:16px; min-height:48px; }
+  .date-picker .secondary { min-height:48px; }
+  .primary,.secondary,.text-button,.icon-button,
+  .planner-heading .icon-button,.weekly-add,.planner-menu-tools .secondary,
+  .shopping-export .primary,.shopping-export .secondary,.planner-tabs>button,
+  .recipe-card-bottom .secondary { min-height:44px; }
+  .icon-button,.planner-heading .icon-button { min-width:44px; }
+  .planner-heading { flex-wrap:wrap; }
+  .planner-heading>div:first-child { flex:1 1 190px; }
+  .planner-heading>.inline { margin-left:auto; }
+  .planner-tabs>button { white-space:normal; font-size:12px; line-height:1.4; }
+  .weekly-add>span,.slot-label,.weekly-dish { font-size:13px; }
+  .weekly-date>span { font-size:11px; }
+  .planner-menu-tools p,.planner-next>span,.shopping-explainer,
+  .shopping-optional,.shopping-row summary,.shopping-check small,
+  .picker-dates legend,.picker-heading p:last-child,.picker-recipe small { font-size:12px; }
+  .shopping-check { min-height:44px; align-items:center; }
+  .shopping-check strong { font-size:14px; }
+  .shopping-check b { font-size:13px; }
+  .shopping-optional { min-height:48px; }
+  .picker-dates label { min-height:44px; }
+  .picker-dates label>span,.picker-dates strong { font-size:11px; }
+  .picker-recipe strong { font-size:14px; }
+  .picker-selection label { flex-wrap:wrap; font-size:13px; gap:10px; }
+  .picker-selection input { min-width:80px; }
+  #meal-picker { scroll-padding-block:16px; }
+  .picker-footer { padding-bottom:max(17px,env(safe-area-inset-bottom)); }
+  .meal-slot,.weekly-planner { scroll-margin-top:16px; }
+}
+@media (max-width:360px) {
+  .day-toolbar .date-picker,.day-toolbar>.date-picker:first-child { grid-template-columns:minmax(0,1fr); }
+}
+@media (max-height:500px) and (pointer:coarse) {
+  /* Il titolo e i comandi non devono occupare tutta l'altezza in orizzontale. */
+  .picker-heading,.picker-footer { position:static; }
+  .picker-heading { padding:12px 18px; }
+  .picker-heading .eyebrow { display:none; }
+  .picker-heading h2 { font-size:21px; }
+}

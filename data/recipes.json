@@ -1,0 +1,4332 @@
+{
+  "catalogVersion": 1,
+  "status": "all_sources_read",
+  "reviewedAt": "2026-10-29",
+  "sourceCount": 31,
+  "note": "Copertura delle fonti completa; non implica completezza delle informazioni originali o validazione nutrizionale. Quantità, unità e nutrienti mancanti restano null. Le categorie sono redazionali.",
+  "recipes": [
+    {
+      "id": "burrito-manzo",
+      "version": 1,
+      "title": "Burrito di manzo e formaggio",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-03"
+      ],
+      "author": "@fairfiteats, ripubblicato da @proteinmusclemeals",
+      "yield": {
+        "quantity": 10,
+        "unit": "burrito"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "macinato-magro-di-manzo-96-4",
+          "label": "Macinato magro di manzo 96/4",
+          "quantity": 1700,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "La fonte indica anche 60 oz",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-bianca",
+          "label": "Cipolla bianca",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1 cipolla",
+          "optional": false
+        },
+        {
+          "ingredientId": "condimento-taco",
+          "label": "Condimento taco",
+          "quantity": 57,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "2 bustine, 2 oz totali nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-enchilada-rossa",
+          "label": "Salsa enchilada rossa",
+          "quantity": 120,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "0,5 cup",
+          "optional": false
+        },
+        {
+          "ingredientId": "cheddar-senza-grassi",
+          "label": "Cheddar senza grassi",
+          "quantity": 500,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "4,5 cup",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio-tritato",
+          "label": "Aglio tritato",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "2 tbsp",
+          "optional": false
+        },
+        {
+          "ingredientId": "riso-bianco",
+          "label": "Riso bianco",
+          "quantity": 270,
+          "unit": "g",
+          "preparationState": "secco",
+          "note": "1,5 cup; peso secco",
+          "optional": false
+        },
+        {
+          "ingredientId": "brodo-di-pollo-o-acqua",
+          "label": "Brodo di pollo o acqua",
+          "quantity": 360,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1,5 cup: unità g mantenuta dalla fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-di-pomodoro",
+          "label": "Salsa di pomodoro",
+          "quantity": 240,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1 cup",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale-all-aglio",
+          "label": "Sale all’aglio",
+          "quantity": 15,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1 tbsp",
+          "optional": false
+        },
+        {
+          "ingredientId": "cumino",
+          "label": "Cumino",
+          "quantity": 3,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "0,5 tbsp",
+          "optional": false
+        },
+        {
+          "ingredientId": "chili-in-polvere",
+          "label": "Chili in polvere",
+          "quantity": 3,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "0,5 tbsp",
+          "optional": false
+        },
+        {
+          "ingredientId": "origano",
+          "label": "Origano",
+          "quantity": 3,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "0,5 tbsp",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-al-formaggio-nacho",
+          "label": "Salsa al formaggio nacho",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1,25 cup",
+          "optional": false
+        },
+        {
+          "ingredientId": "tortilla-a-calorie-ridotte",
+          "label": "Tortilla a calorie ridotte",
+          "quantity": 10,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Per il riso: riunisci riso secco, salsa di pomodoro, sale all’aglio, cumino, chili, origano e brodo. Mescola, copri e lascia sobbollire circa 20 minuti, fino a riso tenero."
+      ],
+      "guideSteps": [
+        {
+          "text": "Per il riso: riunisci riso secco, salsa di pomodoro, sale all’aglio, cumino, chili, origano e brodo. Mescola, copri e lascia sobbollire circa 20 minuti, fino a riso tenero.",
+          "provenance": "source"
+        },
+        {
+          "text": "Trita la cipolla. In una padella capiente cuoci il macinato con cipolla e aglio, separandolo con un cucchiaio e portandolo a completa cottura.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi il condimento taco e la salsa enchilada al manzo; mescola per distribuire il condimento.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Disponi le 10 tortilla. Ripartisci tra loro riso cotto, carne, cheddar e salsa nacho: le dosi elencate si riferiscono a tutti e 10 i burrito.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Ripiega i lati delle tortilla e arrotolale chiudendo il ripieno. Se desideri una superficie dorata, passale in padella controllando che non brucino.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": 20,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 500,
+        "proteinG": 60,
+        "carbsG": 55,
+        "fatG": 11,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Valori dichiarati per burrito; non ricalcolati."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte descrive soltanto la cottura del riso; carne e assemblaggio sono integrazioni redazionali.",
+        "I 20 minuti riguardano il riso, non il tempo totale della ricetta.",
+        "Valori calorici e macro dichiarati non coincidono esattamente; prodotti e nutrienti non verificati."
+      ]
+    },
+    {
+      "id": "burrito-chipotle",
+      "version": 1,
+      "title": "Burrito di pollo al chipotle",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-03"
+      ],
+      "author": "@fairfiteats, ripubblicato da @proteinmusclemeals",
+      "yield": {
+        "quantity": 4,
+        "unit": "burrito"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "fiocchi-di-latte-0-grassi",
+          "label": "Fiocchi di latte 0% grassi",
+          "quantity": 1,
+          "unit": "cup",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-enchilada",
+          "label": "Salsa enchilada",
+          "quantity": 0.25,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Nella fonte «1/4 Enchilada Sauce»: unità mancante",
+          "optional": false
+        },
+        {
+          "ingredientId": "peperoncino-chipotle-in-scatola",
+          "label": "Peperoncino chipotle in scatola",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "petto-di-pollo",
+          "label": "Petto di pollo",
+          "quantity": 24,
+          "unit": "oz",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale-all-aglio",
+          "label": "Sale all’aglio",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "paprika-affumicata",
+          "label": "Paprika affumicata",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-in-polvere",
+          "label": "Cipolla in polvere",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "chipotle-in-scatola",
+          "label": "Chipotle in scatola",
+          "quantity": 1,
+          "unit": "scatola",
+          "preparationState": "non specificato",
+          "note": "Presente separatamente anche il singolo peperoncino; relazione da chiarire",
+          "optional": false
+        },
+        {
+          "ingredientId": "mozzarella-senza-grassi",
+          "label": "Mozzarella senza grassi",
+          "quantity": 1,
+          "unit": "cup",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "erba-cipollina-fresca",
+          "label": "Erba cipollina fresca",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "tortilla-a-calorie-ridotte",
+          "label": "Tortilla a calorie ridotte",
+          "quantity": 4,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Prima di cucinare, chiarisci la quantità di salsa enchilada e se il chipotle singolo e la scatola rappresentino due dosi separate: la fonte non lo spiega.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Frulla i fiocchi di latte con la salsa enchilada e il chipotle, dopo averne definito le quantità.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Taglia il pollo in pezzi uniformi. Cuocilo in padella con le spezie fino a completa cottura, poi incorporalo alla salsa.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Dividi il ripieno tra quattro tortilla, aggiungi mozzarella ed erba cipollina, ripiega i bordi e arrotola.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 380,
+        "proteinG": 60,
+        "carbsG": 11,
+        "fatG": 7,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "La sezione “Macros” non precisa se i valori siano per burrito o per ricetta."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "Unità di 1/4 di salsa enchilada assente.",
+        "La lista riporta sia 1 peperoncino sia 1 scatola di chipotle: non sono stati sommati o corretti.",
+        "Base dei nutrienti non esplicitata: nessun valore per porzione derivato."
+      ]
+    },
+    {
+      "id": "pollo-miele-aglio",
+      "version": 1,
+      "title": "Bocconcini di pollo al miele e aglio",
+      "category": "Secondi",
+      "sourceIds": [
+        "SRC-04"
+      ],
+      "author": "@_aussiefitness",
+      "yield": {
+        "quantity": 8,
+        "unit": "strisce"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "petto-di-pollo-disossato-senza-pelle",
+          "label": "Petto di pollo disossato senza pelle",
+          "quantity": 700,
+          "unit": "g",
+          "preparationState": "crudo",
+          "note": "Peso crudo; dividere in 8 strisce sottili",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": 1,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "paprika-affumicata",
+          "label": "Paprika affumicata",
+          "quantity": 1.5,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio-in-polvere",
+          "label": "Aglio in polvere",
+          "quantity": 1,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "peperoncino-di-cayenna",
+          "label": "Peperoncino di Cayenna",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "farina",
+          "label": "Farina",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Per la panatura; la fonte dice circa 10–15 g aderenti a ciascuna striscia",
+          "optional": false
+        },
+        {
+          "ingredientId": "fecola-di-patate",
+          "label": "Fecola di patate",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Per la panatura; circa 5–8 g aderenti a ciascuna striscia secondo la fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "spezie-per-la-farina",
+          "label": "Spezie per la farina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Stesse spezie elencate sopra; dose aggiuntiva non precisata",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua-frizzante",
+          "label": "Acqua frizzante",
+          "quantity": 1,
+          "unit": "cup",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio-tritato",
+          "label": "Aglio tritato",
+          "quantity": 4,
+          "unit": "spicchi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-di-soia-a-ridotto-sodio",
+          "label": "Salsa di soia a ridotto sodio",
+          "quantity": 80,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua-per-la-salsa",
+          "label": "Acqua per la salsa",
+          "quantity": 80,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "zenzero-tritato",
+          "label": "Zenzero tritato",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "miele",
+          "label": "Miele",
+          "quantity": 40,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "fecola-di-patate-per-la-salsa",
+          "label": "Fecola di patate per la salsa",
+          "quantity": 1,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "Da mescolare con acqua, dose d’acqua non indicata",
+          "optional": false
+        },
+        {
+          "ingredientId": "prezzemolo",
+          "label": "Prezzemolo",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        }
+      ],
+      "sourceSteps": [
+        "Apri il petto di pollo e taglialo in 8 strisce sottili. La fonte indica di condire anche la farina con le spezie elencate."
+      ],
+      "guideSteps": [
+        {
+          "text": "Apri il petto di pollo e taglialo in 8 strisce sottili. La fonte indica di condire anche la farina con le spezie elencate.",
+          "provenance": "source"
+        },
+        {
+          "text": "Prepara la salsa mescolando aglio tritato, soia, acqua, zenzero e miele. Tieni separata la fecola prevista per addensarla.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Per una pastella redazionale mescola farina, fecola della panatura e acqua frizzante, incorporando le spezie. Rivesti il pollo: la fonte elenca gli ingredienti ma non specifica il metodo di panatura.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Cuoci le strisce in una padella antiaderente, girandole e controllando che risultino completamente cotte anche al centro. Non sono forniti tempi o temperatura della cottura originale.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Scalda la salsa in un pentolino; incorpora la fecola dispersa in poca acqua e mescola finché addensa. Condisci le strisce con la salsa e aggiungi il prezzemolo facoltativo.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 239,
+        "proteinG": 31,
+        "carbsG": 18.5,
+        "fatG": 3.5,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per striscia nella fonte, su 8 totali."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo di panatura e cottura non è presente: la guida propone una variante redazionale, senza tempi o temperature inventati.",
+        "Farina e fecola elencate sono quantità predisposte, non necessariamente consumate tutte; nessuna stima derivata di nutrienti.",
+        "Quantità di spezie aggiuntive per la farina non specificata."
+      ]
+    },
+    {
+      "id": "piadina-salmone",
+      "version": 1,
+      "title": "Piadina al salmone",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "piadina",
+          "label": "Piadina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Quantità non specificata nel testo",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-spalmabile",
+          "label": "Formaggio spalmabile",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "lattuga",
+          "label": "Lattuga",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "salmone-affumicato",
+          "label": "Salmone affumicato",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "avocado",
+          "label": "Avocado",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "lime",
+          "label": "Lime",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci l’uovo con il metodo che preferisci, poi taglialo.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava la lattuga e taglia l’avocado. Stendi lo spalmabile sulla piadina, aggiungi lattuga, salmone, avocado e uovo.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Completa con lime e ripiega la piadina.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Una piadina per variante è plausibile, ma il testo non ne specifica la quantità.",
+        "Nutrienti assenti nella fonte."
+      ]
+    },
+    {
+      "id": "piadina-caprese",
+      "version": 1,
+      "title": "Piadina caprese",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "piadina",
+          "label": "Piadina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Quantità non specificata nel testo",
+          "optional": false
+        },
+        {
+          "ingredientId": "rucola",
+          "label": "Rucola",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodoro",
+          "label": "Pomodoro",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "mozzarella-proteica",
+          "label": "Mozzarella proteica",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "Peso della confezione non indicato",
+          "optional": false
+        },
+        {
+          "ingredientId": "prosciutto-crudo",
+          "label": "Prosciutto crudo",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Lava rucola e pomodoro. Taglia il pomodoro e la mozzarella, lasciando scolare il liquido in eccesso.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Disponi sulla piadina rucola, pomodoro, mozzarella e prosciutto; ripiega per racchiudere il ripieno.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Una piadina per variante è plausibile, ma il testo non ne specifica la quantità.",
+        "Nutrienti assenti nella fonte."
+      ]
+    },
+    {
+      "id": "piadina-veggie",
+      "version": 1,
+      "title": "Piadina con ceci e avocado",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "piadina",
+          "label": "Piadina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Quantità non specificata nel testo",
+          "optional": false
+        },
+        {
+          "ingredientId": "ceci",
+          "label": "Ceci",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Stato crudo/cotto non dichiarato",
+          "optional": false
+        },
+        {
+          "ingredientId": "avocado",
+          "label": "Avocado",
+          "quantity": 50,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "insalata-mista",
+          "label": "Insalata mista",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "carote",
+          "label": "Carote",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Per il ripieno usa ceci già cotti e scolati; la fonte non ne specifica lo stato né se i 150 g siano peso cotto.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava insalata e carote. Affetta le carote e l’avocado.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Distribuisci ceci e verdure sulla piadina e ripiega il tutto.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Una piadina per variante è plausibile, ma il testo non ne specifica la quantità.",
+        "Nutrienti assenti nella fonte."
+      ]
+    },
+    {
+      "id": "piadina-tonno",
+      "version": 1,
+      "title": "Piadina al tonno",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "piadina",
+          "label": "Piadina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Quantità non specificata nel testo",
+          "optional": false
+        },
+        {
+          "ingredientId": "tonno-in-scatola",
+          "label": "Tonno in scatola",
+          "quantity": 110,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1 scatoletta; peso sgocciolato non specificato",
+          "optional": false
+        },
+        {
+          "ingredientId": "yogurt-greco",
+          "label": "Yogurt greco",
+          "quantity": 2,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "lattuga",
+          "label": "Lattuga",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-rossa",
+          "label": "Cipolla rossa",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Scola il tonno, lava la lattuga e affetta la cipolla.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Mescola tonno e yogurt, distribuisci il composto sulla piadina e aggiungi lattuga e cipolla. Ripiega la piadina.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Una piadina per variante è plausibile, ma il testo non ne specifica la quantità.",
+        "Nutrienti assenti nella fonte."
+      ]
+    },
+    {
+      "id": "piadina-pollo",
+      "version": 1,
+      "title": "Piadina al pollo e pesto",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-02"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "piadina",
+          "label": "Piadina",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Quantità non specificata nel testo",
+          "optional": false
+        },
+        {
+          "ingredientId": "pesto",
+          "label": "Pesto",
+          "quantity": 15,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "petto-di-pollo",
+          "label": "Petto di pollo",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Stato crudo/cotto non dichiarato",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-spalmabile",
+          "label": "Formaggio spalmabile",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "mozzarella",
+          "label": "Mozzarella",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci completamente il pollo in padella, poi taglialo a strisce.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Stendi pesto e spalmabile sulla piadina. Aggiungi pollo, mozzarella e basilico lavato.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Ripiega la piadina; se desideri scaldarla, passala in padella controllando il ripieno.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Una piadina per variante è plausibile, ma il testo non ne specifica la quantità.",
+        "Nutrienti assenti nella fonte."
+      ]
+    },
+    {
+      "id": "pancake-banana",
+      "version": 1,
+      "title": "Pancake banana e cioccolato",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-05"
+      ],
+      "author": "@ilmiopiattoacolori",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "banana-matura",
+          "label": "Banana matura",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "farina",
+          "label": "Farina",
+          "quantity": null,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "2 cucchiai nella fonte",
+          "optional": false,
+          "quantityRange": {
+            "min": 40,
+            "max": 50
+          }
+        },
+        {
+          "ingredientId": "gocce-di-cioccolato-fondente",
+          "label": "Gocce di cioccolato fondente",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        },
+        {
+          "ingredientId": "grasso-per-ungere-la-padella",
+          "label": "Grasso per ungere la padella",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Il procedimento dice di ungere; tipo e dose non precisati",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Schiaccia la banana con una forchetta; incorpora uovo e farina, poi le gocce di cioccolato se desiderate.",
+        "Ungi una padella e scaldala. Versa piccole dosi di impasto per formare i pancake.",
+        "Quando compaiono bollicine, gira i pancake; termina la cottura e servi con eventuale decorazione a piacere."
+      ],
+      "guideSteps": [
+        {
+          "text": "Schiaccia la banana con una forchetta; incorpora uovo e farina, poi le gocce di cioccolato se desiderate.",
+          "provenance": "source"
+        },
+        {
+          "text": "Ungi una padella e scaldala. Versa piccole dosi di impasto per formare i pancake.",
+          "provenance": "source"
+        },
+        {
+          "text": "Quando compaiono bollicine, gira i pancake; termina la cottura e servi con eventuale decorazione a piacere.",
+          "provenance": "source"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Il richiamo “pronta in 5 minuti” non distingue preparazione e cottura.",
+        "Dose del grasso e della decorazione non indicata."
+      ]
+    },
+    {
+      "id": "banana-snack",
+      "version": 1,
+      "title": "Bocconcini di banana, arachidi e cioccolato",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-06"
+      ],
+      "author": "@anythingbutramen, ripubblicato da @mealprepfeed",
+      "yield": {
+        "quantity": 8,
+        "unit": "pezzi"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "banane",
+          "label": "Banane",
+          "quantity": 2,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "burro-di-arachidi",
+          "label": "Burro di arachidi",
+          "quantity": 0.25,
+          "unit": "cup",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "arachidi-tritate",
+          "label": "Arachidi tritate",
+          "quantity": 3,
+          "unit": "tbsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "gocce-di-cioccolato",
+          "label": "Gocce di cioccolato",
+          "quantity": 0.25,
+          "unit": "cup",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-di-cocco",
+          "label": "Olio di cocco",
+          "quantity": 0.25,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        },
+        {
+          "ingredientId": "sale-in-fiocchi",
+          "label": "Sale in fiocchi",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        }
+      ],
+      "sourceSteps": [
+        "Taglia ogni banana a metà e poi dividi ogni metà nel senso della lunghezza: otterrai 8 pezzi in tutto.",
+        "Disponi i pezzi su un vassoio rivestito di carta forno. Spalma il burro di arachidi e distribuisci le arachidi tritate.",
+        "Sciogli il cioccolato con l’olio facoltativo in un recipiente adatto al microonde, procedendo a intervalli di 15 secondi e mescolando ogni volta.",
+        "Versa il cioccolato sulle banane e metti in freezer per almeno un’ora. Completa con sale in fiocchi se desiderato."
+      ],
+      "guideSteps": [
+        {
+          "text": "Taglia ogni banana a metà e poi dividi ogni metà nel senso della lunghezza: otterrai 8 pezzi in tutto.",
+          "provenance": "source"
+        },
+        {
+          "text": "Disponi i pezzi su un vassoio rivestito di carta forno. Spalma il burro di arachidi e distribuisci le arachidi tritate.",
+          "provenance": "source"
+        },
+        {
+          "text": "Sciogli il cioccolato con l’olio facoltativo in un recipiente adatto al microonde, procedendo a intervalli di 15 secondi e mescolando ogni volta.",
+          "provenance": "source"
+        },
+        {
+          "text": "Versa il cioccolato sulle banane e metti in freezer per almeno un’ora. Completa con sale in fiocchi se desiderato.",
+          "provenance": "source"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": 60,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Cup, tbsp e tsp sono mantenuti come nella fonte, senza conversioni arbitrarie in grammi.",
+        "Gli 8 pezzi sono resa della ricetta, non 8 porzioni nutrizionali validate."
+      ]
+    },
+    {
+      "id": "crepes-cacao",
+      "version": 1,
+      "title": "Crêpes al cacao senza farina",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-07",
+        "SRC-16"
+      ],
+      "author": "@marco1roma; duplicato ripubblicato da @il_digiuno_consapevole",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "albume",
+          "label": "Albume",
+          "quantity": 50,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "yogurt-greco-alla-vaniglia",
+          "label": "Yogurt greco alla vaniglia",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cacao-amaro",
+          "label": "Cacao amaro",
+          "quantity": 15,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "crema-proteica-bigusto",
+          "label": "Crema proteica bigusto",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Elencata negli ingredienti; il procedimento descrive un’altra farcitura",
+          "optional": false
+        },
+        {
+          "ingredientId": "yogurt-greco-per-farcire",
+          "label": "Yogurt greco per farcire",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Citato nel procedimento senza dose",
+          "optional": false
+        },
+        {
+          "ingredientId": "marmellata-light",
+          "label": "Marmellata light",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Citata nel procedimento senza dose",
+          "optional": false
+        },
+        {
+          "ingredientId": "grasso-per-ungere-la-padella",
+          "label": "Grasso per ungere la padella",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Tipo e dose non specificati",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Mescola uovo, albume, yogurt alla vaniglia e cacao fino a ottenere un composto uniforme.",
+        "Cuoci porzioni sottili di impasto in una padella antiaderente leggermente unta.",
+        "La farcitura descritta nel procedimento è yogurt greco e marmellata light, senza quantità indicate."
+      ],
+      "guideSteps": [
+        {
+          "text": "Mescola uovo, albume, yogurt alla vaniglia e cacao fino a ottenere un composto uniforme.",
+          "provenance": "source"
+        },
+        {
+          "text": "Cuoci porzioni sottili di impasto in una padella antiaderente leggermente unta.",
+          "provenance": "source"
+        },
+        {
+          "text": "La farcitura descritta nel procedimento è yogurt greco e marmellata light, senza quantità indicate.",
+          "provenance": "source"
+        },
+        {
+          "text": "Per girarle senza romperle, attendi che la base si sia rassodata; completa la cottura su entrambi i lati.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Scegli esplicitamente la farcitura: la lista contiene 30 g di crema proteica, mentre il testo propone yogurt e marmellata. Non trattare le due opzioni come nutrizionalmente equivalenti.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "batch",
+        "kcal": 315,
+        "proteinG": 23,
+        "carbsG": 12,
+        "fatG": 15,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Macro totali della fonte; farcitura di riferimento non chiara."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "SRC-07 e SRC-16 descrivono la stessa ricetta: un solo record con entrambe le fonti.",
+        "Lista ingredienti e farcitura del procedimento non coincidono.",
+        "Nutrienti dichiarati, non riconciliati con la farcitura effettiva."
+      ]
+    },
+    {
+      "id": "cloud-bread",
+      "version": 1,
+      "title": "Cloud bread al cacao",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-08"
+      ],
+      "author": "@giulscordara",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "albume",
+          "label": "Albume",
+          "quantity": 200,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "dolcificante",
+          "label": "Dolcificante",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        },
+        {
+          "ingredientId": "cacao-amaro",
+          "label": "Cacao amaro",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cacao-amaro-per-guarnire",
+          "label": "Cacao amaro per guarnire",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Spolverata, senza dose",
+          "optional": false
+        },
+        {
+          "ingredientId": "burro-di-nocciole",
+          "label": "Burro di nocciole",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "burro-di-mandorle",
+          "label": "Burro di mandorle",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Monta gli albumi a neve ferma e incorpora il cacao.",
+        "Mescola delicatamente dal basso verso l’alto per non smontarli.",
+        "Trasferisci in uno stampo e cuoci in forno a 180 °C per circa 15 minuti.",
+        "Guarnisci con cacao e i due burri di frutta secca."
+      ],
+      "guideSteps": [
+        {
+          "text": "Monta gli albumi a neve ferma e incorpora il cacao.",
+          "provenance": "source"
+        },
+        {
+          "text": "Mescola delicatamente dal basso verso l’alto per non smontarli.",
+          "provenance": "source"
+        },
+        {
+          "text": "Trasferisci in uno stampo e cuoci in forno a 180 °C per circa 15 minuti.",
+          "provenance": "source"
+        },
+        {
+          "text": "Guarnisci con cacao e i due burri di frutta secca.",
+          "provenance": "source"
+        },
+        {
+          "text": "Se usi il dolcificante facoltativo, incorporalo nell’impasto. La fonte non indica misura dello stampo o modalità del forno.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": 15,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "forno",
+          "temperature": 180,
+          "unit": "°C",
+          "minutes": 15,
+          "provenance": "source"
+        }
+      ],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 250,
+        "proteinG": 27,
+        "carbsG": 4,
+        "fatG": 12,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "La fonte non esplicita la base; non si assume un numero di porzioni."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "La dicitura promozionale “zero carbo” non è riportata come proprietà: la fonte dichiara 4 g di carboidrati."
+      ]
+    },
+    {
+      "id": "bicchierini-avena",
+      "version": 1,
+      "title": "Bicchierini di avena, yogurt e cioccolato",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-09"
+      ],
+      "author": "@dietista.paolastavolone",
+      "yield": {
+        "quantity": 4,
+        "unit": "bicchieri"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "fiocchi-d-avena",
+          "label": "Fiocchi d’avena",
+          "quantity": 60,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "yogurt-greco-bianco-magro",
+          "label": "Yogurt greco bianco magro",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "latte-o-bevanda-vegetale",
+          "label": "Latte o bevanda vegetale",
+          "quantity": 100,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "burro-di-arachidi-100",
+          "label": "Burro di arachidi 100%",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cioccolato-fondente-85",
+          "label": "Cioccolato fondente 85%",
+          "quantity": 35,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Fuso nel procedimento",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Frulla fiocchi d’avena, yogurt e latte, poi distribuisci la base in quattro bicchieri.",
+        "Aggiungi burro di arachidi e cioccolato fuso.",
+        "Lascia in frigorifero per almeno due ore prima di consumare."
+      ],
+      "guideSteps": [
+        {
+          "text": "Frulla fiocchi d’avena, yogurt e latte, poi distribuisci la base in quattro bicchieri.",
+          "provenance": "source"
+        },
+        {
+          "text": "Aggiungi burro di arachidi e cioccolato fuso.",
+          "provenance": "source"
+        },
+        {
+          "text": "Lascia in frigorifero per almeno due ore prima di consumare.",
+          "provenance": "source"
+        },
+        {
+          "text": "Dividi anche le guarnizioni fra i quattro bicchieri, per mantenere coerente la resa.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": 120,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte indica conservazione in frigo fino a 4 giorni: è una dichiarazione dell’autrice, non una durata validata dall’app.",
+        "Nutrienti non presenti."
+      ]
+    },
+    {
+      "id": "tortine-formaggio",
+      "version": 1,
+      "title": "Tortine al formaggio e cacao",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-10"
+      ],
+      "author": "@marco1roma",
+      "yield": {
+        "quantity": 2,
+        "unit": "tortine"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "philadelphia-protein",
+          "label": "Philadelphia protein",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "albume",
+          "label": "Albume",
+          "quantity": 50,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cacao-amaro",
+          "label": "Cacao amaro",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "eritritolo",
+          "label": "Eritritolo",
+          "quantity": 15,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "grasso-per-ungere-le-pirofile",
+          "label": "Grasso per ungere le pirofile",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Tipo e dose non indicati",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Mescola tutti gli ingredienti eliminando i grumi.",
+        "Dividi il composto in due pirofile leggermente unte.",
+        "Cuoci in friggitrice ad aria a 180 °C per 20 minuti."
+      ],
+      "guideSteps": [
+        {
+          "text": "Mescola tutti gli ingredienti eliminando i grumi.",
+          "provenance": "source"
+        },
+        {
+          "text": "Dividi il composto in due pirofile leggermente unte.",
+          "provenance": "source"
+        },
+        {
+          "text": "Cuoci in friggitrice ad aria a 180 °C per 20 minuti.",
+          "provenance": "source"
+        },
+        {
+          "text": "Usa recipienti adatti al tuo apparecchio. La dimensione non è indicata nella fonte.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": 20,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "friggitrice ad aria",
+          "temperature": 180,
+          "unit": "°C",
+          "minutes": 20,
+          "provenance": "source"
+        }
+      ],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 175,
+        "proteinG": 18,
+        "carbsG": 11,
+        "fatG": 5,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per tortina; eventuale variante senza lattosio non ricalcolata."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Alternativa citata: spalmabile senza lattosio. Nutrienti non verificati per la sostituzione."
+      ]
+    },
+    {
+      "id": "rotolo-patate",
+      "version": 1,
+      "title": "Rotolo di patate con pollo",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-11"
+      ],
+      "author": "@alan_valca",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "patate",
+          "label": "Patate",
+          "quantity": 180,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-light",
+          "label": "Formaggio light",
+          "quantity": 40,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pollo-sfilacciato",
+          "label": "Pollo sfilacciato",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "La fonte dice che usa pollo sfilacciato, senza specificare peso crudo/cotto",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-barbecue-0-kcal",
+          "label": "Salsa barbecue 0 kcal",
+          "quantity": 30,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "Indicazione commerciale della fonte, non verificata",
+          "optional": false
+        },
+        {
+          "ingredientId": "passata-di-pomodoro",
+          "label": "Passata di pomodoro",
+          "quantity": 120,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua",
+          "label": "Acqua",
+          "quantity": 80,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "paprika",
+          "label": "Paprika",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-in-spezia",
+          "label": "Cipolla in spezia",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio-in-spezia",
+          "label": "Aglio in spezia",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "chili",
+          "label": "Chili",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "mix-di-erbe",
+          "label": "Mix di erbe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": 1,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "insalata",
+          "label": "Insalata",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-aggiuntiva",
+          "label": "Salsa aggiuntiva",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        }
+      ],
+      "sourceSteps": [
+        "Lava le patate e affettale molto finemente con una mandolina.",
+        "Sovrapponi le fette su carta forno formando un rettangolo e distribuisci il formaggio. Cuoci a 200 °C per 25–30 minuti.",
+        "In padella riunisci pollo, barbecue, passata, acqua e spezie. Scalda a fuoco medio finché il liquido si riduce in salsa.",
+        "Farcisci la base di patate con pollo, insalata ed eventuale salsa; arrotola."
+      ],
+      "guideSteps": [
+        {
+          "provenance": "editorial",
+          "text": "Per questa guida prepara pollo già completamente cotto e sfilacciato: il peso crudo/cotto non è esplicitato dalla fonte."
+        },
+        {
+          "provenance": "source",
+          "text": "Lava e affetta finemente le patate. Sovrapponile su carta forno formando un rettangolo, distribuisci il formaggio e cuoci a 200 °C per 25–30 minuti."
+        },
+        {
+          "provenance": "source",
+          "text": "In padella riunisci pollo, barbecue, passata, acqua e spezie. Scalda a fuoco medio finché si forma una salsa ridotta."
+        },
+        {
+          "provenance": "source",
+          "text": "Farcisci la base di patate con pollo, insalata e salsa facoltativa; arrotola."
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "forno",
+          "temperature": 200,
+          "unit": "°C",
+          "minutesRange": [
+            25,
+            30
+          ],
+          "provenance": "source"
+        }
+      ],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 386,
+        "proteinG": 44,
+        "carbsG": 43,
+        "fatG": 6.5,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Base non esplicitata nella riga dei macro."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Peso crudo/cotto del pollo non dichiarato. La nota redazionale “già cotto” va applicata prima del passaggio in padella."
+      ]
+    },
+    {
+      "id": "brownies",
+      "version": 1,
+      "title": "Brownies al cacao",
+      "category": "Colazioni e dolci",
+      "sourceIds": [
+        "SRC-12"
+      ],
+      "author": "@giuseppe_healthy",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "farina",
+          "label": "Farina",
+          "quantity": 110,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cacao-amaro",
+          "label": "Cacao amaro",
+          "quantity": 130,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "130 g è il valore leggibile: non corretto per plausibilità",
+          "optional": false
+        },
+        {
+          "ingredientId": "eritritolo-o-zucchero",
+          "label": "Eritritolo o zucchero",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-di-cocco-o-di-semi",
+          "label": "Olio di cocco o di semi",
+          "quantity": 110,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua",
+          "label": "Acqua",
+          "quantity": 240,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "lievito-per-dolci",
+          "label": "Lievito per dolci",
+          "quantity": 1,
+          "unit": "cucchiaini",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "gocce-di-cioccolato",
+          "label": "Gocce di cioccolato",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": true
+        }
+      ],
+      "sourceSteps": [
+        "Mescola gli ingredienti fino a ottenere una pastella liscia e omogenea. La fonte indica una teglia piccola di 13 × 9 cm.",
+        "Opzione friggitrice ad aria: preriscalda per 5 minuti, poi cuoci a 170 °C per 25 minuti.",
+        "Alternativa forno: preriscalda in modalità statica a 180 °C, poi cuoci circa 30 minuti. La fonte propone la prova stecchino."
+      ],
+      "guideSteps": [
+        {
+          "provenance": "source",
+          "text": "Mescola gli ingredienti fino a ottenere una pastella liscia. La fonte indica una teglia piccola di 13 × 9 cm."
+        },
+        {
+          "provenance": "editorial",
+          "text": "Versa nello stampo adatto al tuo apparecchio e aggiungi le gocce facoltative. Scegli una sola delle due modalità seguenti."
+        },
+        {
+          "provenance": "source",
+          "text": "Friggitrice ad aria: preriscalda per 5 minuti e cuoci a 170 °C per 25 minuti. In alternativa: forno statico preriscaldato a 180 °C, circa 30 minuti. La fonte propone la prova stecchino."
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "friggitrice ad aria",
+          "temperature": 170,
+          "unit": "°C",
+          "minutes": 25,
+          "preheatMinutes": 5,
+          "provenance": "source"
+        },
+        {
+          "method": "forno statico",
+          "temperature": 180,
+          "unit": "°C",
+          "minutes": 30,
+          "provenance": "source"
+        }
+      ],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Quantità di cacao 130 g e teglia 13 × 9 cm trascritte come leggibili, senza correzioni.",
+        "La variante con zucchero differisce da quella con eritritolo; nessuna nutrizione stimata."
+      ]
+    },
+    {
+      "id": "wrap-tonno-fagioli",
+      "version": 1,
+      "title": "Tortilla con tonno e fagioli",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-13"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "tonno-al-naturale",
+          "label": "Tonno al naturale",
+          "quantity": 50,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "fagioli-in-barattolo",
+          "label": "Fagioli in barattolo",
+          "quantity": 80,
+          "unit": "g",
+          "preparationState": "scolati",
+          "note": "Peso scolato",
+          "optional": false
+        },
+        {
+          "ingredientId": "tortilla",
+          "label": "Tortilla",
+          "quantity": 2,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "fagiolini-o-verdura-a-scelta",
+          "label": "Fagiolini o verdura a scelta",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "prezzemolo",
+          "label": "Prezzemolo",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Scola fagioli e tonno. Se i fagiolini non sono già cotti, cuocili prima del montaggio e scolali.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Schiaccia parte dei fagioli con una forchetta e mescola con tonno, prezzemolo e condimenti.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Dividi il ripieno tra le due tortilla. Servi la verdura come accompagnamento oppure aggiungila al ripieno.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Le 2 tortilla sono quantità dell’ingrediente, non una dichiarazione di 2 porzioni."
+      ]
+    },
+    {
+      "id": "bowl-patate-manzo",
+      "version": 1,
+      "title": "Bowl di patate, manzo e formaggio",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-14"
+      ],
+      "author": "@tastyshreds",
+      "yield": {
+        "quantity": 4,
+        "unit": "porzioni"
+      },
+      "servings": 4,
+      "ingredients": [
+        {
+          "ingredientId": "patate-a-cubetti",
+          "label": "Patate a cubetti",
+          "quantity": 640,
+          "unit": "g",
+          "preparationState": "cotte",
+          "note": "Peso cotto",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-ranch-proteica",
+          "label": "Salsa ranch proteica",
+          "quantity": 300,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Ricetta della salsa rinviata a un ebook/video non fornito",
+          "optional": false
+        },
+        {
+          "ingredientId": "salsa-al-formaggio-nacho",
+          "label": "Salsa al formaggio nacho",
+          "quantity": 8,
+          "unit": "tbsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "manzo-macinato-93-7",
+          "label": "Manzo macinato 93/7",
+          "quantity": 26,
+          "unit": "oz",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "condimento-taco",
+          "label": "Condimento taco",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "paprika",
+          "label": "Paprika",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipollotto",
+          "label": "Cipollotto",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-rossa",
+          "label": "Cipolla rossa",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodoro",
+          "label": "Pomodoro",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "La fonte parte da patate già cotte e da salsa ranch pronta: procurale prima di iniziare. La ricetta della ranch non è nelle immagini.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Cuoci completamente il manzo in padella separandolo con un cucchiaio; condisci con taco, paprika, sale e pepe.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava e taglia cipollotto, cipolla e pomodoro.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Distribuisci patate, carne, ranch, salsa nacho e verdure in quattro contenitori.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 542,
+        "proteinG": 50,
+        "carbsG": 41,
+        "fatG": 19,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Macro elencati vicino a una ricetta da 4 porzioni, ma senza dicitura esplicita per porzione."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "Salsa ranch proteica: formulazione non disponibile; non sostituita con una ricetta inventata.",
+        "Base dei nutrienti non esplicitata."
+      ]
+    },
+    {
+      "id": "piadine-ceci",
+      "version": 1,
+      "title": "Piadine di ceci",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-15"
+      ],
+      "author": "@marco1roma",
+      "yield": {
+        "quantity": 4,
+        "unit": "piadine"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "farina-di-ceci",
+          "label": "Farina di ceci",
+          "quantity": 180,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua-tiepida",
+          "label": "Acqua tiepida",
+          "quantity": 90,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio",
+          "label": "Olio",
+          "quantity": 10,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "prosciutto-crudo",
+          "label": "Prosciutto crudo",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Farcitura senza quantità",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-spalmabile",
+          "label": "Formaggio spalmabile",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Farcitura senza quantità",
+          "optional": false
+        },
+        {
+          "ingredientId": "rucola",
+          "label": "Rucola",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Citata nel procedimento senza quantità",
+          "optional": false
+        },
+        {
+          "ingredientId": "grasso-per-ungere-la-padella",
+          "label": "Grasso per ungere la padella",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Dose non specificata",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Impasta farina di ceci, acqua e olio fino a ottenere un panetto.",
+        "Dividi in quattro parti e stendile con un mattarello.",
+        "Cuoci in padella ben calda e leggermente unta per qualche minuto per lato.",
+        "Farcisci a piacere: la fonte propone prosciutto crudo, formaggio spalmabile e rucola."
+      ],
+      "guideSteps": [
+        {
+          "text": "Impasta farina di ceci, acqua e olio fino a ottenere un panetto.",
+          "provenance": "source"
+        },
+        {
+          "text": "Dividi in quattro parti e stendile con un mattarello.",
+          "provenance": "source"
+        },
+        {
+          "text": "Cuoci in padella ben calda e leggermente unta per qualche minuto per lato.",
+          "provenance": "source"
+        },
+        {
+          "text": "Farcisci a piacere: la fonte propone prosciutto crudo, formaggio spalmabile e rucola.",
+          "provenance": "source"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 180,
+        "proteinG": 10,
+        "carbsG": 20,
+        "fatG": 5,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per piadina nella fonte; inclusione della farcitura non specificata."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Farcitura senza dosi; non è chiaro se sia inclusa nei macro.",
+        "I 5 minuti del titolo non definiscono i tempi separati di lavorazione e cottura."
+      ]
+    },
+    {
+      "id": "piadine-zucchine",
+      "version": 1,
+      "title": "Piadine di zucchine",
+      "category": "Piadine",
+      "sourceIds": [
+        "SRC-17"
+      ],
+      "author": "@marco1roma",
+      "yield": {
+        "quantity": 3,
+        "unit": "piadine"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "albume",
+          "label": "Albume",
+          "quantity": 40,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "zucchina",
+          "label": "Zucchina",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "1 zucchina",
+          "optional": false
+        },
+        {
+          "ingredientId": "parmigiano",
+          "label": "Parmigiano",
+          "quantity": 50,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "mozzarella-light",
+          "label": "Mozzarella light",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-spalmabile",
+          "label": "Formaggio spalmabile",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Farcitura senza dose",
+          "optional": false
+        },
+        {
+          "ingredientId": "fesa-di-tacchino",
+          "label": "Fesa di tacchino",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Farcitura senza dose",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Frulla zucchina, uovo, albume, parmigiano e mozzarella.",
+        "Forma tre dischi su una teglia rivestita di carta forno. Cuoci in forno a 180 °C per 15 minuti.",
+        "Lascia raffreddare prima di farcire con spalmabile e tacchino, o a piacere."
+      ],
+      "guideSteps": [
+        {
+          "text": "Frulla zucchina, uovo, albume, parmigiano e mozzarella.",
+          "provenance": "source"
+        },
+        {
+          "text": "Forma tre dischi su una teglia rivestita di carta forno. Cuoci in forno a 180 °C per 15 minuti.",
+          "provenance": "source"
+        },
+        {
+          "text": "Lascia raffreddare prima di farcire con spalmabile e tacchino, o a piacere.",
+          "provenance": "source"
+        },
+        {
+          "text": "La fonte cita anche la padella, ma non ne specifica tempi o modalità; qui resta documentata soltanto la cottura in forno.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": 15,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "forno",
+          "temperature": 180,
+          "unit": "°C",
+          "minutes": 15,
+          "provenance": "source"
+        }
+      ],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 80,
+        "proteinG": 15,
+        "carbsG": 0,
+        "fatG": 9,
+        "provenance": "source",
+        "verification": "incoerente",
+        "note": "Per piadina nella fonte. Valori incoerenti: non usarli come dato verificato."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "80 kcal non sono coerenti con 15 g di proteine e 9 g di grassi dichiarati; tutti i numeri originali sono conservati senza correzione.",
+        "Farcitura senza quantità e inclusione nei macro non specificata."
+      ]
+    },
+    {
+      "id": "riso-pollo-broccoli",
+      "version": 1,
+      "title": "Riso, pollo al curry e broccoli",
+      "category": "Piatti unici",
+      "sourceIds": [
+        "SRC-18"
+      ],
+      "author": "@chef.antonio.la.cava",
+      "yield": {
+        "quantity": 5,
+        "unit": "contenitori"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "riso-basmati",
+          "label": "Riso basmati",
+          "quantity": 1,
+          "unit": "kg",
+          "preparationState": "non specificato",
+          "note": "Peso crudo/cotto non specificato",
+          "optional": false
+        },
+        {
+          "ingredientId": "broccoli-congelati",
+          "label": "Broccoli congelati",
+          "quantity": 1,
+          "unit": "kg",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "petto-di-pollo",
+          "label": "Petto di pollo",
+          "quantity": 800,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "curry-in-polvere",
+          "label": "Curry in polvere",
+          "quantity": 1,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "formaggio-fresco-cremoso",
+          "label": "Formaggio fresco cremoso",
+          "quantity": 1,
+          "unit": "barattolo",
+          "preparationState": "non specificato",
+          "note": "Peso del barattolo non indicato",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale-fino",
+          "label": "Sale fino",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-extravergine-d-oliva",
+          "label": "Olio extravergine d’oliva",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe-nero",
+          "label": "Pepe nero",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Cuoci separatamente riso e broccoli in acqua bollente leggermente salata.",
+        "Taglia il pollo a cubetti, condisci con sale, olio, pepe e curry e lascia insaporire per qualche minuto.",
+        "Rosola il pollo su tutti i lati in una padella antiaderente calda.",
+        "Aggiungi lo spalmabile e prosegui a fuoco medio; aggiungi poca acqua se necessario.",
+        "Dividi riso, broccoli e pollo nei cinque contenitori."
+      ],
+      "guideSteps": [
+        {
+          "text": "Cuoci separatamente riso e broccoli in acqua bollente leggermente salata.",
+          "provenance": "source"
+        },
+        {
+          "text": "Taglia il pollo a cubetti, condisci con sale, olio, pepe e curry e lascia insaporire per qualche minuto.",
+          "provenance": "source"
+        },
+        {
+          "text": "Rosola il pollo su tutti i lati in una padella antiaderente calda.",
+          "provenance": "source"
+        },
+        {
+          "text": "Aggiungi lo spalmabile e prosegui a fuoco medio; aggiungi poca acqua se necessario.",
+          "provenance": "source"
+        },
+        {
+          "text": "Dividi riso, broccoli e pollo nei cinque contenitori.",
+          "provenance": "source"
+        },
+        {
+          "text": "Completa la cottura del pollo anche al centro prima di distribuirlo. Per il riso segui il tempo e la quantità d’acqua della confezione.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Non è precisato se 1 kg di riso sia crudo o cotto: quantità mantenuta senza reinterpretazione.",
+        "Peso del barattolo di formaggio assente.",
+        "Il prezzo promozionale del post non è riportato come costo attuale."
+      ]
+    },
+    {
+      "id": "nuggets-pollo",
+      "version": 1,
+      "title": "Nuggets di pollo con gallette di riso",
+      "category": "Secondi",
+      "sourceIds": [
+        "SRC-19"
+      ],
+      "author": "@hosseinfitness_",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "petto-di-pollo-senza-pelle",
+          "label": "Petto di pollo senza pelle",
+          "quantity": 300,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "uovo",
+          "label": "Uovo",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio",
+          "label": "Aglio",
+          "quantity": 5,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "gallette-di-riso",
+          "label": "Gallette di riso",
+          "quantity": 3,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "paprika",
+          "label": "Paprika",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-in-polvere",
+          "label": "Cipolla in polvere",
+          "quantity": 10,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": 1,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": 1,
+          "unit": "tsp",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "spray-per-cottura",
+          "label": "Spray per cottura",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Citato nel procedimento senza dose",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Trita il pollo e mescolalo con uovo e aglio.",
+        "Trita le gallette e uniscile alle spezie; usa il composto per rivestire il pollo.",
+        "La fonte indica uno spruzzo d’olio e poi “300 degrees for 15 mins”, senza specificare °C o °F."
+      ],
+      "guideSteps": [
+        {
+          "text": "Trita il pollo e mescolalo con uovo e aglio.",
+          "provenance": "source"
+        },
+        {
+          "text": "Trita le gallette e uniscile alle spezie; usa il composto per rivestire il pollo.",
+          "provenance": "source"
+        },
+        {
+          "text": "La fonte indica uno spruzzo d’olio e poi “300 degrees for 15 mins”, senza specificare °C o °F.",
+          "provenance": "source"
+        },
+        {
+          "text": "Forma bocconcini di spessore uniforme e impanali. Il parametro “300” non viene proposto come temperatura operativa perché manca l’unità.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Come alternativa redazionale, cuoci i bocconcini in padella controllandoli e girandoli fino a completa cottura interna; il tempo dipende dallo spessore e non è indicato nelle immagini.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 536,
+        "proteinG": 77,
+        "carbsG": 21,
+        "fatG": 12,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Base dei macro non esplicitata."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Temperatura originale 300 senza unità: non convertita né presentata come istruzione di cottura affidabile.",
+        "15 minuti è il tempo associato al parametro ambiguo, non una durata validata per la guida alternativa.",
+        "Base dei macro non esplicitata."
+      ]
+    },
+    {
+      "id": "pasta-salmone",
+      "version": 1,
+      "title": "Pasta salmone e zucchine",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-20"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "zucchina",
+          "label": "Zucchina",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "salmone-affumicato",
+          "label": "Salmone affumicato",
+          "quantity": 50,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "philadelphia-protein-o-spalmabile-light",
+          "label": "Philadelphia protein o spalmabile light",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "aglio",
+          "label": "Aglio",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale-per-l-acqua-della-pasta",
+          "label": "Sale per l’acqua della pasta",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Piccola manciata citata nel testo",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Porta a bollore l’acqua e cuoci la pasta seguendo la confezione. Tieni da parte un po’ di acqua di cottura.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava e taglia la zucchina. Cuocila in padella con l’aglio e poca acqua, finché è tenera.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi il salmone affumicato a strisce e lo spalmabile, stemperando con acqua di cottura.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci la pasta scolata e mescola per distribuire la crema.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "La fonte ammette anche salmone fresco: non è una sostituzione nutrizionalmente equivalente e richiede cottura completa."
+      ]
+    },
+    {
+      "id": "polpette-tacchino",
+      "version": 1,
+      "title": "Polpette di tacchino e salvia",
+      "category": "Secondi",
+      "sourceIds": [
+        "SRC-21"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 11,
+        "unit": "polpette"
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "macinato-di-fesa-di-tacchino",
+          "label": "Macinato di fesa di tacchino",
+          "quantity": 300,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "mollica-di-pane-bagnata-in-acqua",
+          "label": "Mollica di pane bagnata in acqua",
+          "quantity": 80,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Non è chiarito se il peso preceda o segua l’ammollo",
+          "optional": false
+        },
+        {
+          "ingredientId": "salvia",
+          "label": "Salvia",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "noce-moscata",
+          "label": "Noce moscata",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-extravergine-d-oliva",
+          "label": "Olio extravergine d’oliva",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Ammolla la mollica e strizzala. Trita la salvia e mescola pane, tacchino e condimenti.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Dividi l’impasto in 11 parti e forma polpette simili per dimensione.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Scalda poco olio in una padella. Cuoci le polpette girandole su più lati e completa la cottura anche al centro.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unit",
+        "kcal": 60,
+        "proteinG": 8,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per polpetta. Carboidrati e grassi non dichiarati."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La resa dichiarata è 11 polpette da 30 g, ma i pesi degli ingredienti non la riconciliano chiaramente.",
+        "Nessuna aggiunta automatica di pane o verdure al calcolo: sono solo accompagnamenti suggeriti nel post."
+      ]
+    },
+    {
+      "id": "pasta-lenticchie",
+      "version": 1,
+      "title": "Pasta e lenticchie con verdure",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-22"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 3,
+        "unit": "porzioni"
+      },
+      "servings": 3,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "lenticchie-secche",
+          "label": "Lenticchie secche",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "secche",
+          "note": "Alternativa: 600 g di lenticchie cotte in scatola; scegliere una sola opzione",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua",
+          "label": "Acqua",
+          "quantity": 1.5,
+          "unit": "l",
+          "preparationState": "non specificato",
+          "note": "Aggiungere altra acqua durante la cottura se necessario",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla",
+          "label": "Cipolla",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "carota",
+          "label": "Carota",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sedano",
+          "label": "Sedano",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "zucchina",
+          "label": "Zucchina",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-extravergine-d-oliva",
+          "label": "Olio extravergine d’oliva",
+          "quantity": null,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false,
+          "quantityRange": {
+            "min": 15,
+            "max": 20
+          }
+        }
+      ],
+      "sourceSteps": [
+        "Se usi le lenticchie secche, la fonte indica 12 ore di ammollo in acqua fredda. In alternativa riporta 600 g di lenticchie cotte in scatola."
+      ],
+      "guideSteps": [
+        {
+          "text": "Se usi le lenticchie secche, la fonte indica 12 ore di ammollo in acqua fredda. In alternativa riporta 600 g di lenticchie cotte in scatola.",
+          "provenance": "source"
+        },
+        {
+          "text": "Scegli lenticchie secche oppure cotte, senza sommare le dosi. Per le secche controlla anche le istruzioni della confezione.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava e taglia le verdure. Metti olio e verdure in una pentola e lasciale insaporire, mescolando.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi lenticchie, acqua e condimenti. Porta a cottura le lenticchie; se usi quelle già cotte, aggiungile verso la fine della preparazione delle verdure.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi la pasta e cuocila per il tempo indicato in confezione, mescolando e aggiungendo acqua se serve. Dividi in tre porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il resto del procedimento non è scritto nello screenshot: passaggi dopo l’ammollo redazionali.",
+        "Titolo descrittivo ricostruito dagli ingredienti; intestazione del post tagliata."
+      ]
+    },
+    {
+      "id": "couscous-ceci",
+      "version": 1,
+      "title": "Cous cous con ceci e verdure",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-23"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "cous-cous",
+          "label": "Cous cous",
+          "quantity": 80,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "acqua-bollente",
+          "label": "Acqua bollente",
+          "quantity": 160,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "verdure-miste",
+          "label": "Verdure miste",
+          "quantity": 350,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "ceci-cotti",
+          "label": "Ceci cotti",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "cotti",
+          "note": "Stato cotto esplicito",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-extravergine-d-oliva",
+          "label": "Olio extravergine d’oliva",
+          "quantity": 1,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "curcuma",
+          "label": "Curcuma",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Lava e taglia le verdure in pezzi uniformi. Cuocile in padella con olio, curcuma e condimenti finché raggiungono la consistenza desiderata.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Versa l’acqua bollente sul cous cous e copri; attendi il tempo indicato sulla confezione, poi sgrana con una forchetta.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci alle verdure i ceci già cotti e il cous cous. Mescola per distribuire il condimento.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "unspecified",
+        "kcal": 580,
+        "proteinG": 20,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "La fonte non scrive esplicitamente per porzione o ricetta."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "Rapporto acqua/cous cous mantenuto dalla fonte; verificare la confezione del prodotto utilizzato."
+      ]
+    },
+    {
+      "id": "risotto-radicchio",
+      "version": 1,
+      "title": "Risotto radicchio e gorgonzola",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-24"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 3,
+        "unit": "porzioni"
+      },
+      "servings": 3,
+      "ingredients": [
+        {
+          "ingredientId": "riso-vialone-nano-o-carnaroli",
+          "label": "Riso Vialone Nano o Carnaroli",
+          "quantity": 270,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "radicchio-rosso",
+          "label": "Radicchio rosso",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "vino-rosso",
+          "label": "Vino rosso",
+          "quantity": 100,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Unità assente nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "gorgonzola-dolce",
+          "label": "Gorgonzola dolce",
+          "quantity": 125,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "parmigiano-reggiano",
+          "label": "Parmigiano Reggiano",
+          "quantity": 60,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "La fonte dichiara +70 kcal a porzione",
+          "optional": true
+        },
+        {
+          "ingredientId": "sedano",
+          "label": "Sedano",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "carota",
+          "label": "Carota",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla",
+          "label": "Cipolla",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Chiarisci prima la dose del vino: il testo riporta 100 senza unità. Prepara inoltre acqua calda per la cottura, non quantificata nella fonte.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava e taglia radicchio e verdure per il fondo. Falle ammorbidire in una casseruola con poca acqua.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi il riso e mescola, poi sfuma con il vino nella quantità chiarita.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Cuoci aggiungendo acqua calda gradualmente e mescolando; segui il tempo del riso utilizzato.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "A fine cottura incorpora il gorgonzola e, se scelto, il parmigiano. Dividi in tre porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 460,
+        "proteinG": 12,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione; parmigiano opzionale dichiarato extra +70 kcal per porzione."
+      },
+      "reviewStatus": "needs_clarification",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "Vino: “100” senza unità, non convertito automaticamente in ml.",
+        "Acqua di cottura aggiunta nella guida come necessità operativa, non come quantità estratta.",
+        "L’extra del parmigiano è dichiarato separatamente e non sommato ai nutrienti base."
+      ]
+    },
+    {
+      "id": "pasta-ragu",
+      "version": 1,
+      "title": "Pasta al ragù di manzo",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-25"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 3,
+        "unit": "porzioni"
+      },
+      "servings": 3,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 300,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "macinato-magro-di-manzo",
+          "label": "Macinato magro di manzo",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sedano-carota-e-cipolla",
+          "label": "Sedano, carota e cipolla",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "Peso totale del misto",
+          "optional": false
+        },
+        {
+          "ingredientId": "passata-di-pomodoro",
+          "label": "Passata di pomodoro",
+          "quantity": 350,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "alloro",
+          "label": "Alloro",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "noce-moscata",
+          "label": "Noce moscata",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Trita il misto di verdure. Fallo ammorbidire in una casseruola con poca acqua, aggiunta redazionale non quantificata nella fonte.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Aggiungi il macinato e separalo con un cucchiaio; cuocilo completamente.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci passata, alloro, noce moscata e condimenti. Lascia cuocere mescolando, aggiungendo acqua se necessario per non far attaccare.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Cuoci la pasta secondo la confezione, scolala e uniscila al ragù. Dividi in tre porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 500,
+        "proteinG": 32,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione nella fonte."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "Titolo normalizzato: il post usa “Ragù FIT?”. Nessun tempo di cottura disponibile."
+      ]
+    },
+    {
+      "id": "risotto-zucca",
+      "version": 1,
+      "title": "Risotto alla zucca",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-26"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 2,
+        "unit": "porzioni"
+      },
+      "servings": 2,
+      "ingredients": [
+        {
+          "ingredientId": "riso-da-risotto",
+          "label": "Riso da risotto",
+          "quantity": 180,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "La fonte esclude il basmati",
+          "optional": false
+        },
+        {
+          "ingredientId": "zucca",
+          "label": "Zucca",
+          "quantity": 350,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-bianca",
+          "label": "Cipolla bianca",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio-extravergine-d-oliva",
+          "label": "Olio extravergine d’oliva",
+          "quantity": 1,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "parmigiano",
+          "label": "Parmigiano",
+          "quantity": 30,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "La fonte dichiara +55 kcal a persona",
+          "optional": true
+        },
+        {
+          "ingredientId": "brodo-o-acqua-calda",
+          "label": "Brodo o acqua calda",
+          "quantity": 500,
+          "unit": "ml",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Pulisci la zucca e tagliala a piccoli cubetti. Trita la cipolla e scalda il brodo o l’acqua.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Fai ammorbidire cipolla e zucca con l’olio in una casseruola, aggiungendo un poco del liquido se serve.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci il riso e mescola. Versa il liquido caldo poco alla volta, continuando a mescolare e seguendo il tempo di cottura del riso.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "A fine cottura aggiungi, se desiderato, il parmigiano. Dividi in due porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 375,
+        "proteinG": null,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione; il parmigiano opzionale è indicato come +55 kcal a persona."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "500 ml è la dose di brodo/acqua della fonte; il fabbisogno effettivo dipende dal riso.",
+        "Nessuna proteina aggiunta automaticamente al piatto: il consiglio del post non ne definisce una quantità."
+      ]
+    },
+    {
+      "id": "pasta-fredda-pollo",
+      "version": 1,
+      "title": "Pasta fredda con pollo e rucola",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-27"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": 2,
+        "unit": "porzioni"
+      },
+      "servings": 2,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodorini",
+          "label": "Pomodorini",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "petto-di-pollo",
+          "label": "Petto di pollo",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "rucola",
+          "label": "Rucola",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "anacardi",
+          "label": "Anacardi",
+          "quantity": 15,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "parmigiano",
+          "label": "Parmigiano",
+          "quantity": 20,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio",
+          "label": "Olio",
+          "quantity": 1,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci la pasta seguendo la confezione, scolala e lasciala raffreddare.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Cuoci completamente il pollo, poi taglialo e lascialo intiepidire.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava pomodorini, rucola e basilico. Taglia i pomodorini e trita grossolanamente gli anacardi.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci pasta, pollo, verdure, anacardi e parmigiano. Condisci con olio e sale e dividi in due porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 560,
+        "proteinG": 40,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione nella fonte."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video."
+      ]
+    },
+    {
+      "id": "pasta-fredda-avocado",
+      "version": 1,
+      "title": "Pasta fredda con avocado e tonno",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-28"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": 2,
+        "unit": "porzioni"
+      },
+      "servings": 2,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 200,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "avocado",
+          "label": "Avocado",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "tonno-al-naturale-sgocciolato",
+          "label": "Tonno al naturale sgocciolato",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "sgocciolato",
+          "note": "Peso sgocciolato",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci la pasta secondo la confezione, scolala e lasciala raffreddare.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Scola il tonno e taglia l’avocado. Lava e spezzetta il basilico.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci pasta, tonno e avocado, condisci con basilico, sale e pepe e dividi in due porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 475,
+        "proteinG": 32,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione nella fonte."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "I pomodorini compaiono nel fotogramma, ma non sono elencati tra gli ingredienti: non ne è stata inventata una dose."
+      ]
+    },
+    {
+      "id": "pasta-greca",
+      "version": 1,
+      "title": "Pasta fredda greca",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-29"
+      ],
+      "author": "Autore non leggibile nello screenshot",
+      "yield": {
+        "quantity": 2,
+        "unit": "porzioni"
+      },
+      "servings": 2,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 230,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodorini",
+          "label": "Pomodorini",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "cipolla-rossa",
+          "label": "Cipolla rossa",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "feta",
+          "label": "Feta",
+          "quantity": 150,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "timo",
+          "label": "Timo",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "origano",
+          "label": "Origano",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "menta",
+          "label": "Menta",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [
+        "Per la cipolla rossa la fonte indica forno a 180 °C per 20 minuti."
+      ],
+      "guideSteps": [
+        {
+          "provenance": "editorial",
+          "text": "Sbuccia e taglia la cipolla. La fonte non specifica forma del taglio o modalità del forno."
+        },
+        {
+          "provenance": "source",
+          "text": "Cuoci la cipolla in forno a 180 °C per 20 minuti."
+        },
+        {
+          "provenance": "editorial",
+          "text": "Cuoci la pasta secondo la confezione, scolala e lasciala raffreddare. Lava pomodorini ed erbe; taglia i pomodorini e sbriciola la feta."
+        },
+        {
+          "provenance": "editorial",
+          "text": "Mescola pasta, cipolla cotta, pomodorini, feta ed erbe; regola il sale e dividi in due porzioni."
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [
+        {
+          "method": "forno, soltanto cipolla",
+          "temperature": 180,
+          "unit": "°C",
+          "minutes": 20,
+          "provenance": "source"
+        }
+      ],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 620,
+        "proteinG": 30,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione nella fonte."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il resto del procedimento è redazionale. I 20 minuti riguardano la cipolla, non l’intera preparazione."
+      ]
+    },
+    {
+      "id": "pasta-pomodoro-mozzarella",
+      "version": 1,
+      "title": "Pasta fredda pomodoro e mozzarella",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-30"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": 2,
+        "unit": "porzioni"
+      },
+      "servings": 2,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 250,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodori",
+          "label": "Pomodori",
+          "quantity": 400,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "mozzarella",
+          "label": "Mozzarella",
+          "quantity": 100,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": 10,
+          "unit": "foglie",
+          "preparationState": "non specificato",
+          "note": "Foglie grandi nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci la pasta secondo la confezione, scolala e lasciala raffreddare.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava pomodori e basilico. Taglia pomodori e mozzarella e lascia scolare il liquido in eccesso.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Mescola tutti gli ingredienti e condisci con sale e pepe. Dividi in due porzioni.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": {
+        "basis": "serving",
+        "kcal": 560,
+        "proteinG": 30,
+        "carbsG": null,
+        "fatG": null,
+        "provenance": "source",
+        "verification": "non verificata",
+        "note": "Per porzione nella fonte."
+      },
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "Non è elencato olio: non aggiunto automaticamente agli ingredienti."
+      ]
+    },
+    {
+      "id": "pasta-fredda-mare",
+      "version": 1,
+      "title": "Pasta fredda con feta e pomodori",
+      "category": "Primi",
+      "sourceIds": [
+        "SRC-31"
+      ],
+      "author": "@ericsliw",
+      "yield": {
+        "quantity": null,
+        "unit": null
+      },
+      "servings": null,
+      "ingredients": [
+        {
+          "ingredientId": "pasta",
+          "label": "Pasta",
+          "quantity": 80,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodorini",
+          "label": "Pomodorini",
+          "quantity": 10,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "pomodoro-grande",
+          "label": "Pomodoro grande",
+          "quantity": 1,
+          "unit": "pezzi",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "feta",
+          "label": "Feta",
+          "quantity": 50,
+          "unit": "g",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "olio",
+          "label": "Olio",
+          "quantity": 1,
+          "unit": "cucchiai",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "basilico",
+          "label": "Basilico",
+          "quantity": 10,
+          "unit": "foglie",
+          "preparationState": "non specificato",
+          "note": "",
+          "optional": false
+        },
+        {
+          "ingredientId": "sale",
+          "label": "Sale",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "pepe",
+          "label": "Pepe",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Senza dose numerica nella fonte",
+          "optional": false
+        },
+        {
+          "ingredientId": "ghiaccio",
+          "label": "Ghiaccio",
+          "quantity": null,
+          "unit": null,
+          "preparationState": "non specificato",
+          "note": "Citato come q.b.; uso non descritto",
+          "optional": false
+        }
+      ],
+      "sourceSteps": [],
+      "guideSteps": [
+        {
+          "text": "Cuoci la pasta secondo la confezione, scolala e lasciala raffreddare.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Lava i pomodori e il basilico; taglia i pomodori e sbriciola la feta.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Unisci pasta, pomodori, feta, olio e basilico, poi regola sale e pepe.",
+          "provenance": "editorial"
+        },
+        {
+          "text": "Il ghiaccio è elencato ma il suo impiego non è spiegato; non viene incorporato nel piatto né interpretato come ingrediente nutrizionale.",
+          "provenance": "editorial"
+        }
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "restMinutes": null,
+      "cooking": [],
+      "nutrition": null,
+      "reviewStatus": "read",
+      "uncertainties": [
+        "Il procedimento completo non è visibile nell’immagine: la guida è una proposta redazionale basata sugli ingredienti, non una trascrizione del video.",
+        "La fonte non specifica il numero di porzioni: ×1 indica tutte le dosi elencate.",
+        "“Per il mare” è il titolo del post: non è una garanzia di conservabilità fuori frigo.",
+        "Uso del ghiaccio non descritto."
+      ]
+    }
+  ]
+}

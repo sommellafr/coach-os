@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1020">
+    <meta name="description" content="Coach OS: allenamenti, ricette in dose singola e menu per data, nel tuo spazio personale con backup locali.">
+    <title>Coach OS · Il tuo diario</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./src/styles.css">
+    <link rel="stylesheet" href="./src/app-theme.css">
+    <link rel="stylesheet" href="./src/planner.css">
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Vai al contenuto</a>
+    <aside class="sidebar">
+      <a class="brand" href="#oggi" aria-label="Coach OS, oggi"><span class="brand-symbol"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M21 7a10 10 0 1 0 0 18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="m17 10-4 6h7l-4 7" stroke="#c3f17d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>coach<span class="blue">OS</span><small>IL TUO SPAZIO PERSONALE</small></span></a>
+      <p class="nav-label">LA TUA ROUTINE</p>
+      <nav aria-label="Navigazione principale">
+        <button data-view="today"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Oggi</span></button>
+        <button data-view="calendar"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Calendario</span></button>
+        <button data-view="templates"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Le mie schede</span></button>
+        <button data-view="recipes"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Ricettario</span></button>
+        <button data-view="data"><span class="nav-icon" aria-hidden="true"></span><span class="nav-text">Profilo e dati</span></button>
+      </nav>
+      <div class="sidebar-footer"><div class="privacy-icon" aria-hidden="true"></div><strong>Il tuo spazio personale</strong><p>Archivio su questo browser.<br>Portalo con te con un backup.</p><button class="text-button" data-view="data">Gestisci i tuoi dati <span aria-hidden="true">↗</span></button><span class="version">COACH OS · v0.4</span></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div class="topbar-breadcrumb"><span class="mobile-wordmark">coach<span>OS</span></span><span class="desktop-crumb">Il tuo spazio <span aria-hidden="true">/</span> <strong id="current-section">Oggi</strong></span></div><div class="topbar-right"><span id="topbar-date"></span><span class="local-badge"><span class="local-dot"></span> Personale · locale</span></div></header>
+      <div id="notice" role="status" aria-live="polite" tabindex="-1"></div>
+      <main id="main" tabindex="-1"></main>
+      <footer class="footer">Coach OS <span>Un giorno alla volta. I giorni senza dati restano senza dati.</span></footer>
+    </div>
+    <dialog id="meal-picker" aria-labelledby="meal-picker-title"></dialog>
+    <noscript>Per usare il diario abilita JavaScript. I file originali sono nella cartella reference.</noscript>
+  </body>
+</html>

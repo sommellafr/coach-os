@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>COACH OS V21 - PRO TRAINER</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Inter:wght@400;600;800&display=swap');
+
+        body { background-color: #0b0f19; color: #f8fafc; font-family: 'Inter', sans-serif; padding-bottom: 120px; -webkit-tap-highlight-color: transparent; }
+
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+
+
+        /* UI Components */
+
+        .glass { background: #151e32; border: 1px solid #2d3748; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+
+        .glass-header { background: rgba(11, 15, 25, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; }
+
+
+
+        .recipe-card { min-width: 150px; border: 1px solid #334155; border-radius: 12px; background: #1e293b; }
+
+        .recipe-card.selected { border-color: #3b82f6; background: rgba(59, 130, 246, 0.15); }
+
+
+
+        .bar-bg { background: #334155; height: 6px; border-radius: 3px; overflow: hidden; }
+
+        .bar-fill { height: 100%; transition: width 0.5s ease; border-radius: 3px; }
+
+
+
+        /* Inputs */
+
+        .gym-input { background: #0f172a; border: 1px solid #334155; color: white; text-align: center; border-radius: 6px; padding: 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; width: 100%; }
+
+        .gym-input:focus { border-color: #3b82f6; outline: none; }
+
+
+
+        /* Macro Colors */
+
+        .bg-prot { background-color: #f472b6; } .bg-carb { background-color: #60a5fa; } .bg-fat { background-color: #fbbf24; }
+
+    </style>
+
+</head>
+
+<body class="max-w-md mx-auto min-h-screen relative">
+
+
+
+    <div class="sticky top-0 z-50 glass-header shadow-lg">
+
+        <div class="p-4 pb-2 flex justify-between items-center">
+
+            <div onclick="app.toggleProfile()" class="cursor-pointer">
+
+                <h1 class="font-black text-lg italic text-white">COACH<span class="text-blue-500">OS</span><span class="text-[10px] ml-1 text-emerald-500 not-italic">V21 PRO</span></h1>
+
+                <div class="text-[10px] text-slate-400 font-mono flex items-center gap-1">
+
+                    <i class="fas fa-user-circle"></i> <span id="userSummary">Profilo</span>
+
+                </div>
+
+            </div>
+
+            <div class="flex gap-2">
+
+                <button onclick="app.toggleHistory()" class="text-[10px] font-bold text-slate-300 border border-slate-600 bg-slate-800 px-3 py-1 rounded">📜 STORICO</button>
+
+                <button onclick="app.toggleCheat()" class="text-[10px] font-bold text-red-500 border border-red-500/30 bg-red-500/10 px-3 py-1 rounded">💀 SGARRO</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="px-4 pb-4 grid grid-cols-4 gap-2">
+
+            <div class="col-span-1">
+
+                <div class="flex justify-between text-[9px] text-slate-400 mb-1"><span>KCAL</span><span id="targetKcal">0</span></div>
+
+                <div class="bar-bg"><div id="barKcal" class="bar-fill bg-white" style="width:0%"></div></div>
+
+                <div class="text-xs font-black text-white mt-1 text-center" id="valKcal">0</div>
+
+            </div>
+
+            <div class="col-span-1">
+
+                <div class="flex justify-between text-[9px] text-pink-400 mb-1"><span>PRO</span><span id="targetProt">0</span></div>
+
+                <div class="bar-bg"><div id="barProt" class="bar-fill bg-prot" style="width:0%"></div></div>
+
+                <div class="text-xs font-black text-pink-400 mt-1 text-center" id="valProt">0</div>
+
+            </div>
+
+            <div class="col-span-1">
+
+                <div class="flex justify-between text-[9px] text-blue-400 mb-1"><span>CAR</span><span id="targetCarb">0</span></div>
+
+                <div class="bar-bg"><div id="barCarb" class="bar-fill bg-carb" style="width:0%"></div></div>
+
+                <div class="text-xs font-black text-blue-400 mt-1 text-center" id="valCarb">0</div>
+
+            </div>
+
+            <div class="col-span-1">
+
+                <div class="flex justify-between text-[9px] text-yellow-400 mb-1"><span>FAT</span><span id="targetFat">0</span></div>
+
+                <div class="bar-bg"><div id="barFat" class="bar-fill bg-fat" style="width:0%"></div></div>
+
+                <div class="text-xs font-black text-yellow-400 mt-1 text-center" id="valFat">0</div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="flex gap-1 overflow-x-auto pb-2 px-4 no-scrollbar border-b border-slate-800 bg-[#0b0f19]">
+
+            <script>
+
+                ['LUN','MAR','MER','GIO','VEN','SAB','DOM'].forEach((d,i)=> document.write(`<button onclick="app.setDay(${i+1})" id="d${i+1}" class="flex-1 min-w-[50px] py-2 rounded text-[10px] font-bold text-slate-500 bg-slate-900 border border-slate-800">${d}</button>`));
+
+            </script>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="p-4 space-y-6">
+
+
+
+        <div class="glass p-4 border-l-4 border-emerald-500">
+
+            <div class="flex justify-between items-center mb-3">
+
+                <div>
+
+                    <h2 class="text-xs font-black text-emerald-400 uppercase tracking-widest">SCHEDA EDITABILE</h2>
+
+                    <div id="workoutName" class="text-[10px] text-slate-400">...</div>
+
+                </div>
+
+                <div class="text-right">
+
+                    <span id="workoutBurn" class="text-xs font-mono font-bold text-emerald-400">+0 kcal</span>
+
+                    <div class="text-[9px] text-slate-500">Calcolo Dinamico</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="grid grid-cols-12 gap-1 mb-2 text-[9px] text-slate-500 font-bold text-center uppercase">
+
+                <div class="col-span-5 text-left pl-2">Esercizio</div>
+
+                <div class="col-span-2">Serie</div>
+
+                <div class="col-span-2">Reps</div>
+
+                <div class="col-span-2">Kg</div>
+
+                <div class="col-span-1"></div>
+
+            </div>
+
+
+
+            <div id="workoutList" class="space-y-2 mb-4"></div>
+
+
+
+            <div class="flex gap-2">
+
+                <button onclick="app.openLib()" class="w-1/3 py-3 rounded-lg text-[10px] font-bold bg-slate-700 text-slate-300 border border-slate-600">+ ESERCIZIO</button>
+
+                <button onclick="app.toggleWorkoutDone()" id="btnWorkout" class="w-2/3 py-3 rounded-lg text-[10px] font-bold border transition-all">SEGNA COMPLETATO</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="mealEngine" class="space-y-4"></div>
+
+
+
+        <div class="grid grid-cols-2 gap-3">
+
+             <button onclick="app.togglePlan()" class="bg-purple-900/40 border border-purple-500/50 py-3 rounded-xl text-xs font-bold text-purple-400">PLAN & SPESA</button>
+
+             <button onclick="app.archiveDay()" class="bg-blue-600 py-3 rounded-xl text-xs font-bold text-white shadow-lg shadow-blue-900/50">ARCHIVIA GIORNATA</button>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="cheatModal" class="fixed inset-0 bg-black/95 z-[90] hidden flex items-center justify-center p-6">
+
+        <div class="glass w-full max-w-sm border border-red-500 relative p-6">
+
+            <button onclick="app.toggleCheat()" class="absolute top-2 right-4 text-slate-400 text-3xl">&times;</button>
+
+            <div class="text-center mb-6"><div class="text-4xl mb-2 animate-bounce">💀</div><h2 class="text-xl font-black text-red-500 uppercase italic">MENU SGARRO</h2></div>
+
+            <div class="grid grid-cols-2 gap-3">
+
+                <button onclick="app.addCheat('Birra Media', 180, 1, 15, 0)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍺</div><div class="text-xs font-bold text-white">BIRRA</div></button>
+
+                <button onclick="app.addCheat('Gin Tonic', 150, 0, 10, 0)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍸</div><div class="text-xs font-bold text-white">DRINK</div></button>
+
+                <button onclick="app.addCheat('Pizza', 900, 30, 100, 35)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍕</div><div class="text-xs font-bold text-white">PIZZA</div></button>
+
+                <button onclick="app.addCheat('Kebab', 1000, 40, 80, 50)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍔</div><div class="text-xs font-bold text-white">KEBAB</div></button>
+
+                <button onclick="app.addCheat('Patatine', 400, 4, 45, 20)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍟</div><div class="text-xs font-bold text-white">FRITTO</div></button>
+
+                <button onclick="app.addCheat('Dolce', 450, 5, 60, 20)" class="p-4 bg-slate-800 rounded border border-slate-700 hover:border-red-500"><div class="text-2xl">🍰</div><div class="text-xs font-bold text-white">DOLCE</div></button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="historyModal" class="fixed inset-0 bg-black/95 z-[80] hidden p-4 overflow-y-auto">
+
+        <div class="max-w-md mx-auto mt-10">
+
+            <div class="flex justify-between items-center mb-4"><h2 class="text-xl font-black text-slate-300">STORICO</h2><button onclick="app.toggleHistory()" class="text-slate-400 text-2xl">&times;</button></div>
+
+            <div id="historyList" class="space-y-3"></div>
+
+            <button onclick="if(confirm('Reset totale?')) { localStorage.removeItem('coach_v21'); location.reload(); }" class="mt-8 text-xs text-red-500 w-full text-center">Cancella Dati</button>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="profileModal" class="fixed inset-0 bg-black/95 z-[60] hidden flex items-center justify-center p-4"><div class="glass p-6 w-full max-w-sm border border-blue-500/50"><h2 class="text-xl font-black text-white mb-4">PROFILO</h2><div class="space-y-3 mb-6"><div><label class="text-[10px] text-slate-400 uppercase">Peso (kg)</label><input type="number" id="inWeight" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-mono"></div><div><label class="text-[10px] text-slate-400 uppercase">Altezza (cm)</label><input type="number" id="inHeight" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-mono"></div><div><label class="text-[10px] text-slate-400 uppercase">Età</label><input type="number" id="inAge" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-mono"></div><div class="grid grid-cols-2 gap-2"><div><label class="text-[10px] text-slate-400 uppercase">Kg da perdere</label><input type="number" id="inGoal" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-mono"></div><div><label class="text-[10px] text-slate-400 uppercase">Tempo (Mesi)</label><input type="number" id="inMonths" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-mono"></div></div></div><button onclick="app.saveProfile()" class="w-full bg-blue-600 py-3 rounded font-bold text-white">SALVA</button></div></div>
+
+
+
+    <div id="planModal" class="fixed inset-0 bg-black/95 z-[60] hidden p-4 overflow-y-auto"><div class="max-w-md mx-auto mt-10 space-y-4"><div class="flex justify-between items-center"><h2 class="text-xl font-black text-purple-400">PLANNER</h2><button onclick="app.togglePlan()" class="text-slate-400 text-2xl">&times;</button></div><div class="glass p-4 border-t-4 border-orange-500"><h3 class="text-xs font-bold text-orange-400 mb-2">DISPENSA</h3><div id="inventoryList" class="grid grid-cols-2 gap-2 text-[10px]"></div><button onclick="app.scanScontrino()" class="w-full mt-2 bg-orange-600/20 text-orange-500 py-2 rounded text-[10px] font-bold">CARICA JSON</button></div><div class="glass p-4"><h3 class="text-xs font-bold text-slate-400 mb-2">SELEZIONA MENU</h3><div id="planContainer" class="space-y-2 max-h-[300px] overflow-y-auto"></div><button onclick="app.calcShopping()" class="w-full mt-4 bg-purple-600 py-3 rounded font-bold text-xs">LISTA SPESA</button><div id="shoppingResult" class="hidden mt-4 bg-slate-900 p-4 rounded text-xs"></div></div></div></div>
+
+
+
+    <div id="exModal" class="hidden fixed inset-0 bg-black/95 z-[70] p-4"><div class="max-w-md mx-auto bg-slate-800 p-4 rounded-xl h-full overflow-auto"><button onclick="document.getElementById('exModal').classList.add('hidden')" class="mb-4 text-red-400 font-bold">CHIUDI</button><div id="exList" class="space-y-2"></div></div></div>
+
+    <div id="recipeModal" class="hidden fixed inset-0 bg-black/95 z-[70] p-6 flex flex-col justify-center"><div class="bg-[#151e32] border border-slate-600 p-5 rounded-2xl relative"><button onclick="document.getElementById('recipeModal').classList.add('hidden')" class="absolute top-3 right-3 text-slate-400">&times;</button><h2 id="rmTitle" class="text-xl font-black text-blue-400 mb-2"></h2><div class="space-y-4 max-h-[60vh] overflow-y-auto"><div><h4 class="text-[10px] font-black text-slate-500 uppercase">INGREDIENTI</h4><ul id="rmIng" class="text-xs space-y-1 text-slate-300 bg-slate-900/50 p-3 rounded-lg"></ul></div><div><h4 class="text-[10px] font-black text-slate-500 uppercase">PROCEDIMENTO</h4><div id="rmProc" class="text-xs space-y-2 text-slate-200"></div></div></div></div></div>
+
+
+
+    <script>
+
+        const DB = {
+
+            workouts: {
+
+                // kFactor: fattore intensità calorica (approx kcal per ripetizione pesata o min cardio)
+
+                1: { t: "PESI A (Petto/Dorso)", ex: [{n:"Panca Piana",s:3,r:10,w:50,k:0.15},{n:"Rematore",s:3,r:10,w:40,k:0.15},{n:"Trazioni",s:3,r:8,w:0,k:0.2}] },
+
+                2: { t: "CARDIO", ex: [{n:"Tapis Roulant",s:1,r:60,w:0,k:8}] }, // r qui sono i minuti
+
+                3: { t: "PESI B (Gambe/Spalle)", ex: [{n:"Squat",s:3,r:10,w:40,k:0.2},{n:"Military",s:3,r:10,w:30,k:0.15}] },
+
+                4: { t: "CARDIO", ex: [{n:"Tapis Roulant",s:1,r:60,w:0,k:8}] },
+
+                5: { t: "PESI C (Full Body)", ex: [{n:"Stacco",s:3,r:8,w:60,k:0.25},{n:"Dips",s:3,r:10,w:0,k:0.15}] },
+
+                6: { t: "ACTIVE", ex: [{n:"Camminata",s:1,r:60,w:0,k:4}] },
+
+                7: { t: "REST", ex: [] }
+
+            },
+
+            recipes: [
+
+                { id:'c1', cat:'COLAZIONE', n:'Pancake Banana', k:320, p:20, c:40, f:8, ing:{albumi_ml:100, banana:1, avena_g:30}, proc:"Frulla e cuoci." },
+
+                { id:'c2', cat:'COLAZIONE', n:'Toast Tacchino', k:290, p:22, c:30, f:8, ing:{pane:2, tacchino_g:80}, proc:"Tosta e farcisci." },
+
+                { id:'c3', cat:'COLAZIONE', n:'Omelette Dolce', k:280, p:25, c:5, f:12, ing:{uova:1, albumi_ml:150}, proc:"Cuoci uova con dolcificante." },
+
+                { id:'p1', cat:'PRANZO', n:'Tacos Pollo', k:420, p:35, c:40, f:12, ing:{pollo_g:150, tortilla:2}, proc:"Pollo speziato in tortilla." },
+
+                { id:'p2', cat:'PRANZO', n:'Pasta Zucchine', k:450, p:15, c:70, f:10, ing:{pasta_g:80, zucchine:2}, proc:"Salta pasta e zucchine." },
+
+                { id:'p3', cat:'PRANZO', n:'Riso Pollo Curry', k:460, p:35, c:60, f:8, ing:{riso_g:70, pollo_g:150}, proc:"Riso basmati e pollo curry." },
+
+                { id:'cn1', cat:'CENA', n:'Burrito Fassona', k:520, p:40, c:40, f:18, ing:{fassona_g:150, tortilla:1}, proc:"Fassona in padella nel wrap." },
+
+                { id:'cn2', cat:'CENA', n:'Pollo e Patate', k:480, p:35, c:45, f:12, ing:{pollo_g:150, patate_g:250}, proc:"Tutto al forno." },
+
+                { id:'s1', cat:'SPUNTINO', n:'Whey Shake', k:120, p:25, c:2, f:1, ing:{whey:1}, proc:"Shaker." },
+
+                { id:'s2', cat:'SPUNTINO', n:'Yogurt Greco', k:150, p:15, c:5, f:5, ing:{yogurt:1}, proc:"Yogurt al cucchiaio." }
+
+            ],
+
+            market: { pollo_g:{u:'Conf. 400g',s:400}, uova:{u:'Cartone 6',s:6}, albumi_ml:{u:'Brick 1L',s:1000}, tortilla:{u:'Pacco 6',s:6} },
+
+            lib: ["Curl Bicipiti", "French Press", "Alzate Laterali", "Leg Extension", "Leg Curl", "Plank", "Crunch"]
+
+        };
+
+
+
+        const app = {
+
+            state: { user: {w:0,h:0,a:0,goal:0,months:0}, targets: {k:2000,p:150,c:200,f:60}, day: 1, session: {}, meals: {}, cheats: {}, inventory: {}, done: {}, history: [] },
+
+
+
+            init() {
+
+                const s = localStorage.getItem('coach_v21');
+
+                if(s) this.state = JSON.parse(s);
+
+                if(this.state.user.w === 0) document.getElementById('profileModal').classList.remove('hidden');
+
+                this.renderProfile(); this.setDay(this.state.day);
+
+            },
+
+            save() { localStorage.setItem('coach_v21', JSON.stringify(this.state)); this.renderDashboard(); },
+
+
+
+            // PROFILE & TARGETS
+
+            saveProfile() {
+
+                const u = this.state.user;
+
+                u.w = parseFloat(document.getElementById('inWeight').value); u.h = parseFloat(document.getElementById('inHeight').value); u.a = parseFloat(document.getElementById('inAge').value); u.goal = parseFloat(document.getElementById('inGoal').value); u.months = parseFloat(document.getElementById('inMonths').value);
+
+                const tdee = (10*u.w + 6.25*u.h - 5*u.a + 5) * 1.35;
+
+                const deficit = (u.goal * 7700) / (u.months * 30);
+
+                const k = Math.max(1400, Math.round(tdee - deficit));
+
+                this.state.targets = { k: k, p: Math.round(u.w*2), c: Math.round((k-(u.w*8)-(k*0.25))/4), f: Math.round((k*0.25)/9) };
+
+                document.getElementById('profileModal').classList.add('hidden'); this.save(); this.renderProfile();
+
+            },
+
+            renderProfile() { if(this.state.user.w>0) document.getElementById('userSummary').innerText = `${this.state.user.w}kg (-${this.state.user.goal}kg)`; document.getElementById('targetKcal').innerText = this.state.targets.k; document.getElementById('targetProt').innerText = this.state.targets.p; document.getElementById('targetCarb').innerText = this.state.targets.c; document.getElementById('targetFat').innerText = this.state.targets.f; },
+
+            toggleProfile() { document.getElementById('profileModal').classList.remove('hidden'); },
+
+
+
+            // DAY & DASHBOARD
+
+            setDay(d) {
+
+                this.state.day = d;
+
+                if(!this.state.session[d]) this.state.session[d] = JSON.parse(JSON.stringify(DB.workouts[d].ex));
+
+                if(!this.state.meals[d]) this.state.meals[d] = { COLAZIONE: null, PRANZO: null, CENA: null, SPUNTINO: null };
+
+                if(!this.state.cheats[d]) this.state.cheats[d] = [];
+
+                this.save(); this.renderDashboard();
+
+            },
+
+            renderDashboard() {
+
+                const d = this.state.day;
+
+                let tot = { k:0, p:0, c:0, f:0 };
+
+                // Pasti
+
+                Object.values(this.state.meals[d]||{}).forEach(id => { if(id) { const r = DB.recipes.find(x=>x.id===id); tot.k+=r.k; tot.p+=r.p; tot.c+=r.c; tot.f+=r.f; } });
+
+                // Sgarri
+
+                (this.state.cheats[d]||[]).forEach(c => { tot.k+=c.k; tot.p+=c.p; tot.c+=c.c; tot.f+=c.f; });
+
+
+
+                ['Kcal','Prot','Carb','Fat'].forEach(x => { const t = x==='Kcal'?'k':x.toLowerCase().charAt(0); document.getElementById('bar'+x).style.width = Math.min((tot[t]/this.state.targets[t])*100,100)+'%'; document.getElementById('val'+x).innerText = tot[t]; });
+
+
+
+                for(let i=1;i<=7;i++) document.getElementById('d'+i).className = `flex-1 min-w-[50px] py-2 rounded text-[10px] font-bold border ${this.state.day===i ? 'text-white bg-blue-600 border-blue-500' : 'text-slate-500 bg-slate-900 border-slate-800'}`;
+
+                this.renderWorkout(); this.renderMeals();
+
+            },
+
+
+
+            // WORKOUT DYNAMIC ENGINE
+
+            renderWorkout() {
+
+                const d = this.state.day;
+
+                const list = this.state.session[d];
+
+                document.getElementById('workoutName').innerText = DB.workouts[d].t;
+
+
+
+                // Calcolo Calorie Dinamico (Volume)
+
+                let burn = 0;
+
+                list.forEach(ex => { burn += (ex.s * ex.r * (ex.k || 0.15)); });
+
+                document.getElementById('workoutBurn').innerText = `+${Math.round(burn)} kcal`;
+
+
+
+                document.getElementById('workoutList').innerHTML = list.map((ex, i) => `
+
+                    <div class="bg-slate-800 p-2 rounded grid grid-cols-12 gap-1 items-center border border-slate-700">
+
+                        <div class="col-span-5 text-xs font-bold text-slate-300 truncate">${ex.n}</div>
+
+                        <div class="col-span-2"><input type="number" class="gym-input" value="${ex.s}" onchange="app.updateEx(${i},'s',this.value)"></div>
+
+                        <div class="col-span-2"><input type="number" class="gym-input" value="${ex.r}" onchange="app.updateEx(${i},'r',this.value)"></div>
+
+                        <div class="col-span-2"><input type="number" class="gym-input" value="${ex.w}" onchange="app.updateEx(${i},'w',this.value)"></div>
+
+                        <div class="col-span-1 text-center"><button onclick="app.removeEx(${i})" class="text-red-500 text-xs"><i class="fas fa-trash"></i></button></div>
+
+                    </div>
+
+                `).join('');
+
+
+
+                const btn = document.getElementById('btnWorkout');
+
+                btn.className = `w-2/3 py-2 rounded-lg text-[10px] font-bold border transition-all ${this.state.done[d] ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-emerald-500'}`;
+
+                btn.innerText = this.state.done[d] ? "COMPLETATO" : "SEGNA FATTO";
+
+            },
+
+
+
+            updateEx(i, field, val) { this.state.session[this.state.day][i][field] = parseFloat(val); this.save(); },
+
+            toggleWorkoutDone() { this.state.done[this.state.day] = !this.state.done[this.state.day]; this.save(); },
+
+            openLib() { document.getElementById('exList').innerHTML = DB.lib.map(ex=>`<div onclick="app.addEx('${ex}')" class="p-3 bg-slate-900 border border-slate-700 rounded mb-2 cursor-pointer font-bold text-slate-300">+ ${ex}</div>`).join(''); document.getElementById('exModal').classList.remove('hidden'); },
+
+            addEx(n) { this.state.session[this.state.day].push({n,s:3,r:10,w:0,k:0.15}); document.getElementById('exModal').classList.add('hidden'); this.save(); },
+
+            removeEx(i) { this.state.session[this.state.day].splice(i,1); this.save(); },
+
+
+
+            // MEALS & CHEATS
+
+            renderMeals() {
+
+                const d = this.state.day;
+
+                document.getElementById('mealEngine').innerHTML = ['COLAZIONE','PRANZO','CENA','SPUNTINO'].map(cat => {
+
+                    const recipes = DB.recipes.filter(r => r.cat === cat || (cat==='SPUNTINO' && r.cat==='SPUNTINO') || (cat==='COLAZIONE' && r.cat==='SPUNTINO'));
+
+                    const sel = this.state.meals[d][cat];
+
+                    return `<div class="glass p-4 border-l-4 border-slate-600"><h3 class="text-[10px] font-black text-slate-500 uppercase mb-2 ml-1">${cat}</h3>
+
+                    <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">${recipes.map(r => 
+
+                        `<div onclick="app.selMeal('${cat}','${r.id}')" class="recipe-card p-3 cursor-pointer ${sel===r.id?'selected':''}"><div class="flex justify-between text-[9px] text-blue-400 font-bold mb-1"><span>${r.k} kcal</span><span class="text-pink-400">P:${r.p}</span></div><div class="text-[11px] font-bold text-white leading-tight h-8 overflow-hidden">${r.n}</div><button onclick="event.stopPropagation(); app.openR('${r.id}')" class="mt-2 w-full bg-slate-800 text-[9px] py-1 rounded text-slate-400">RICETTA</button></div>`
+
+                    ).join('')}</div></div>`;
+
+                }).join('');
+
+            },
+
+            selMeal(cat, id) { this.state.meals[this.state.day][cat] = (this.state.meals[this.state.day][cat]===id)?null:id; this.save(); },
+
+            toggleCheat() { document.getElementById('cheatModal').classList.toggle('hidden'); },
+
+            addCheat(n, k, p, c, f) {
+
+                if(!this.state.cheats[this.state.day]) this.state.cheats[this.state.day] = [];
+
+                this.state.cheats[this.state.day].push({n, k, p, c, f});
+
+                this.toggleCheat(); this.save();
+
+            },
+
+
+
+            // HISTORY & ARCHIVE
+
+            toggleHistory() {
+
+                document.getElementById('historyModal').classList.toggle('hidden');
+
+                if(!document.getElementById('historyModal').classList.contains('hidden')) this.renderHistory();
+
+            },
+
+            archiveDay() {
+
+                if(confirm("Archiviare la giornata nello storico?")) {
+
+                    const d = this.state.day;
+
+                    let kcal = 0;
+
+                    Object.values(this.state.meals[d]||{}).forEach(id => { if(id) kcal += DB.recipes.find(x=>x.id===id).k; });
+
+                    (this.state.cheats[d]||[]).forEach(c => kcal += c.k);
+
+
+
+                    this.state.history.push({ 
+
+                        date: new Date().toLocaleDateString(), 
+
+                        kcal: kcal, 
+
+                        workout: this.state.done[d] ? DB.workouts[d].t : "Riposo/Saltato" 
+
+                    });
+
+
+
+                    // Reset giorno
+
+                    this.state.meals[d] = {COLAZIONE:null, PRANZO:null, CENA:null, SPUNTINO:null};
+
+                    this.state.cheats[d] = [];
+
+                    this.state.done[d] = false;
+
+                    this.save();
+
+                }
+
+            },
+
+            renderHistory() {
+
+                document.getElementById('historyList').innerHTML = this.state.history.slice().reverse().map(h => 
+
+                    `<div class="glass p-3 border-l-4 ${h.workout.includes('Saltato') ? 'border-red-500' : 'border-blue-500'}">
+
+                        <div class="flex justify-between items-center text-xs">
+
+                            <span class="text-slate-400 font-bold">${h.date}</span>
+
+                            <span class="text-white font-mono">${h.kcal} kcal</span>
+
+                        </div>
+
+                        <div class="text-[10px] text-emerald-500 mt-1">${h.workout}</div>
+
+                    </div>`
+
+                ).join('');
+
+            },
+
+
+
+            // EXTRAS
+
+            togglePlan() { document.getElementById('planModal').classList.toggle('hidden'); if(!document.getElementById('planModal').classList.contains('hidden')) { this.renderPlan(); this.renderInv(); } },
+
+            renderPlan() { document.getElementById('planContainer').innerHTML = DB.recipes.map(r=>`<label class="flex items-center gap-3 p-2 bg-slate-800 rounded border border-slate-700"><input type="checkbox" value="${r.id}" class="plan-check w-4 h-4 accent-purple-500"><span class="text-xs font-bold text-slate-300">${r.n}</span></label>`).join(''); },
+
+            renderInv() { document.getElementById('inventoryList').innerHTML = Object.entries(this.state.inventory).map(([k,v])=>`<div class="flex justify-between bg-slate-900 p-1 rounded"><span class="text-slate-500 uppercase">${k.split('_')[0]}</span><span class="text-blue-400">${v}</span></div>`).join(''); },
+
+            calcShopping() { const chk = document.querySelectorAll('.plan-check:checked'); const raw={}; chk.forEach(c=>{ const r=DB.recipes.find(x=>x.id===c.value); for(let [k,v] of Object.entries(r.ing)) raw[k]=(raw[k]||0)+v; }); let h=""; for(let [k,v] of Object.entries(raw)) { const p=DB.market[k]; h+=`<div class="flex justify-between border-b border-slate-800 py-1"><span class="text-slate-400 capitalize">${k.split('_')[0]}</span><span class="font-bold text-purple-400">${p?Math.ceil(v/p.s)+'x '+p.u:v}</span></div>`; } document.getElementById('shoppingResult').innerHTML=h||"Nessuna selezione"; document.getElementById('shoppingResult').classList.remove('hidden'); },
+
+            scanScontrino() { const c=prompt("JSON:"); if(c){try{const d=JSON.parse(c);for(let k in d)this.state.inventory[k]=(this.state.inventory[k]||0)+d[k];this.save();this.renderInv();}catch(e){}} },
+
+            openR(id) { const r = DB.recipes.find(x=>x.id===id); document.getElementById('rmTitle').innerText=r.n; document.getElementById('rmIng').innerHTML=Object.entries(r.ing).map(([k,v])=>`<li><b class="text-white">${v}</b> ${k.split('_')[0]}</li>`).join(''); document.getElementById('rmProc').innerText=r.proc; document.getElementById('recipeModal').classList.remove('hidden'); }
+
+        };
+
+        app.init();
+
+    </script>
+
+</body>
+
+</html>

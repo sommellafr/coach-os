@@ -1,0 +1,16 @@
+{
+  "name": "coach-os",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Diario personale locale, calendario e allenamenti",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build-site.mjs",
+    "verify:site": "node scripts/verify-site.mjs",
+    "preview": "node scripts/serve.mjs --dist --base /coach-os/ --port 5180",
+    "test": "node --test --test-isolation=none",
+    "check": "node --check src/domain.js && node --check src/storage.js && node --check src/app.js && node --check src/recipes.js && node --check src/ui.js && node --check src/meals.js && node --check src/meal-ui.js && node --check src/presets.js && node --check src/templates-ui.js && node --check src/planner.js && node --check src/planner-ui.js && node --check src/shopping.js"
+  },
+  "engines": { "node": ">=22.8" }
+}

@@ -1,0 +1,92 @@
+// QA isolata del flusso menu settimanale -> spesa, senza dati del profilo utente.
+async (page) => {
+  const c=await page.context().browser().newContext({viewport:{width:1440,height:1000},timezoneId:'Europe/Berlin'});
+  const p=await c.newPage();p.setDefaultTimeout(10000);
+  const checks=[];const errors=[];const check=(v,label)=>{if(!v)throw Error(label);checks.push(label);};
+  p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const state=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('coach_os_v1')));
+  const tab=name=>p.locator(`#weekly-planner [data-planner-tab=${name}]`).first().click();
+  const pick=async(date,slot,id)=>{
+    await p.locator(`[data-plan-date="${date}"][data-plan-slot="${slot}"]`).click();
+    await p.locator(`[data-pick-recipe="${id}"]`).click();
+  };
+  try {
+    await p.goto('http://127.0.0.1:5173');await p.getByRole('button',{name:'Pianifica la settimana',exact:true}).click();
+    await p.locator('#meal-form-lunch').waitFor();await p.locator('#selected-date').fill('2026-11-02');
+    check(await p.locator('[data-plan-date]').count()===21,'Sette giorni e tre pasti aggiungibili per giorno');
+    check(!await p.locator('.monthly-disclosure').getAttribute('open'),'Calendario mensile secondario chiuso per default');
+    await p.locator('[data-plan-date="2026-11-02"][data-plan-slot=lunch]').click();
+    await p.locator('#planner-search').fill('pollo');
+    check(await p.locator('#planner-results [data-pick-recipe]').count()>1,'Ricerca rapida per ingrediente nel selettore');
+    await p.locator('[data-pick-recipe=pasta-fredda-pollo]').click();
+    check(await p.locator('#planner-portions').inputValue()==='2','Dose singola proposta dalla resa della fonte');
+    await p.locator('#weekly-meal-form input[value="2026-11-04"]').check();
+    await p.locator('#save-weekly-meal').click();
+    let s=await state();
+    check(s.days['2026-11-02'].meals.length===1&&s.days['2026-11-04'].meals.length===1,'Una selezione pianifica lo stesso piatto in due giorni');
+    check(s.days['2026-11-02'].meals[0].id!==s.days['2026-11-04'].meals[0].id,'Ripetizioni indipendenti con ID distinti');
+    check(!await p.locator('#meal-picker').isVisible(),'Selettore chiuso dopo salvataggio riuscito');
+    await tab('shopping');
+    let row=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
+    check((await row.locator('.shopping-check b').textContent())==='150 g','Spesa aggregata da due dosi singole di pasta');
+    await row.getByRole('checkbox').check();
+    check((await state()).shoppingWeeks['2026-11-02'].checked.length===1,'Spunta della spesa persistita');
+    await p.reload();await p.getByRole('button',{name:'Calendario',exact:true}).click();await p.locator('#meal-form-lunch').waitFor();
+    await p.locator('#selected-date').fill('2026-11-02');await tab('shopping');
+    check(await p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true}).isChecked(),'Spunta ritrovata dopo ricarica');
+    await tab('menu');await p.locator('[data-edit-menu-date="2026-11-02"]').first().click();
+    await p.locator('.planned-meal .meal-portion-detail > summary').first().click();
+    const edit=p.locator('.meal-edit-form').first();await edit.locator('input').fill('4');await edit.getByRole('button').click();
+    await tab('shopping');row=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
+    check((await row.locator('.shopping-check b').textContent())==='112,5 g','Correzione di una dose aggiorna il totale una sola volta');
+    check(!await row.getByRole('checkbox').isChecked(),'Nuovo fabbisogno non eredita la vecchia spunta');
+    await tab('menu');await p.locator('[data-edit-menu-date="2026-11-04"]').first().click();
+    const meal=(await state()).days['2026-11-04'].meals[0];p.once('dialog',d=>d.accept());
+    await p.locator(`[data-action=remove-meal][data-meal-id="${meal.id}"]`).click();
+    await tab('shopping');row=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
+    check((await row.locator('.shopping-check b').textContent())==='37,5 g','Rimozione del piatto aggiorna la spesa');
+    await tab('menu');await p.getByRole('button',{name:'Riusa menu la prossima settimana',exact:false}).click();
+    check(await p.locator('#selected-date').inputValue()==='2026-11-09'&&(await state()).days['2026-11-09'].meals.length===1,'Riutilizzo menu e apertura della settimana successiva');
+    check((await state()).days['2026-11-09'].meals[0].snapshot.id==='pasta-fredda-pollo','Copia conserva la ricetta originale');
+    await pick('2026-11-09','breakfast','pancake-banana');
+    check(await p.locator('#planner-portions').inputValue()==='','Resa assente richiesta anche nel flusso rapido');
+    await p.locator('#save-weekly-meal').click();check(await p.locator('#meal-picker').isVisible(),'Dose sconosciuta non produce un salvataggio implicito');
+    await p.locator('#planner-portions').fill('2');await p.locator('#save-weekly-meal').click();await tab('shopping');
+    check((await p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Farina come acquistato',exact:true})}).locator('.shopping-check b').textContent())==='20–25 g','Intervallo delle dosi mantenuto nella spesa');
+    const before=await p.locator('.shopping-row').count();await p.locator('#include-shopping-optional').check();
+    check((await state()).shoppingWeeks['2026-11-09'].includeOptional===true&&await p.locator('.shopping-row').count()>before,'Scelta esplicita di includere i facoltativi');
+    check(await p.locator('.shopping-uncertain').count()===1,'Quantità mancanti separate dai totali affidabili');
+    const downloadPromise=p.waitForEvent('download');await p.getByRole('button',{name:'Scarica lista .txt',exact:false}).click();
+    const download=await downloadPromise;const stream=await download.createReadStream();let content='';for await(const chunk of stream)content+=chunk.toString();
+    check(download.suggestedFilename()==='coach-os-spesa-2026-11-09.txt'&&content.includes('Pasta: 37,5 g')&&content.includes('Farina: 20–25 g'),'Lista TXT scaricabile con settimana e quantità corrette');await download.delete();
+    await p.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.qaClipboard=text;}}});});
+    await p.getByRole('button',{name:'Copia lista',exact:true}).click();
+    check(await p.evaluate(()=>window.qaClipboard.includes('COACH OS')),'Copia della lista verificata con clipboard simulata');
+    const raw=await p.evaluate(()=>localStorage.getItem('coach_os_v1'));
+    await p.evaluate(()=>{window.qaSet=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw Error('Quota test');};});
+    await p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true}).click();
+    check((await p.locator('#notice').textContent()).includes('Salvataggio non riuscito')&&await p.evaluate(()=>localStorage.getItem('coach_os_v1'))===raw,'Errore salvataggio spunta non altera l’archivio');
+    check(!await p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true}).isChecked(),'Spunta visiva ripristinata dopo errore');
+    await p.evaluate(()=>{Storage.prototype.setItem=window.qaSet;delete window.qaSet;});
+    await p.getByRole('button',{name:'Chiudi messaggio',exact:true}).click();
+    check(await p.locator('#notice').textContent()==='','Messaggi chiudibili dopo il recupero da errore');
+    await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:'C:/Users/francesco.sommella/Progetti VS/CoachOS_Codex/test-results/shopping-desktop.png',fullPage:true});
+    for(const width of [1440,768,390,320]) {
+      await p.setViewportSize({width,height:900});
+      check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Spesa senza overflow a ${width}px`);
+      await tab('menu');check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Menu senza overflow a ${width}px`);
+      await pick('2026-11-09','dinner','pasta-ragu');
+      check(await p.evaluate(()=>document.querySelector('#meal-picker').scrollWidth<=document.querySelector('#meal-picker').clientWidth+1),`Selettore senza overflow a ${width}px`);
+      await p.keyboard.press('Tab');check(await p.locator('#meal-picker').evaluate(el=>el.contains(document.activeElement)),`Focus confinato al selettore a ${width}px`);
+      await p.keyboard.press('Escape');check(!await p.locator('#meal-picker').isVisible(),`Escape chiude senza salvare a ${width}px`);
+      await tab('shopping');
+    }
+    check(!(await state()).days['2026-11-09'].meals.some(m=>m.slot==='dinner'),'Chiusure del selettore non creano pasti');
+    await p.setViewportSize({width:390,height:844});await p.evaluate(()=>window.scrollTo(0,0));await p.screenshot({path:'C:/Users/francesco.sommella/Progetti VS/CoachOS_Codex/test-results/shopping-mobile.png'});
+    await tab('menu');await p.setViewportSize({width:1440,height:1000});await p.evaluate(()=>window.scrollTo(0,0));
+    check(await p.locator('.weekly-menu-grid').evaluate(el=>{const days=[...el.querySelectorAll('.weekly-menu-day')];const rows=days.map(d=>[...d.querySelectorAll('.weekly-menu-slot')].map(r=>Math.round(r.getBoundingClientRect().top)));return rows.every(r=>r.every((top,i)=>Math.abs(top-rows[0][i])<=1));}),'Colazione, pranzo e cena allineati tra i giorni');
+    await p.screenshot({path:'C:/Users/francesco.sommella/Progetti VS/CoachOS_Codex/test-results/week-menu-desktop.png'});
+    check(errors.length===0,`Nessun errore JavaScript: ${errors.join('; ')}`);
+    return {passed:checks.length,checks,errors};
+  } finally {await c.close();}
+}

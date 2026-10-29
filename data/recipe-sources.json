@@ -1,0 +1,414 @@
+{
+  "note": "31 immagini lette visivamente il 29 ottobre 2026; 34 ricette distinte. Metadati originali e hash invariati. Le guide distinguono contenuto della fonte e integrazioni redazionali; nutrienti non verificati.",
+  "sources": [
+    {
+      "source_id": "SRC-01",
+      "file": "assets/recipes/recipe-source-01.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (1).jpeg",
+      "sha256": "0f36ba57f70cd922248d81580ab0983097346a58a08e637f7f20d8ea74b31f8a",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "burrito-manzo",
+        "burrito-chipotle"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-02",
+      "file": "assets/recipes/recipe-source-02.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (10).jpeg",
+      "sha256": "fdc15e3ca5ccf4b524eaa100bbec6f872ab8962633ea76957cd701e16407dbfd",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "piadina-salmone",
+        "piadina-caprese",
+        "piadina-veggie",
+        "piadina-tonno",
+        "piadina-pollo"
+      ],
+      "reading_notes": "Cinque varianti di piadina distinte."
+    },
+    {
+      "source_id": "SRC-03",
+      "file": "assets/recipes/recipe-source-03.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (2).jpeg",
+      "sha256": "93e41b03b12ae7e8cb189a17b34df5b1d2587b8a18109743dc012c4171e72183",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "burrito-manzo",
+        "burrito-chipotle"
+      ],
+      "reading_notes": "Continuazione istruzioni riso di SRC-01 e ingredienti del burrito chipotle."
+    },
+    {
+      "source_id": "SRC-04",
+      "file": "assets/recipes/recipe-source-04.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (3).jpeg",
+      "sha256": "495eb051f372b20c5f4a509ae65e66b4107645b08b6efbb307035fdd652bb9c8",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pollo-miele-aglio"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-05",
+      "file": "assets/recipes/recipe-source-05.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (4).jpeg",
+      "sha256": "de5f0d6be9a7ed3ad2b3105a1f080127f06e78c71ed7bb3e1d0b6ca2e3bca834",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pancake-banana"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-06",
+      "file": "assets/recipes/recipe-source-06.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (5).jpeg",
+      "sha256": "0d7866234358eb09c6a411c965af30d5190a6b176239f84bde418e343111ed1a",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "banana-snack"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-07",
+      "file": "assets/recipes/recipe-source-07.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (6).jpeg",
+      "sha256": "24baa13a7ccd11e1de2b7fc6a6875135a40d5e960fc12a6196b2221d968df621",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "crepes-cacao"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-08",
+      "file": "assets/recipes/recipe-source-08.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (7).jpeg",
+      "sha256": "8696c6e8ba73c460a6112dedfe59084dfe245bbe32fcb8a05d3e9b74d9065694",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "cloud-bread"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-09",
+      "file": "assets/recipes/recipe-source-09.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (8).jpeg",
+      "sha256": "3be3531703e7c7f242bbf06a980266760b02a0174390e6133bc2ad5a7e6256aa",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "bicchierini-avena"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-10",
+      "file": "assets/recipes/recipe-source-10.jpeg",
+      "original_zip_path": "Cartella 1-10/WhatsApp Image 2026-01-29 at 15.46.49 (9).jpeg",
+      "sha256": "6306fdf3bf84a8b71201dadaeb208a0555bda6f2acf3d7987e9d264cb5121701",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "tortine-formaggio"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-11",
+      "file": "assets/recipes/recipe-source-11.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.49.jpeg",
+      "sha256": "650cea93da8ed21db4a390b11dabb7e37637345051fff80e7c29412ce809282e",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "rotolo-patate"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-12",
+      "file": "assets/recipes/recipe-source-12.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (1).jpeg",
+      "sha256": "3271580ca5286eded0e5e25c2078e3c40e68fe01c6b57b090beb53d5abaa8d26",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "brownies"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-13",
+      "file": "assets/recipes/recipe-source-13.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (2).jpeg",
+      "sha256": "1edcffdcb77080c8179fd3ab239bfb57e672d97bd7068c02511d1d7084265229",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "wrap-tonno-fagioli"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-14",
+      "file": "assets/recipes/recipe-source-14.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (3).jpeg",
+      "sha256": "4a04bfcf148a83bf6ca2bcbcfbb15f1a5a7bc6afeb7a37cae68f1dcc80c283ab",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "bowl-patate-manzo"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-15",
+      "file": "assets/recipes/recipe-source-15.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (4).jpeg",
+      "sha256": "2107980caa9fe515595a46c66fcc6075da456761e6f1d3e92386974acf30d07f",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "piadine-ceci"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-16",
+      "file": "assets/recipes/recipe-source-16.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (5).jpeg",
+      "sha256": "412ad257d24a38a9380561d2016b955ceaa427ddae5d50ac695d50e9045f2336",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "crepes-cacao"
+      ],
+      "reading_notes": "Duplicato delle crêpes di SRC-07; accorpato."
+    },
+    {
+      "source_id": "SRC-17",
+      "file": "assets/recipes/recipe-source-17.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (6).jpeg",
+      "sha256": "4b31596c61ee986aa6d8b881523488e7329dff90ddb09de0220253f66551791c",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "piadine-zucchine"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-18",
+      "file": "assets/recipes/recipe-source-18.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (7).jpeg",
+      "sha256": "b77cc29dc6f41c37a36cbf0ea4da0c1f7d9d640e0aba18d3ed9fd39917253882",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "riso-pollo-broccoli"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-19",
+      "file": "assets/recipes/recipe-source-19.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (8).jpeg",
+      "sha256": "f5d4421a124f0d6f65b99c13bb8f6ce2d24bad5b35452ad6b21fb25b2187a559",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "nuggets-pollo"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-20",
+      "file": "assets/recipes/recipe-source-20.jpeg",
+      "original_zip_path": "Cartella 11-20/WhatsApp Image 2026-01-29 at 15.46.50 (9).jpeg",
+      "sha256": "2c596ad0b3cece09b658723ce349787be88cb749ba635f5b4fe9f6eebe751562",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-salmone"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-21",
+      "file": "assets/recipes/recipe-source-21.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (10).jpeg",
+      "sha256": "97f788c86e3d8d7d5949fc1f762c4b35defd33f3a0c987019be9445f62c6f8ed",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "polpette-tacchino"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-22",
+      "file": "assets/recipes/recipe-source-22.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (11).jpeg",
+      "sha256": "a8614a667f3b644d66d8a5573cb0cae4b49bb163b13426bbc6a47962f0ad822e",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-lenticchie"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-23",
+      "file": "assets/recipes/recipe-source-23.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (12).jpeg",
+      "sha256": "99088ff6f32c22fada8d0945cc9087b381f62a6bddff90e79a975df50907f1f4",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "couscous-ceci"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-24",
+      "file": "assets/recipes/recipe-source-24.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (13).jpeg",
+      "sha256": "dce9edb3575b5de200e189dec518180a72b22524e5746459a8dc46c17e4a90d2",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "risotto-radicchio"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-25",
+      "file": "assets/recipes/recipe-source-25.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (14).jpeg",
+      "sha256": "758519e5e3eb0f7ed9fd7a6802668c1c7ddf32a953103e33af659304c3153c76",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-ragu"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-26",
+      "file": "assets/recipes/recipe-source-26.jpeg",
+      "original_zip_path": "Cartella 21-26/WhatsApp Image 2026-01-29 at 15.46.50 (15).jpeg",
+      "sha256": "d6bf627e8b403253780f63d0a0416b45a257d91da3019a2b40d6f04254a9d09b",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "risotto-zucca"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-27",
+      "file": "assets/recipes/recipe-source-27.jpeg",
+      "original_zip_path": "Cartella 27-31/WhatsApp Image 2026-01-29 at 15.46.50 (16).jpeg",
+      "sha256": "902d733d007244d5d3703995c22de358d26d17987498bd2bfc45b66de6cbcc80",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-fredda-pollo"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-28",
+      "file": "assets/recipes/recipe-source-28.jpeg",
+      "original_zip_path": "Cartella 27-31/WhatsApp Image 2026-01-29 at 15.46.50 (17).jpeg",
+      "sha256": "c03c0eb260ee5b0cbbb4eeb58b28c5bf2ddd20e2b64f14b24813c6effe90ef8c",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-fredda-avocado"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-29",
+      "file": "assets/recipes/recipe-source-29.jpeg",
+      "original_zip_path": "Cartella 27-31/WhatsApp Image 2026-01-29 at 15.46.50 (18).jpeg",
+      "sha256": "94ebb1c0aad64fe1395dac97373847246a9dece181005eccc5b69613d6f94e2f",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-greca"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-30",
+      "file": "assets/recipes/recipe-source-30.jpeg",
+      "original_zip_path": "Cartella 27-31/WhatsApp Image 2026-01-29 at 15.46.50 (19).jpeg",
+      "sha256": "a3b8eda2a38adb18d75ba97ab6bf13eba9eaeade2152d6ad87bb60688d28969b",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-pomodoro-mozzarella"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    },
+    {
+      "source_id": "SRC-31",
+      "file": "assets/recipes/recipe-source-31.jpeg",
+      "original_zip_path": "Cartella 27-31/WhatsApp Image 2026-01-29 at 15.46.50.jpeg",
+      "sha256": "988006d6bff6470ebf50a253568a10c0e9ab06977aca5eb43219ade20f83df72",
+      "width": 738,
+      "height": 1600,
+      "transcription_status": "visually_reviewed",
+      "recipe_ids": [
+        "pasta-fredda-mare"
+      ],
+      "reading_notes": "Contenuto culinario letto visivamente; vedi record collegati per dati mancanti e incertezze."
+    }
+  ]
+}

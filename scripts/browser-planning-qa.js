@@ -1,0 +1,116 @@
+// QA in contesto isolato: menu, dose singola, schede preimpostate e personali.
+async (page) => {
+  const context = await page.context().browser().newContext({viewport:{width:1440,height:1000},timezoneId:'Europe/Berlin'});
+  const p=await context.newPage(); const checks=[]; const errors=[];
+  p.setDefaultTimeout(10000);
+  const check=(value,label)=>{if(!value) throw Error(label); checks.push(label);};
+  const state=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('coach_os_v1')));
+  p.on('pageerror',e=>errors.push(e.message));
+  p.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const mealForm=slot=>p.locator(`#meal-form-${slot}`);
+  const addMeal=async(slot,id,portions)=>{
+    await mealForm(slot).locator('select').selectOption(id);
+    if(portions!==undefined) await mealForm(slot).locator('input[name=batchPortions]').fill(String(portions));
+    await mealForm(slot).getByRole('button').click();
+  };
+  try {
+    await p.goto('http://127.0.0.1:5173');
+    await p.getByRole('heading',{name:'Un giorno alla volta.',exact:true}).waitFor();
+    await p.getByRole('button',{name:'Le mie schede',exact:true}).click();
+    check(await p.locator('.template-editor .exercise').count()===3,'Total Body 1 già preimpostata con tre esercizi V21');
+    check(await p.getByRole('spinbutton',{name:'Panca Piana, serie 1, target kg',exact:true}).inputValue()==='','Carichi storici distinti da target attuali');
+    await p.getByRole('button',{name:'Total Body 2',exact:true}).click();
+    check(await p.locator('.template-editor .exercise').count()===2,'Total Body 2: squat e military');
+    await p.getByRole('button',{name:'Total Body 3',exact:true}).click();
+    check(await p.locator('.template-editor .exercise').count()===2,'Total Body 3: stacco e dips');
+    await p.getByRole('button',{name:'Cardio 1',exact:true}).click();
+    check(await p.getByRole('spinbutton',{name:'Tapis Roulant, serie 1, target min',exact:true}).inputValue()==='60','Cardio 1 con durata V21 editabile');
+    await p.getByRole('button',{name:'Cardio 2',exact:true}).click();
+    check(await p.getByRole('spinbutton',{name:'Tapis Roulant, serie 1, target min',exact:true}).inputValue()==='60','Cardio 2 con seconda seduta V21');
+    let pendingRoute;
+    await p.route('**/data/recipes.json',route=>{pendingRoute=route;});
+    await p.getByRole('button',{name:'Calendario',exact:true}).click();
+    await p.locator('#day-notes').fill('Nota non salvata durante il caricamento');
+    while(!pendingRoute) await new Promise(resolve=>setTimeout(resolve,10));
+    await pendingRoute.continue(); await p.unroute('**/data/recipes.json');
+    await mealForm('lunch').waitFor();
+    check(await p.locator('#day-notes').inputValue()==='Nota non salvata durante il caricamento','Caricamento ricette conserva gli altri moduli compilati');
+    await p.getByRole('button',{name:'Salva note',exact:true}).click();
+    await p.locator('#selected-date').fill('2026-11-02');
+    await addMeal('breakfast','bicchierini-avena');
+    await addMeal('lunch','pasta-fredda-pollo');
+    await addMeal('dinner','risotto-zucca');
+    let s=await state(); let meals=s.days['2026-11-02'].meals;
+    check(meals.length===3 && meals.every(m=>m.status==='planned'&&m.quantity===1),'Tre pasti futuri distinti, tutti pianificati in dose singola');
+    const lunch=meals.find(m=>m.slot==='lunch');
+    await p.locator('.planned-meal').filter({has:p.getByRole('heading',{name:'Pasta fredda con pollo e rucola',exact:true})}).locator('summary').first().click();
+    check((await p.locator('.meal-portion-detail[open]').first().textContent()).includes('75 g'),'Pasta per due: 75 g nella singola dose');
+    await mealForm('breakfast').locator('select').selectOption('pancake-banana');
+    check(await mealForm('breakfast').locator('input[name=batchPortions]').inputValue()==='','Ricetta senza resa: numero di porzioni lasciato vuoto');
+    await mealForm('breakfast').getByRole('button').click();
+    check((await state()).days['2026-11-02'].meals.length===3,'Resa mancante blocca salvataggio senza ipotizzare dose');
+    await mealForm('breakfast').locator('input[name=batchPortions]').fill('2');
+    await mealForm('breakfast').getByRole('button').click();
+    check((await state()).days['2026-11-02'].meals.length===4,'Più ricette nello stesso pasto consentite');
+    const edit=p.locator(`#meal-edit-${lunch.id}`);
+    await p.locator('.planned-meal').filter({has:p.getByRole('heading',{name:'Pasta fredda con pollo e rucola',exact:true})}).locator('summary').first().click();
+    await edit.locator('input').fill('4'); await edit.locator('select').selectOption('dinner');
+    await edit.getByRole('button',{name:'Aggiorna dose',exact:true}).click();
+    meals=(await state()).days['2026-11-02'].meals;
+    check(meals.length===4 && meals.find(m=>m.id===lunch.id).batchPortions===4 && meals.find(m=>m.id===lunch.id).slot==='dinner','Correzione dose e pasto senza duplicare ID');
+    const beforeQuota=await p.evaluate(()=>localStorage.getItem('coach_os_v1'));
+    await p.evaluate(()=>{window.qaSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw Error('Quota test');};});
+    await addMeal('lunch','pasta-ragu');
+    check((await p.locator('#notice').textContent()).includes('Salvataggio non riuscito') && await p.evaluate(()=>localStorage.getItem('coach_os_v1'))===beforeQuota,'Quota pasti: errore visibile e archivio intatto');
+    check(await mealForm('lunch').locator('select').inputValue()==='pasta-ragu','Modulo pasti compilato recuperabile dopo errore');
+    await p.evaluate(()=>{Storage.prototype.setItem=window.qaSetItem;delete window.qaSetItem;});
+    await mealForm('lunch').getByRole('button').click();
+    const pancake=(await state()).days['2026-11-02'].meals.find(m=>m.snapshot.id==='pancake-banana');
+    p.once('dialog',d=>d.accept());
+    await p.locator(`[data-action=remove-meal][data-meal-id="${pancake.id}"]`).click();
+    check((await state()).days['2026-11-02'].meals.length===4 && !(await state()).days['2026-11-02'].meals.some(m=>m.id===pancake.id),'Rimozione mirata conserva gli altri pasti');
+    await p.reload(); await p.getByRole('button',{name:'Calendario',exact:true}).click(); await mealForm('lunch').waitFor();
+    await p.locator('#selected-date').fill('2026-11-02');
+    check(await p.locator('.planned-meal').count()===4,'Menu ritrovato dopo ricarica e selezione data');
+    await p.getByRole('button',{name:'Profilo e dati',exact:true}).click();
+    const backup=await p.evaluate(()=>localStorage.getItem('coach_os_v1'));
+    await p.locator('#import-file').setInputFiles({name:'menu.json',mimeType:'application/json',buffer:Buffer.from(backup)});
+    await p.getByRole('button',{name:'Crea copia e ripristina',exact:true}).click();
+    check((await state()).days['2026-11-02'].meals.length===4,'Ripristino UI conserva pasti e dosi');
+    await p.getByRole('button',{name:'Le mie schede',exact:true}).click();
+    await p.locator('#new-template-title').fill('Petto e tricipiti'); await p.locator('#new-template-base').selectOption('template-1');
+    await p.getByRole('button',{name:'+ Crea scheda',exact:true}).click();
+    const custom=(await state()).templates.find(t=>t.title==='Petto e tricipiti');
+    check(!!custom && custom.exercises.length===3,'Scheda personale creata duplicando la base');
+    await p.getByRole('spinbutton',{name:'Panca Piana, serie 1, target kg',exact:true}).fill('39');
+    await p.locator('#exercise-name').fill('Croci ai cavi'); await p.locator('#exercise-equipment').fill('Cavi');
+    await p.getByRole('button',{name:'+ Aggiungi al modulo',exact:true}).click();
+    await p.getByRole('button',{name:'Salva scheda',exact:true}).click();
+    check((await state()).templates.find(t=>t.id===custom.id).exercises.length===4 && (await state()).templates[0].exercises.length===3,'Personalizzazione della copia senza alterare la base');
+    await p.getByRole('button',{name:'Calendario',exact:true}).click(); await p.locator('#selected-date').fill('2026-10-19');
+    await p.locator('#plan-choice').selectOption(custom.id); await p.getByRole('button',{name:'Salva piano',exact:true}).click();
+    await p.getByRole('button',{name:'Inizia seduta',exact:true}).click();
+    check((await state()).days['2026-10-19'].sessions[0].exercises[0].sets[0].kg===39,'Scheda aggiuntiva utilizzabile nel diario');
+    await p.getByRole('button',{name:'Le mie schede',exact:true}).click();
+    await p.locator('#template-title').fill('Petto A'); await p.getByRole('button',{name:'Salva scheda',exact:true}).click();
+    check((await state()).templates.find(t=>t.id===custom.id).title==='Petto A' && (await state()).days['2026-10-19'].sessions[0].title==='Petto e tricipiti','Rinomina scheda senza riscrivere lo storico');
+    await p.locator('#new-template-title').fill('Gambe A'); await p.getByRole('button',{name:'+ Crea scheda',exact:true}).click();
+    check((await state()).templates.find(t=>t.title==='Gambe A').exercises.length===0,'Scheda con nome libero creata da zero');
+    await p.reload(); await p.getByRole('button',{name:'Le mie schede',exact:true}).click();
+    check(await p.getByRole('button',{name:'Petto A',exact:true}).count()===1 && await p.getByRole('button',{name:'Gambe A',exact:true}).count()===1,'Schede personali persistenti dopo riapertura');
+    for(const width of [1440,768,390,320]) {
+      await p.setViewportSize({width,height:900});
+      for(const name of ['Le mie schede','Calendario','Ricettario','Profilo e dati','Oggi']) {
+        await p.getByRole('button',{name,exact:true}).first().click();
+        check(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Nessun overflow ${name} a ${width}px`);
+      }
+    }
+    await p.setViewportSize({width:1440,height:1000}); await p.getByRole('button',{name:'Calendario',exact:true}).click();
+    await p.locator('#selected-date').fill('2026-11-02');
+    await p.evaluate(()=>window.scrollTo(0,0));
+    await p.screenshot({path:'C:/Users/francesco.sommella/Progetti VS/CoachOS_Codex/test-results/planning-desktop.png',fullPage:true});
+    await p.setViewportSize({width:390,height:844}); await p.screenshot({path:'C:/Users/francesco.sommella/Progetti VS/CoachOS_Codex/test-results/planning-mobile.png',fullPage:true});
+    check(errors.length===0,`Nessun errore JavaScript: ${errors.join('; ')}`);
+    return {passed:checks.length,checks,errors};
+  } finally {await context.close();}
+}

@@ -7,6 +7,7 @@ Fonti: sorgente V21 e quattro messaggi dell'utente, riportati in sintesi in USER
 | CAL-02 | Settimana standard lun-mer-ven Total Body, mar-gio cardio, modificabile | P0 |
 | CAL-03 | Scegliere Total Body 1/2/3, Cardio 1/2 o riposo per qualsiasi data | P0 |
 | CAL-04 | Spostare una seduta programmata mantenendo distinta la cronologia eseguita | P0 |
+| CAL-05 | Conservare giorno selezionato e posizione dopo aggiunta di pasti; proporre domani dalle 21 locali, rispettando date scelte manualmente e data reale del diario | P0 |
 | DAT-01 | Salvataggio e riapertura per data, correzione senza record duplicati | P0 |
 | DAT-02 | Esportazione, ripristino, versione del formato, gestione errori di storage | P0 |
 | DAT-03 | Import legacy eventuale senza attribuire dati non presenti | P1 |

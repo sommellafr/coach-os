@@ -1,6 +1,16 @@
 # Stato implementazione
 
-Aggiornato il 29 ottobre 2026. Versione 0.4: planner settimanale e lista della spesa, oltre a menu in dose singola, schede V21/personali e grafica rinnovata. Nessuna pubblicazione o attivazione di servizi.
+Aggiornato il 30 ottobre 2026. Versione 0.4.2: continuità del giorno nel calendario e proposta del giorno successivo dalle 21. Restano planner e spesa, porzioni personali, schede V21/personali e ricettario. Il sito è pubblicato su GitHub Pages; nessun servizio a pagamento attivato.
+
+## Giorno selezionato e soglia delle 21 — 0.4.2
+
+- Richiesta: al ritorno dalla scelta di un piatto mantenere il giorno in cui si sta lavorando, senza tornare al lunedì; dopo le 21 proporre il giorno successivo.
+- Cause: il rendering ricreava la griglia con scroll orizzontale a zero; il salvataggio su più date selezionava la prima data spuntata. Ora la data di apertura del selettore è conservata anche se vengono selezionati giorni precedenti, e le griglie vengono riallineate alla data selezionata dopo rendering, caricamento ricette e chiusura del dialog.
+- Il planner conserva una data di navigazione separata da Oggi nella sessione. All'apertura, fino alle 20:59 propone oggi; dalle 21:00 propone domani secondo l'ora locale, con passaggi settimana/mese/anno e cambio ora basati su date civili. Il limite 2199 resta rispettato. Nessuna derivazione della giornata da ISO UTC.
+- La soglia viene verificata con timer alle 21 e al ritorno alla finestra. Se l'utente sceglie una data o sta compilando un modulo, la scelta resta ferma; nessuno spostamento automatico durante un dialog. Giorno proposto riattiva la proposta. Oggi, date delle sedute e vincoli sui risultati futuri continuano a usare la giornata reale.
+- Nessuna modifica al formato, alle voci salvate, alle porzioni o alla spesa. La selezione è stato di navigazione della sessione, non persistenza o migrazione dei dati.
+- Verifiche: 66 test automatici (3 nuovi per soglia 21, limiti, domenica/mese/anno/bisestile/DST); 18 controlli browser con orologio controllato su data e scroll, salvataggio multiplo, annullamento, navigazione, cambio alle 21 e protezione del lavoro in corso. Ancora superati 48 controlli settimanali e 106 smartphone con touch simulato. Restano non verificati dispositivo fisico e Safari.
+- La release 0.4.1 f79d2f9 è stata pubblicata con workflow 40970309174 riuscito; questo aggiornamento è preparato per la pubblicazione successiva.
 
 ## Correzione porzioni e spesa metrica — 0.4.1
 

@@ -30,6 +30,12 @@ export function addDays(value, amount) {
   assert(isDate(result), 'Data fuori intervallo (1900–2199).');
   return result;
 }
+export function suggestedPlanningDate(now = new Date()) {
+  assert(now instanceof Date && Number.isFinite(now.getTime()), 'Ora locale non valida.');
+  const today=localDate(now);
+  assert(isDate(today),'Data fuori intervallo (1900–2199).');
+  return now.getHours()>=21 && today<'2199-12-31' ? addDays(today,1) : today;
+}
 export function weekDates(value) {
   const d = dateObject(value);
   const monday = addDays(value, -((d.getDay() + 6) % 7));

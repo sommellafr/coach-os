@@ -1,5 +1,6 @@
 import { icon, recipeArt } from './ui.js';
 import { recipeMatchesMeal, renderRecipeMealTags, RECIPE_MEAL_LABELS } from './recipe-tags.js';
+import { metricIngredient } from './metric.js';
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const format = value => new Intl.NumberFormat('it-IT', { maximumFractionDigits: 2 }).format(value);
 const number = value => typeof value === 'number' && Number.isFinite(value) && value >= 0;
@@ -53,6 +54,8 @@ export function filterRecipes(recipes, query = '', category = '', mealSlot = '')
   return recipes.filter(r => recipeMatchesMeal(r, mealSlot) && (!category || r.category === category) && words.every(w => normalize(`${r.title} ${r.ingredients.map(i=>i.label).join(' ')}`).includes(w)));
 }
 function quantity(item) {
+  item=metricIngredient(item);
+  if(item.metricPending) return 'Peso/volume da confermare';
   const amount = item.quantityRange ? `${format(item.quantityRange.min)}–${format(item.quantityRange.max)}` : item.quantity === null ? 'Dose non indicata / q.b.' : format(item.quantity);
   return `${amount}${item.unit ? ` ${escape(item.unit)}` : ''}`;
 }

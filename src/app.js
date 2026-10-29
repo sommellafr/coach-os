@@ -3,7 +3,8 @@ import { Repository, STORAGE_KEY } from './storage.js';
 import { loadCatalog, renderRecipeLibrary } from './recipes.js';
 import { icon } from './ui.js';
 import { recipeMatchesMeal } from './recipe-tags.js';
-import { createMeal, validateBatchPortions } from './meals.js';
+import { createMeal, validateBatchPortions, validatePeople, portionIssues, correctPortions, mealBatchYield } from './meals.js';
+import { pickerPortionSetup, readMetricFields, portionPreview } from './portion-ui.js';
 import { renderMeals } from './meal-ui.js';
 import { templateWorkspace } from './templates-ui.js';
 import { renderWeeklyPlanner, renderMealPicker, pickerRecipeResults } from './planner-ui.js';
@@ -57,9 +58,9 @@ function discard() {
   sessionDraft = null;
   return true;
 }
-function save(operation, message = 'Dati salvati su questo browser.') {
+function save(operation, message = 'Dati salvati su questo browser.', options={}) {
   try {
-    const result = repo.update(operation);
+    const result = repo.update(operation,options);
     dirty = false;
     dirtyForms.clear();
     templateDraft = null;
@@ -244,6 +245,11 @@ function protectOtherForms(formId) {
 document.addEventListener('input', event => {
   const form = event.target.closest('form');
   if (form && !['recipe-filter-form','recipe-scale-form'].includes(form.id)) { dirty = true; dirtyForms.add(form.id); }
+  if(form?.id==='weekly-meal-form' && mealPicker?.recipeId && event.target.id!=='planner-search') {
+    const recipe=recipeCatalog.recipes.find(r=>r.id===mealPicker.recipeId);
+    const preview=document.querySelector('#portion-preview');
+    if(preview) {try {preview.innerHTML=portionPreview(recipe,Number(form.querySelector('#planner-portions').value),Number(form.querySelector('#planner-people').value),readMetricFields(form,recipe));} catch {preview.textContent='Completa le misure con valori numerici validi.';}}
+  }
   if(event.target.id==='planner-search') document.querySelector('#planner-results').innerHTML=pickerRecipeResults(recipeCatalog,event.target.value,mealPicker.recipeId,mealPicker.slot);
 });
 document.addEventListener('change', async event => {
@@ -273,8 +279,10 @@ document.addEventListener('change', async event => {
   if (target.dataset.mealSelect) {
     const slot = target.dataset.mealSelect;
     const recipe = recipeCatalog?.recipes.find(r=>r.id===target.value);
-    main.querySelector(`#meal-portions-${slot}`).value = recipe?.yield.quantity ?? '';
-    main.querySelector(`#meal-yield-${slot}`).textContent = recipe?.yield.quantity ? `Fonte: ${recipe.yield.quantity} ${recipe.yield.unit}. Per una dose gli ingredienti saranno divisi per il numero di porzioni indicato qui sopra; puoi adattarlo al tuo pasto.` : 'La fonte non indica la resa. Specifica quante porzioni producono tutte le dosi originali: non viene assunto automaticamente che siano per una persona.';
+    const batchYield=recipe?mealBatchYield(recipe):null;
+    main.querySelector(`#meal-portions-${slot}`).value = batchYield ?? '';
+    main.querySelector(`#meal-portions-${slot}`).readOnly = !recipe || batchYield!==null;
+    main.querySelector(`#meal-yield-${slot}`).textContent = batchYield!==null ? `Fonte: ${recipe.yield.quantity} ${recipe.yield.unit}. La divisione è automatica: una porzione per te. Per gli ospiti usa Preparo anche per altre persone.` : 'Indica quanti pasti ricavi da tutta la preparazione. Pezzi, strisce e polpette non equivalgono automaticamente a pasti; non viene assunto che il lotto sia per una persona.';
   }
   if (target.id === 'selected-date') {
     if (isDate(target.value) && discard()) { selectedDate = target.value; activeSession = null; render(); }
@@ -296,11 +304,13 @@ document.addEventListener('submit', event => {
     try {
       const recipe=recipeCatalog?.recipes.find(r=>r.id===mealPicker?.recipeId);
       if(!recipe || !recipeMatchesMeal(recipe,mealPicker.slot)) throw Error('Scegli una ricetta per questo pasto.');
-      const portions=validateBatchPortions(Number(document.querySelector('#planner-portions').value));
+      const portions=validateBatchPortions(mealBatchYield(recipe)??Number(document.querySelector('#planner-portions').value));
+      const people=validatePeople(Number(document.querySelector('#planner-people').value));
+      const metricOverrides=readMetricFields(event.target,recipe);
       const dates=[...event.target.querySelectorAll('input[name=dates]:checked')].map(input=>input.value);
       if(!dates.length) throw Error('Seleziona almeno un giorno.');
       const slot=mealPicker.slot; const targetDate=dates[0];
-      const saved=save(state=>planRecipeOnDates(state,recipe,slot,portions,dates),`${dates.length} ${dates.length===1?'dose aggiunta':'dosi aggiunte'} al menu settimanale.`);
+      const saved=save(state=>planRecipeOnDates(state,recipe,slot,portions,dates,{people,metricOverrides}),`${dates.length} pasti salvati: una porzione per persona in ciascun giorno.`);
       if(saved) {
         document.querySelector('#meal-picker').close(); selectedDate=targetDate; render();
         main.querySelector(`[data-plan-date="${targetDate}"][data-plan-slot="${slot}"]`)?.focus({preventScroll:true});
@@ -324,8 +334,10 @@ document.addEventListener('submit', event => {
     if (event.target.dataset.mealSlot) {
       const recipe = recipeCatalog?.recipes.find(r=>r.id===event.target.elements.recipeId.value);
       if (!recipe || !recipeMatchesMeal(recipe,event.target.dataset.mealSlot)) throw Error('Scegli una ricetta disponibile per questo pasto.');
-      const portions = validateBatchPortions(Number(event.target.elements.batchPortions.value));
-      const meal = createMeal(recipe,event.target.dataset.mealSlot,portions);
+      const portions = validateBatchPortions(mealBatchYield(recipe)??Number(event.target.elements.batchPortions.value));
+      const people=validatePeople(Number(event.target.elements.people.value));
+      const previous=Object.values(repo.state.days).flatMap(day=>day.meals||[]).find(meal=>meal.snapshot.id===recipe.id&&meal.metricOverrides?.length&&JSON.stringify(meal.snapshot.ingredients)===JSON.stringify(recipe.ingredients));
+      const meal = createMeal(recipe,event.target.dataset.mealSlot,portions,{people,metricOverrides:previous?.metricOverrides||[]});
       save(state=>{
         state.days[selectedDate] ??= {date:selectedDate,assignment:null,sessions:[],notes:''};
         state.days[selectedDate].meals ??= [];
@@ -337,11 +349,20 @@ document.addEventListener('submit', event => {
       const id = event.target.dataset.mealId;
       const portions = validateBatchPortions(Number(event.target.elements.batchPortions.value));
       const slot = event.target.elements.slot.value;
+      const original=repo.state.days[selectedDate].meals.find(m=>m.id===id);
+      const people=validatePeople(Number(event.target.elements.people.value));
+      const metricOverrides=readMetricFields(event.target,original.snapshot);
+      const applyWeek=event.target.elements.applyWeekMeasures?.checked;
       save(state=>{
         const meal = state.days[selectedDate].meals.find(m=>m.id===id);
         meal.batchPortions = portions;
         meal.slot = slot;
-      },'Dose aggiornata sullo stesso pasto. Ricetta e fonte originali conservate.');
+        meal.people=people;
+        meal.metricOverrides=metricOverrides;
+        if(applyWeek) for(const date of weekDates(selectedDate)) for(const other of state.days[date]?.meals||[]) {
+          if(other.snapshot.id===meal.snapshot.id&&JSON.stringify(other.snapshot.ingredients)===JSON.stringify(meal.snapshot.ingredients)) other.metricOverrides=clone(metricOverrides);
+        }
+      },'Pasto e misure aggiornati. Fonte originale conservata.',{backup:true});
       return;
     }
     switch (event.target.id) {
@@ -390,10 +411,8 @@ document.addEventListener('click', event => {
       mealPicker.recipeId=recipe.id;
       const dialog=document.querySelector('#meal-picker');
       dialog.querySelector('#picker-selection').hidden=false;
-      dialog.querySelector('#picker-selected-title').textContent=recipe.title;
-      dialog.querySelector('#planner-portions').value=recipe.yield.quantity??'';
-      dialog.querySelector('#planner-portions').disabled=false;
-      dialog.querySelector('#picker-yield-note').textContent=recipe.yield.quantity ? `Fonte: ${recipe.yield.quantity} ${recipe.yield.unit}. Puoi adattare per quanti pasti dividere la preparazione.` : 'La resa manca nella fonte: indica quante porzioni ottieni dalle dosi originali.';
+      const previous=Object.values(repo.state.days).flatMap(day=>day.meals||[]).find(meal=>meal.snapshot.id===recipe.id&&meal.metricOverrides?.length&&JSON.stringify(meal.snapshot.ingredients)===JSON.stringify(recipe.ingredients));
+      dialog.querySelector('#picker-selection').innerHTML=pickerPortionSetup(recipe,previous?.metricOverrides||[]);
       dialog.querySelector('#save-weekly-meal').disabled=false;
       dialog.querySelectorAll('[data-pick-recipe]').forEach(b=>{b.classList.toggle('chosen',b.dataset.pickRecipe===recipe.id);b.setAttribute('aria-pressed',b.dataset.pickRecipe===recipe.id);});
       dialog.querySelector('#picker-error').textContent='';
@@ -401,9 +420,15 @@ document.addEventListener('click', event => {
     }
     if(button.dataset.editMenuDate) {
       if(!discard()) return;
-      selectedDate=button.dataset.editMenuDate; render();
+      selectedDate=button.dataset.editMenuDate; plannerTab='menu'; render();
       const form=main.querySelector(`#meal-form-${button.dataset.editMenuSlot}`);
       form?.closest('.meal-slot').scrollIntoView({block:'start',behavior:'instant'});
+      if(button.dataset.mealId) {
+        const edit=main.querySelector(`#meal-edit-${button.dataset.mealId}`);
+        const detail=edit?.closest('details');if(detail) detail.open=true;
+        const measures=edit?.querySelector('.metric-fields');if(measures) measures.open=true;
+        edit?.scrollIntoView({block:'start',behavior:'instant'});
+      }
       return;
     }
     if(button.dataset.plannerTab) {
@@ -432,6 +457,14 @@ document.addEventListener('click', event => {
     if (button.dataset.backup) { download(storage.getItem(button.dataset.backup), `${button.dataset.backup}.json`); return; }
     const action = button.dataset.action;
     if (!action) return;
+    if(action==='correct-week-portions') {
+      if(!discard()) return;
+      const dates=weekDates(selectedDate);const issues=portionIssues(repo.state,dates);
+      if(!issues.length) return;
+      const preview=issues.map(issue=>`${issue.date} · ${issue.title}: da 1/${issue.before} a 1/${issue.after} della preparazione`).join('\n');
+      if(!window.confirm(`${preview}\n\nCorreggere questi ${issues.length} pasti? Il numero di persone resta invariato. Prima del salvataggio sarà creata una copia di sicurezza.`)) return;
+      save(state=>correctPortions(state,dates),'Porzioni corrette e spesa ricalcolata. Copia precedente disponibile in Profilo e dati.',{backup:true});return;
+    }
     if(action==='dismiss-notice') {document.querySelector('#notice').replaceChildren();return;}
     if(action==='close-meal-picker') {document.querySelector('#meal-picker').close();return;}
     if(action==='copy-menu-week') {

@@ -32,9 +32,12 @@ test('unità compatibili g/kg e ml/l sommate, senza sommare massa e volume',()=>
 test('nessuna conversione arbitraria per cup, cucchiai, pezzi e crudo/cotto',()=>{
   const s=freshState();add(s,'2026-11-02',[item(1,'cup'),item(1,'cucchiai'),item(1,'pezzo'),item(2,'pezzi'),item(20,'g',{preparationState:'crudo'}),item(30,'g',{preparationState:'cotto'}),item(40,'g')]);
   const rows=shoppingForWeek(s,'2026-11-02').ingredients;
-  assert.equal(rows.length,6);assert.equal(rows.find(r=>r.unit==='pezzi').min,3);
+  assert.equal(rows.length,4);
+  const pending=rows.find(r=>r.unit===null);
+  assert.equal(pending.min,null);assert.equal(pending.unknownCount,4);assert.equal(pending.needsReview,true);
   assert.equal(rows.filter(r=>r.unit==='g').length,3);
-  assert.equal(rows.find(r=>r.unit==='cup').min,1);
+  assert.ok(pending.notes.some(note=>note.includes('cup')));
+  assert.ok(rows.every(row=>row.unit===null||row.unit==='g'||row.unit==='ml'));
 });
 test('intervalli sommati sui due estremi, ignoti mai trasformati in zero',()=>{
   const s=freshState();add(s,'2026-11-02',[item(null,'g',{quantityRange:{min:40,max:50}}),item(10,'g'),item(null,'g')]);

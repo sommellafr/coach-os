@@ -1,6 +1,6 @@
 # Menu settimanale e lista della spesa
 
-Versione 0.4, 29 ottobre 2026. Richiesta esplicita: pianificare i pasti della settimana e ricavarne la spesa con un'interfaccia agevole.
+Versione 0.4.1, 29 ottobre 2026. Richiesta esplicita: pianificare i pasti della settimana e ricavarne la spesa con un'interfaccia agevole. La correzione delle porzioni e delle unità è descritta in [PORTIONS_AND_METRIC.md](PORTIONS_AND_METRIC.md).
 
 ## Flusso
 
@@ -11,16 +11,16 @@ Riutilizzare una settimana crea nuove voci con ID distinti e snapshot degli ingr
 ## Calcolo della lista
 
 - Periodo: settimana civile locale lunedì–domenica della data selezionata, comprese settimane a cavallo di mese/anno. All'estremo 2199 il periodo è limitato alle date supportate.
-- Inclusione: soltanto voci planned delle date della settimana; ciascuna è una dose, cioè ingredienti originali divisi per batchPortions. I giorni senza menu non producono ingredienti né un fallimento.
+- Inclusione: soltanto voci planned delle date della settimana; ingredienti originali × persone / batchPortions. Le persone sono una per default; gli ospiti sono espliciti. La resa organizzativa nota è bloccata nella scelta, le rese in pezzi/strisce/polpette richiedono il numero di pasti. I giorni senza menu non producono ingredienti né un fallimento.
 - Identità: nome dell'ingrediente normalizzato per accenti, maiuscole e spazi, unità e stato di preparazione. Non si assumono equivalenze tra alimenti, marche, varianti o nomi diversi. I nomi originali sono mostrati.
-- Conversioni: kg → g, l → ml; alias gr/grammi e pezzo/pezzi sono normalizzati. Cup, tbsp, tsp, cucchiai e altre unità rimangono separati, senza conversioni arbitrarie o stime di densità.
+- Conversioni: kg/mg → g, l/dl/cl → ml, oz di massa/lb → g con fattori esatti. Totali principali soltanto g e ml. Cup, tbsp, tsp, cucchiai, pezzi e altre unità senza misura metrica sono da confermare, senza conversioni arbitrarie o stime di densità. Misure confermate dall'utente possono completare il dato conservando lo snapshot originale.
 - Stato: crudo, cotto, secco, sgocciolato, scolato e non specificato sono distinti. Le flessioni di uno stesso stato sono normalizzate. Non si converte un peso cotto in crudo.
 - Intervalli: vengono sommati separatamente minimi e massimi. Non viene scelto un valore medio o massimo arbitrario.
 - Mancanti: null resta sconosciuto. Se una voce ha quantità note e altre mancanti nella stessa unità, viene mostrato il subtotale noto più un'indicazione delle dosi assenti. Se manca l'unità, non viene inventata. Queste voci sono nella sezione da valutare a mano, non nascoste dal file esportato.
 - Facoltativi: esclusi per default; un controllo esplicito li include soltanto nella spesa. Questo non modifica gli snapshot o i nutrienti dei pasti.
 - Correzioni: la lista viene sempre derivata dallo stato corrente. Non è un archivio di somme da aggiornare per delta: modificare o cancellare un pasto non duplica quantità.
 
-Esempio verificato: pasta 150 g per due porzioni, pianificata in due giorni, richiede 75 + 75 = 150 g. Cambiando una delle due dosi a un quarto del lotto, il totale diventa 37,5 + 75 = 112,5 g. Cancellando l'altra voce rimangono 37,5 g.
+Esempio verificato: pasta 150 g per due porzioni, pianificata per una persona in due giorni, richiede 75 + 75 = 150 g. Aggiungendo esplicitamente un ospite a uno dei pasti, il totale diventa 150 + 75 = 225 g. Cancellando l'altro pasto rimangono 150 g. I vecchi divisori personalizzati non vengono riscritti alla lettura; le correzioni della settimana richiedono riepilogo, conferma e backup preventivo.
 
 ## Spunte e persistenza
 

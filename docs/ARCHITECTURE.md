@@ -12,6 +12,7 @@ Moduli JavaScript nativi, senza framework o dipendenze. La proposta iniziale Typ
 - `src/recipes.js`: caricamento e validazione del catalogo statico, ricerca, moltiplicazione dosi, interfaccia con provenienza e incertezze.
 - `src/ui.js` e `src/app-theme.css`: icone/illustrazioni SVG locali e tema visivo della versione 0.3, sovrapposto agli stili strutturali. Nessuna dipendenza di rete.
 - `src/meals.js` e `src/meal-ui.js`: snapshot ricette, dose singola, validazione e menu pianificato per data.
+- `src/metric.js` e `src/portion-ui.js`: conversioni metriche esatte, misure confermate separate dalla fonte, divisione della preparazione distinta dalle persone, anteprima e moduli dei pesi. Nessuna densità implicita o migrazione automatica delle porzioni.
 - `src/presets.js` e `src/templates-ui.js`: basi storiche V21, aggiornamento conservativo dei contenitori e gestione di nuove schede personali.
 - `src/planner.js`, `src/planner-ui.js`, `src/planner.css`: operazioni atomiche sul menu settimanale, selettore ricette e interfaccia menu/spesa.
 - `src/shopping.js`: aggregazione conservativa da snapshot, conversioni di unità esplicite, firme delle spunte ed esportazione in testo.

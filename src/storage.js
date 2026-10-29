@@ -53,10 +53,10 @@ export class Repository {
     this.blocked = false;
     return backupKey;
   }
-  update(operation) {
+  update(operation, options={}) {
     const next = clone(this.state);
     const result = operation(next);
-    this.commit(next);
+    this.commit(next,options);
     return result;
   }
   restore(raw) { return this.commit(seedUntouchedTemplates(parseBackup(raw)).state, { restore: true }); }

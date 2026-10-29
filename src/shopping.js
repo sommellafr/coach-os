@@ -1,5 +1,5 @@
 import { weekDates, formatDate } from './domain.js';
-import { portionForMeal } from './meals.js';
+import { metricPortionForMeal } from './meals.js';
 
 const normalize = text => String(text ?? '').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLocaleLowerCase('it').replace(/[’‘]/g,"'").replace(/\s+/g,' ').trim();
 const units = {
@@ -26,7 +26,7 @@ export function shoppingForWeek(state, date, {includeOptional = false} = {}) {
     filledSlots += new Set(meals.map(m=>m.slot)).size;
     for (const meal of meals) {
       mealCount++;
-      for (const item of portionForMeal(meal).ingredients) {
+      for (const [ingredientIndex,item] of metricPortionForMeal(meal).ingredients.entries()) {
         if (item.optional) { optionalCount++; if(!includeOptional) continue; }
         const normalizedUnit = normalize(item.unit);
         const [unit, factor] = units[normalizedUnit] || [normalizedUnit || null, 1];
@@ -38,12 +38,14 @@ export function shoppingForWeek(state, date, {includeOptional = false} = {}) {
         const row = rows.get(key);
         row.optionalOnly &&= item.optional;
         if(item.note) row.notes.add(item.note);
+        if(item.metricPending) row.notes.add(`Da pesare in g o ml. Nella preparazione originale: ${item.originalAmount}.`);
+        if(item.measurementOrigin==='user') row.notes.add('Peso/volume confermato dall’utente, conservato separatamente dalla fonte.');
         if(item.quantityRange) {
           row.min += item.quantityRange.min * factor; row.max += item.quantityRange.max * factor; row.knownCount++;
         } else if(item.quantity !== null) {
           row.min += item.quantity * factor; row.max += item.quantity * factor; row.knownCount++;
         } else row.unknownCount++;
-        row.uses.push({date:dayDate,slot:meal.slot,title:meal.snapshot.title,mealId:meal.id});
+        row.uses.push({date:dayDate,slot:meal.slot,title:meal.snapshot.title,mealId:meal.id,ingredientIndex});
       }
     }
   }
@@ -61,10 +63,10 @@ export function shoppingForWeek(state, date, {includeOptional = false} = {}) {
 }
 const number = value => new Intl.NumberFormat('it-IT',{maximumSignificantDigits:5}).format(value);
 export function shoppingAmount(row) {
-  const amount = row.min === null ? 'q.b. / dose da definire' : row.min === row.max ? number(row.min) : `${number(row.min)}–${number(row.max)}`;
+  const amount = row.min === null ? 'Peso/volume da confermare' : row.min === row.max ? number(row.min) : `${number(row.min)}–${number(row.max)}`;
   return `${amount}${row.min !== null ? ` ${row.unit || '(unità da chiarire)'}` : row.unit ? ` ${row.unit}` : ''}${row.min !== null && row.unknownCount ? ' + dosi non indicate' : ''}`;
 }
 export function shoppingText(report, checked = []) {
   const done = new Set(checked);
-  return `COACH OS · LISTA DELLA SPESA\n${formatDate(report.dates[0])} — ${formatDate(report.dates.at(-1))}\n${report.mealCount} ricette in dose singola pianificate. Facoltativi ${report.includeOptional ? 'inclusi' : 'esclusi'}.\n\n${report.ingredients.map(row=>`${done.has(row.signature)?'[x]':'[ ]'} ${row.label}: ${shoppingAmount(row)}${row.preparationState!=='non specificato' ? ` · ${row.preparationState}` : ''}${row.needsReview ? ' · DA VALUTARE A MANO' : ''}`).join('\n')}\n\nQuantità dagli snapshot dei pasti. Solo g/kg e ml/l vengono convertiti; unità incompatibili e pesi crudi/cotti restano separati. Non include confezioni o sottrazione automatica della dispensa.\n`;
+  return `COACH OS · LISTA DELLA SPESA\n${formatDate(report.dates[0])} — ${formatDate(report.dates.at(-1))}\n${report.mealCount} ricette pianificate, una porzione per persona. Facoltativi ${report.includeOptional ? 'inclusi' : 'esclusi'}.\n\n${report.ingredients.map(row=>`${done.has(row.signature)?'[x]':'[ ]'} ${row.label}: ${shoppingAmount(row)}${row.preparationState!=='non specificato' ? ` · ${row.preparationState}` : ''}${row.needsReview ? ' · DA VALUTARE A MANO' : ''}`).join('\n')}\n\nQuantità in g o ml: conversioni esatte e pesi confermati. Cup, cucchiai e pezzi senza peso restano da confermare, mai zero o stime implicite. Crudo/cotto separati. Non include confezioni o sottrazione automatica della dispensa.\n`;
 }

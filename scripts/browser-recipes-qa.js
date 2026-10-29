@@ -43,7 +43,7 @@ async (page) => {
     await p.locator('#recipe-multiplier').fill('2');
     await p.getByRole('button',{name:'Aggiorna dosi',exact:true}).click();
     check((await p.locator('.ingredients-list').textContent()).includes('80–100 g'),'Scala intervallo farina da 40–50 a 80–100 g');
-    check((await p.locator('.ingredients-list').textContent()).includes('Dose non indicata'),'Quantità mancanti restano mancanti');
+    check((await p.locator('.ingredients-list').textContent()).includes('Peso/volume da confermare'),'Quantità mancanti restano mancanti');
     check((await p.locator('.recipe-nutrition').textContent()).includes('Nessuna stima aggiunta'),'Nutrienti assenti espliciti');
     await p.getByRole('button',{name:'Torna alle ricette',exact:false}).click();
     await p.locator('[data-recipe="piadine-zucchine"]').click();

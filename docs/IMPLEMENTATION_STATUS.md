@@ -2,6 +2,15 @@
 
 Aggiornato il 29 ottobre 2026. Versione 0.4: planner settimanale e lista della spesa, oltre a menu in dose singola, schede V21/personali e grafica rinnovata. Nessuna pubblicazione o attivazione di servizi.
 
+## Correzione porzioni e spesa metrica — 0.4.1
+
+- Richiesta: una porzione per persona, ospiti separati, totali in grammi/ml. Riprodotto il menu sintetico che genera 2040 g di manzo e 16 tortilla: il divisore 1 era interpretabile come persone, ma rappresentava l'intera preparazione.
+- Resa nota bloccata nel selettore e nel modulo giornaliero; persone 1 per default, ospiti su scelta esplicita; anteprima delle quantità del pasto. Rese in strisce, pezzi e polpette richiedono il numero di pasti, senza equiparare un pezzo a un pranzo.
+- Conversioni esatte in g/ml, incluse oz di massa; cup, pezzi e quantità senza peso rimangono da confermare. Misure da confezione/bilancia inseribili e riutilizzabili separatamente dagli snapshot. Nessuna densità o peso standard inventato. Dettagli e fonte primaria in PORTIONS_AND_METRIC.md.
+- Correzione esplicita delle divisioni discordanti della settimana con anteprima e backup esatto prima della scrittura. Nessuna migrazione o modifica implicita dei pasti già salvati. Compatibilità con backup vecchi e validazione dei nuovi campi.
+- Verifiche: 63 test automatici; 21 controlli browser sulla riproduzione/correzione e sui pesi, 106 mobile, 48 planner, 45 pasti/schede e 85 ricettario. Sintassi, build, risorse e hash originali verificati. Non verificati telefono fisico/Safari e pesi di prodotti reali.
+- La release precedente ac9ee42 è stata pubblicata su GitHub Pages con workflow 40967399932 concluso con successo; questa correzione è preparata e verificata per l'aggiornamento successivo.
+
 ## Accesso diretto a menu e spesa — 29 ottobre 2026
 
 - Richiesta: trovare la selezione di colazione, pranzo e cena e la spesa derivata; rendere più semplice il percorso settimanale.

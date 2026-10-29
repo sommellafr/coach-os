@@ -54,10 +54,10 @@ async (page) => {
     check((await state()).days['2026-11-02'].meals.length===4,'Più ricette nello stesso pasto consentite');
     const edit=p.locator(`#meal-edit-${lunch.id}`);
     await p.locator('.planned-meal').filter({has:p.getByRole('heading',{name:'Pasta fredda con pollo e rucola',exact:true})}).locator('summary').first().click();
-    await edit.locator('input').fill('4'); await edit.locator('select').selectOption('dinner');
+    await edit.locator('input[name=people]').fill('2'); await edit.locator('select[name=slot]').selectOption('dinner');
     await edit.getByRole('button',{name:'Aggiorna dose',exact:true}).click();
     meals=(await state()).days['2026-11-02'].meals;
-    check(meals.length===4 && meals.find(m=>m.id===lunch.id).batchPortions===4 && meals.find(m=>m.id===lunch.id).slot==='dinner','Correzione dose e pasto senza duplicare ID');
+    check(meals.length===4 && meals.find(m=>m.id===lunch.id).batchPortions===2 && meals.find(m=>m.id===lunch.id).people===2 && meals.find(m=>m.id===lunch.id).slot==='dinner','Correzione dose e pasto senza duplicare ID');
     const beforeQuota=await p.evaluate(()=>localStorage.getItem('coach_os_v1'));
     await p.evaluate(()=>{window.qaSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw Error('Quota test');};});
     await addMeal('lunch','pasta-ragu');

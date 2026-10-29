@@ -36,15 +36,15 @@ async (page) => {
     check(await p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true}).isChecked(),'Spunta ritrovata dopo ricarica');
     await tab('menu');await p.locator('[data-edit-menu-date="2026-11-02"]').first().click();
     await p.locator('.planned-meal .meal-portion-detail > summary').first().click();
-    const edit=p.locator('.meal-edit-form').first();await edit.locator('input').fill('4');await edit.getByRole('button').click();
+    const edit=p.locator('.meal-edit-form').first();await edit.locator('input[name=people]').fill('2');await edit.getByRole('button').click();
     await tab('shopping');row=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
-    check((await row.locator('.shopping-check b').textContent())==='112,5 g','Correzione di una dose aggiorna il totale una sola volta');
+    check((await row.locator('.shopping-check b').textContent())==='225 g','Ospite esplicito aggiorna il totale una sola volta');
     check(!await row.getByRole('checkbox').isChecked(),'Nuovo fabbisogno non eredita la vecchia spunta');
     await tab('menu');await p.locator('[data-edit-menu-date="2026-11-04"]').first().click();
     const meal=(await state()).days['2026-11-04'].meals[0];p.once('dialog',d=>d.accept());
     await p.locator(`[data-action=remove-meal][data-meal-id="${meal.id}"]`).click();
     await tab('shopping');row=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
-    check((await row.locator('.shopping-check b').textContent())==='37,5 g','Rimozione del piatto aggiorna la spesa');
+    check((await row.locator('.shopping-check b').textContent())==='150 g','Rimozione del piatto aggiorna la spesa');
     await tab('menu');await p.getByRole('button',{name:'Riusa menu la prossima settimana',exact:false}).click();
     check(await p.locator('#selected-date').inputValue()==='2026-11-09'&&(await state()).days['2026-11-09'].meals.length===1,'Riutilizzo menu e apertura della settimana successiva');
     check((await state()).days['2026-11-09'].meals[0].snapshot.id==='pasta-fredda-pollo','Copia conserva la ricetta originale');
@@ -58,7 +58,7 @@ async (page) => {
     check(await p.locator('.shopping-uncertain').count()===1,'Quantità mancanti separate dai totali affidabili');
     const downloadPromise=p.waitForEvent('download');await p.getByRole('button',{name:'Scarica lista .txt',exact:false}).click();
     const download=await downloadPromise;const stream=await download.createReadStream();let content='';for await(const chunk of stream)content+=chunk.toString();
-    check(download.suggestedFilename()==='coach-os-spesa-2026-11-09.txt'&&content.includes('Pasta: 37,5 g')&&content.includes('Farina: 20–25 g'),'Lista TXT scaricabile con settimana e quantità corrette');await download.delete();
+    check(download.suggestedFilename()==='coach-os-spesa-2026-11-09.txt'&&content.includes('Pasta: 150 g')&&content.includes('Farina: 20–25 g'),'Lista TXT scaricabile con settimana e quantità corrette');await download.delete();
     await p.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.qaClipboard=text;}}});});
     await p.getByRole('button',{name:'Copia lista',exact:true}).click();
     check(await p.evaluate(()=>window.qaClipboard.includes('COACH OS')),'Copia della lista verificata con clipboard simulata');

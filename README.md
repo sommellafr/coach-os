@@ -6,7 +6,11 @@ Guida completa con i comandi per Windows: **[Pubblicare su GitHub Pages](docs/GI
 
 Sono inclusi controlli automatici su push/PR e un workflow di pubblicazione **manuale**. `npm.cmd run build` prepara `dist/`; `npm.cmd run verify:site` ne controlla risorse e integrità. `npm.cmd run preview` apre una prova sotto `http://127.0.0.1:5180/coach-os/`, come un sito di progetto GitHub Pages. Nessuna installazione di dipendenze necessaria.
 
-Prima del passaggio dal sito locale a quello GitHub, esportare il diario da **Profilo e dati** e ripristinarlo nel nuovo indirizzo. GitHub ospita l'app; il diario rimane nel browser e non si sincronizza tra dispositivi. Repository remoto e deploy effettivo non sono ancora stati eseguiti.
+Prima del passaggio dal sito locale a quello GitHub, esportare il diario da **Profilo e dati** e ripristinarlo nel nuovo indirizzo. GitHub ospita l'app; il diario rimane nel browser e non si sincronizza tra dispositivi. Sito pubblicato su GitHub Pages: https://sommellafr.github.io/coach-os/.
+
+**Correzione 0.4.1 — porzioni e pesi:** ogni pasto parte da una porzione per te. La divisione di una ricetta con resa nota è automatica; gli ospiti si impostano separatamente in **Preparo anche per altre persone**. Se avevi inserito 1 al posto delle porzioni dell'intera preparazione, in Menu e spesa compare **Correggi le porzioni di questa settimana**, con riepilogo e backup prima della conferma. Le rese in pezzi/strisce/polpette richiedono invece il numero di pasti ricavati.
+
+La spesa usa **g o ml**. Oz di massa vengono convertite esattamente; cup, cucchiai, pezzi e dosi senza peso compaiono in **Pesi e volumi da confermare**. Premi **Conferma peso o volume** e indica il totale della voce della preparazione originale, da bilancia o confezione: non viene inventato un peso. Puoi applicare la misura alle altre occorrenze settimanali della stessa ricetta. Regole, limiti e casi verificati: [docs/PORTIONS_AND_METRIC.md](docs/PORTIONS_AND_METRIC.md).
 
 ## Versione locale 0.4 · pianifica la settimana e prepara la spesa
 

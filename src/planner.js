@@ -1,7 +1,7 @@
 import { weekDates, isDate, newDay } from './domain.js';
 import { createMeal, MEAL_SLOTS } from './meals.js';
 
-export function planRecipeOnDates(state, recipe, slot, portions, dates) {
+export function planRecipeOnDates(state, recipe, slot, portions, dates, options={}) {
   const unique = [...new Set(dates)];
   if(!unique.length || unique.length>7 || !unique.every(isDate) || !Object.hasOwn(MEAL_SLOTS,slot)) throw Error('Seleziona da 1 a 7 date valide e un pasto.');
   const week = weekDates(unique[0]);
@@ -10,7 +10,7 @@ export function planRecipeOnDates(state, recipe, slot, portions, dates) {
   // parziale, neppure chiamando il dominio fuori dal repository transazionale.
   const entries = unique.map(date=>{
     if((state.days[date]?.meals?.length || 0)>=60) throw Error('Una delle date ha già il numero massimo di ricette.');
-    return {date,meal:createMeal(recipe,slot,portions)};
+    return {date,meal:createMeal(recipe,slot,portions,options)};
   });
   for(const {date,meal} of entries) {
     state.days[date] ??= newDay(date); state.days[date].meals ??= [];

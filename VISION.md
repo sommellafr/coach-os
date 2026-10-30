@@ -3,6 +3,15 @@
 ## Scopo
 Creare un sito personale utilizzabile ogni giorno per organizzare allenamento e alimentazione e capire se si sta progredendo. L'utente deve poter rispondere a tre domande: cosa faccio oggi, cosa ho fatto realmente, come sta cambiando il mio andamento.
 
+## Regola guida: USER FRIENDLY e USABILITÀ
+Semplicità e velocità di utilizzo guidano ogni scelta di prodotto. L'app deve far venire voglia di usarla perché fa risparmiare tempo: registrare un pasto o una serie deve essere immediato anche da telefono, tra gli impegni o durante l'allenamento. L'aumento delle funzioni non deve aumentare la complessità dei gesti quotidiani.
+
+- Azione principale evidente, parole comuni, pochi campi e pochi passaggi. Chiedere solo ciò che serve in quel momento.
+- Riutilizzare recenti, preferiti, pasti abituali e valori dell'ultima seduta comparabile. I valori proposti restano da confermare e non diventano risultati eseguiti automaticamente.
+- Mostrare subito ciò che serve per decidere; rendere apribili configurazioni avanzate, formule e approfondimenti. Stime e dati mancanti devono comunque restare riconoscibili.
+- Conservare data, posizione e dati in compilazione quando si torna indietro. Errori e correzioni devono essere recuperabili senza rifare il lavoro.
+- Verificare ogni nuova funzione nei percorsi reali: registrare, confermare, correggere e ritrovare. Misurare passaggi e tempi, controllare uso mobile e accessibilità; se aggiunge attrito, semplificarla prima del rilascio.
+
 ## Destinatario e contesto
 Prima versione per un singolo utente, con uso prevalente da telefono in palestra, in cucina e a fine giornata. Il progetto deve poter evolvere senza perdere lo storico. Dati personali e obiettivi vanno confermati all'avvio; non precompilare valori presi da conversazioni passate come se fossero attuali.
 
@@ -33,7 +42,15 @@ Conservare la riconoscibilità del prototipo: base scura blu/antracite, testo le
 
 Preferire termini neutrali: “Extra” al posto di “Sgarro”, senza teschi o valutazioni morali sul cibo. Evidenziare i progressi con numeri e contesto, senza promettere risultati fisici certi.
 
+## Voce e motivazione
+Usare frasi brevi, energiche e comprensibili, legate a risultati realmente registrati. Titolo motivante, numero che lo sostiene, dettagli apribili: per esempio “45 kg! Hai alzato l'asticella 💪” per un nuovo record comparabile oppure “Stesso peso, due ripetizioni in più. Progresso.” quando le rilevazioni lo dimostrano.
+
+Celebrare anche la continuità e il ritorno: “Allenamento portato a casa” dopo la conferma della seduta, “Bentornato. Ripartiamo da qui.” dopo una pausa. Pochi messaggi nei momenti utili, senza interruzioni continue o celebrazioni per ogni campo salvato.
+
+Non inventare miglioramenti, non confondere aumento del carico con potenza muscolare e non dichiarare percentuali senza confronti appropriati. Niente colpevolizzazione per pasti liberi, sedute saltate o prestazioni inferiori; niente classificazioni degli utenti per capacità. La facilità d'uso deve rispettare tutti e sostenere la motivazione senza giudizi.
+
 ## Principi
+- L'app deve far risparmiare tempo: azioni quotidiane immediate, recenti e preferiti riutilizzabili, configurazione richiesta solo quando serve. Ogni nuova funzione deve preservare la semplicità dei percorsi esistenti; dettagli avanzati apribili, senza moltiplicare le destinazioni principali.
 - Salvataggio affidabile prima delle funzioni avanzate.
 - Modifiche e correzioni del passato senza duplicazioni.
 - Obiettivi e risultati separati.

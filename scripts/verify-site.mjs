@@ -14,8 +14,9 @@ async function walk(directory) {
   }
 }
 await walk(root);
+assert.equal(createHash('sha256').update(await readFile(resolve(root,'src/barcode-vendor.js'))).digest('hex'),'d7cc8f69dd70bdcf3ac00c9ae572bf2acb9f4132ba379c72df842e4db918652d','ZXing vendorizzato integro');
 assert.ok(files.includes('index.html')&&files.includes('.nojekyll'));
-assert.ok(files.every(file=>file==='index.html'||file==='.nojekyll'||/^src\/[a-z-]+\.(js|css)$/.test(file)||/^assets\/favicon\.svg$/.test(file)||/^assets\/recipes\/recipe-source-\d{2}\.jpeg$/.test(file)||/^data\/(recipes|recipe-sources)\.json$/.test(file)), 'Il sito contiene solo i file previsti');
+assert.ok(files.every(file=>file==='index.html'||file==='.nojekyll'||file==='src/barcode-license.txt'||/^src\/[a-z-]+\.(js|css)$/.test(file)||/^assets\/favicon\.svg$/.test(file)||/^assets\/recipes\/recipe-source-\d{2}\.jpeg$/.test(file)||/^data\/(recipes|recipe-sources)\.json$/.test(file)), 'Il sito contiene solo i file previsti');
 const origin='https://example.github.io';const base=`${origin}/coach-os/`;
 for(const file of files.filter(file=>['.html','.js','.css'].includes(extname(file)))) {
   const contents=await readFile(resolve(root,file),'utf8');

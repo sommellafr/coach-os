@@ -1,5 +1,17 @@
 # Stato implementazione
 
+## Registrazione rapida e codici a barre — 0.6.0
+
+Implementate le prime due fasi: diario alimenti consumati da Oggi/Calendario, composizione con più alimenti, quantità, nutrienti per 100 g/ml, recenti/preferiti/abituali, modifica/rimozione, lookup gratuito OFF v3 e scanner locale ZXing. Nuovi dati opzionali e snapshot, senza trasformare menu o scorte in consumi. Dettagli e limitazioni in [FOOD_DIARY.md](FOOD_DIARY.md). Schede, generatore mensile e Fat Bank rimangono pianificati.
+
+Verifiche: 86 test automatici; 34 controlli browser nuovi e 111 mobile esistenti; stream EAN-13 sintetico decodificato, fotocamera negata e tardiva fermate; API staging/schema/CORS verificati. Build e risorse originali integre. Telefono fisico e Safari non verificati. I paragrafi sotto conservano gli stati delle fasi precedenti.
+
+## Piano successivo alla 0.5.0 — 30 ottobre 2026
+
+Strutturato [NEXT_IMPROVEMENTS.md](NEXT_IMPROVEMENTS.md) su richiesta dell'utente. Ordine proposto: registrazione rapida, codici a barre gratuiti, nutrienti delle ricette, Total Body/cardio, generatore mensile e Fat Bank. Inseriti flussi, dipendenze, protezione dei dati e obiettivi misurabili di usabilità. Aggiornato il principio di semplicità in VISION.md. In questo passaggio cambia soltanto la documentazione: nessuna nuova funzione implementata, cancellazione o pubblicazione.
+
+Esteso il piano con l'esperienza alimentazione/allenamento richiesta: valori precedenti proposti senza registrazioni implicite, aggiunta rapida esercizi, grafici per esercizio e riepiloghi confrontabili in home. Distinti aumento del carico, forza stimata e potenza; nessuna percentuale muscolare non supportata dai dati. Stato: pianificato.
+
 ## Porzioni singole e dispensa — 0.5.0
 
 Richiesta esplicita: tutte le ricette monoporzioni, scelta del numero da preparare, spesa in confezioni e scorte che diminuiscono con l'utilizzo. Implementato lo strato di normalizzazione separato dalle fonti e un registro di acquisti/preparazioni annullabili. Le prenotazioni derivate dai menu non sono scarichi reali. Dettagli e limiti in [PANTRY_AND_PACKAGES.md](PANTRY_AND_PACKAGES.md); le sezioni delle release precedenti descrivono lo stato storico.

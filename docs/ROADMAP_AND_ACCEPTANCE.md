@@ -1,5 +1,7 @@
 # Roadmap e criteri di accettazione
 
+Aggiornamento del 30 ottobre 2026: il piano operativo successivo alla 0.5.0 è [Prossime migliorie](NEXT_IMPROVEMENTS.md), con fasi per registrazione rapida, scansione gratuita, nutrienti, schede/cardio, piano mensile e Fat Bank. Comprende criteri misurabili di usabilità e distingue richieste confermate da proposte. Le fasi sotto conservano la roadmap storica.
+
 ## Fase 0 — recupero e impostazione
 Conservare fonti, verificare baseline, scegliere stack essenziale, avviare Git. Proposta: TypeScript e componenti separati, persistenza locale versionata; framework e motore storage da scegliere in base al contesto. Nessun backend obbligatorio per la prima fase. Preparare comandi di installazione/avvio e stato implementazione.
 

@@ -1,6 +1,6 @@
 {
   "name": "coach-os",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "description": "Diario personale locale, calendario e allenamenti",
@@ -10,7 +10,7 @@
     "verify:site": "node scripts/verify-site.mjs",
     "preview": "node scripts/serve.mjs --dist --base /coach-os/ --port 5180",
     "test": "node --test --test-isolation=none",
-    "check": "node --check src/domain.js && node --check src/storage.js && node --check src/app.js && node --check src/recipes.js && node --check src/recipe-tags.js && node --check src/ui.js && node --check src/meals.js && node --check src/metric.js && node --check src/portion-ui.js && node --check src/meal-ui.js && node --check src/presets.js && node --check src/templates-ui.js && node --check src/planner.js && node --check src/planner-ui.js && node --check src/shopping.js && node --check src/single-serving.js && node --check src/pantry.js && node --check src/pantry-ui.js && node --check src/packages.js"
+    "check": "node --check src/domain.js && node --check src/storage.js && node --check src/app.js && node --check src/recipes.js && node --check src/recipe-tags.js && node --check src/ui.js && node --check src/meals.js && node --check src/metric.js && node --check src/portion-ui.js && node --check src/meal-ui.js && node --check src/presets.js && node --check src/templates-ui.js && node --check src/planner.js && node --check src/planner-ui.js && node --check src/shopping.js && node --check src/single-serving.js && node --check src/pantry.js && node --check src/pantry-ui.js && node --check src/packages.js && node --check src/foods.js && node --check src/food-ui.js && node --check src/food-lookup.js && node --check src/barcode-scanner.js"
   },
   "engines": { "node": ">=22.8" }
 }

@@ -14,7 +14,7 @@ with ZipFile(archive, 'w', ZIP_DEFLATED) as bundle:
         assert not path.is_symlink(), 'Collegamenti non ammessi'
         if path.is_file():
             name = path.relative_to(dist).as_posix()
-            assert name in ('index.html', '.nojekyll') or re.fullmatch(r'(src/[a-z-]+\.(js|css)|assets/favicon\.svg|assets/recipes/recipe-source-\d{2}\.jpeg|data/(recipes|recipe-sources)\.json)', name), f'File inatteso: {name}'
+            assert name in ('index.html', '.nojekyll', 'src/barcode-license.txt') or re.fullmatch(r'(src/[a-z-]+\.(js|css)|assets/favicon\.svg|assets/recipes/recipe-source-\d{2}\.jpeg|data/(recipes|recipe-sources)\.json)', name), f'File inatteso: {name}'
             bundle.write(path, name)
 with ZipFile(archive) as bundle:
     assert bundle.testzip() is None

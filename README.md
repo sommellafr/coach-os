@@ -1,5 +1,7 @@
 # Coach OS — diario personale
 
+Piano delle prossime migliorie: [registrazione rapida, prodotti, schede, menu mensile e Fat Bank](docs/NEXT_IMPROVEMENTS.md). Priorità: risparmiare tempo nell'uso quotidiano. Le prime due fasi sono implementate nella 0.6.0; le successive restano pianificate.
+
 ## Pronto per GitHub e GitHub Pages
 
 Guida completa con i comandi per Windows: **[Pubblicare su GitHub Pages](docs/GITHUB_PAGES.md)**.
@@ -9,6 +11,8 @@ Sono inclusi controlli automatici su push/PR e un workflow di pubblicazione **ma
 Prima del passaggio dal sito locale a quello GitHub, esportare il diario da **Profilo e dati** e ripristinarlo nel nuovo indirizzo. GitHub ospita l'app; il diario rimane nel browser e non si sincronizza tra dispositivi. Sito pubblicato su GitHub Pages: https://sommellafr.github.io/coach-os/.
 
 ## Versione 0.5.0 · porzioni, confezioni e dispensa
+
+**Novità 0.6.0:** da **Oggi → Aggiungi pasto** registri alimenti singoli, quantità in g/ml e pasti composti, con totali kcal e macro. Recenti, preferiti e pasti abituali evitano di riscrivere i valori. Puoi scansionare il codice a barre o digitarlo per cercare gratuitamente su Open Food Facts; in alternativa inserisci i valori dell'etichetta per 100 g/ml. La ricerca per nome riguarda i tuoi alimenti salvati. È disponibile anche nel Calendario per la data consultata. Diario consumato distinto dai menu pianificati e dalla dispensa. Dettagli, licenze e limiti: [Diario alimentare](docs/FOOD_DIARY.md).
 
 Tutte le 34 ricette si aprono con le dosi per **1 porzione**. Nel calendario scegli soltanto **Quante porzioni vuoi preparare?**, da 1 a 20; per esempio il burrito parte da 170 g di manzo, due porzioni da 340 g. Le rese assenti o espresse in pezzi hanno una base redazionale dichiarata, modificabile in futuro: non sono porzioni nutrizionali validate.
 

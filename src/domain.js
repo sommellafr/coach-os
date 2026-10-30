@@ -2,6 +2,7 @@ import { validateMeals } from './meals.js';
 import { validatePantry } from './pantry.js';
 import { validateFoods } from './foods.js';
 import { validateNutritionSettings } from './recipe-nutrition.js';
+import { validateMonthlyState } from './month-validation.js';
 import { historicalTemplates } from './presets.js';
 // Date civili locali per il diario; i timestamp ISO servono soltanto per l'audit.
 export const SCHEMA_VERSION = 1;
@@ -116,6 +117,7 @@ export function validateState(state) {
   validatePantry(state);
   validateFoods(state);
   validateNutritionSettings(state.recipeNutritionSettings);
+  validateMonthlyState(state);
   assert(Number.isSafeInteger(state.revision) && state.revision >= 0, 'Revisione non valida.');
   assert(state.updatedAt === null || (text(state.updatedAt, 40) && Number.isFinite(Date.parse(state.updatedAt))), 'Timestamp non valido.');
   assert(Array.isArray(state.templates) && state.templates.length <= 100, 'Schede non valide.');

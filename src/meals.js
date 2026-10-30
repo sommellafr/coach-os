@@ -41,6 +41,9 @@ export function portionForMeal(meal) {
   return { ingredients: scaled.recipe.ingredients, nutrition: scaled.nutritionTotal };
 }
 export function metricPortionForMeal(meal) {
+  if(meal.referenceIngredients){
+    return {ingredients:meal.referenceIngredients.map(i=>({...structuredClone(i),quantity:i.quantity*(meal.people??1),measurementOrigin:'estimated-reference'})),nutrition:meal.nutritionEstimate?Object.fromEntries(Object.entries(meal.nutritionEstimate.nutrients).map(([k,v])=>[k,v===null?null:v*(meal.people??1)])):null};
+  }
   const ingredients=meal.snapshot.ingredients.map((item,index)=>metricIngredient(item,meal.metricOverrides?.find(entry=>entry.index===index)));
   const scaled=scaleRecipe({...meal.snapshot,ingredients},(meal.people??1)/meal.batchPortions);
   return {ingredients:scaled.recipe.ingredients,nutrition:scaled.nutritionTotal};
@@ -63,6 +66,11 @@ export function validateMeals(meals, ids = new Set()) {
     validateBatchPortions(meal.batchPortions);
     if(meal.people!==undefined) validatePeople(meal.people);
     if(meal.nutritionEstimate!==undefined)validateEstimateSnapshot(meal.nutritionEstimate);
+    if(meal.referenceIngredients!==undefined){
+      assert(meal.nutritionEstimate&&Array.isArray(meal.referenceIngredients)&&meal.referenceIngredients.length>0&&meal.referenceIngredients.length<=100,'Dosi di riferimento del menu non valide.');
+      for(const item of meal.referenceIngredients)assert(item&&validText(item.label,160)&&item.label.trim()&&typeof item.quantity==='number'&&item.quantity>0&&item.quantity<=1000000&&['g','ml'].includes(item.unit)&&validText(item.preparationState,80)&&validText(item.note)&&item.optional===false,'Ingrediente del piano mensile non valido.');
+    }
+    if(meal.menuPlan!==undefined){const p=meal.menuPlan;assert(p&&p.version===1&&validId(p.id)&&/^(19|20|21)\d{2}-(0[1-9]|1[0-2])$/.test(p.month)&&validNumber(p.kcalTarget)&&p.kcalTarget>0&&p.kcalTarget<=10000&&validNumber(p.proteinTarget)&&p.proteinTarget<=2500,'Obiettivi del menu non validi.');}
     const s = meal.snapshot;
     assert(s && validId(s.id) && Number.isSafeInteger(s.version) && s.version > 0 && validText(s.title,160) && s.title.trim(), 'Snapshot ricetta non valido.');
     assert(s.yield && (s.yield.quantity === null || (validNumber(s.yield.quantity) && s.yield.quantity > 0)) && (s.yield.unit === null || validText(s.yield.unit,80)), 'Resa della ricetta non valida.');

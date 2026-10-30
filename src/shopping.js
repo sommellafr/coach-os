@@ -43,6 +43,7 @@ export function shoppingForWeek(state, date, {includeOptional = false,inventory=
         if(item.note) row.notes.add(item.note);
         if(item.metricPending) row.notes.add(`Da pesare in g o ml. Nella preparazione originale: ${item.originalAmount}.`);
         if(item.measurementOrigin==='user') row.notes.add('Peso/volume confermato dall’utente, conservato separatamente dalla fonte.');
+        if(item.measurementOrigin==='estimated-reference')row.notes.add('Dose di riferimento del piano: stimata, da verificare sulla confezione o alla bilancia.');
         if(item.quantityRange) {
           row.min += item.quantityRange.min * factor; row.max += item.quantityRange.max * factor; row.knownCount++;
         } else if(item.quantity !== null) {

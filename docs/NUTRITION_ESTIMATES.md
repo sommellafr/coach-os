@@ -1,6 +1,6 @@
 # Stime nutrizionali delle ricette · 0.7.0
 
-Implementazione dello step 3 richiesto dall'utente. Il generatore mensile, gli obiettivi personali e la Fat Bank restano fasi successive: questa versione prepara la base di calcolo, senza attivare automaticamente un piano alimentare.
+Implementazione dello step 3 richiesto dall'utente, introdotta nella 0.7.0. Nella 0.8.0 il [menu mensile](MONTHLY_MENU.md) aggiunge obiettivi e dosi di riferimento congelate anche per la spesa dei pasti generati. Le correzioni nel solo ricettario non riscrivono la spesa dei pasti precedenti. La Fat Bank resta una fase successiva.
 
 ## Uso
 
@@ -12,7 +12,7 @@ I pesi del calcolo sono di parte mangiata. Sono esplicitamente separati dalle qu
 
 ## Copertura e provenienza
 
-Le versioni di riferimento coprono tutte le **34 ricette e 164 identificativi ingrediente**, con **105 profili alimentari**. I valori sono stime della versione descritta, non misure di quei piatti. Il riepilogo riproducibile è in [RECIPE_NUTRITION_AUDIT.md](RECIPE_NUTRITION_AUDIT.md).
+Le versioni di riferimento coprono tutte le **34 ricette e 164 identificativi ingrediente**, con **105 profili alimentari** nella base 0.7.0; la 0.8.0 aggiunge mela, pera e arancia per i completamenti dichiarati del menu (**108 profili**). I valori sono stime della versione descritta, non misure di quei piatti. Il riepilogo riproducibile è in [RECIPE_NUTRITION_AUDIT.md](RECIPE_NUTRITION_AUDIT.md).
 
 La base principale è il [download ufficiale USDA FoodData Central SR Legacy CSV, aprile 2018](https://fdc.nal.usda.gov/download-datasets/), release storica finale scelta per copertura e riproducibilità. Non viene presentata come nuova analisi del 2026 o come etichetta attuale di ogni prodotto italiano. I riferimenti conservano FDC ID, descrizione originale, valori per 100 g, fibra, carboidrati totali, misure domestiche e link al record. [Descrizione delle tipologie USDA](https://fdc.nal.usda.gov/data-documentation/).
 

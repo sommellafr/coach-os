@@ -86,6 +86,9 @@ carrot|Carota|170393
 celery|Sedano|169988
 avocado|Avocado|171705
 banana|Banana senza buccia|173944
+apple|Mela con buccia|171688
+pear|Pera|169118
+orange|Arancia senza buccia|169097
 sugar|Zucchero|169655
 honey|Miele|169640
 oats|Fiocchi di avena|169705

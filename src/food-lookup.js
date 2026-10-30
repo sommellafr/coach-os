@@ -25,8 +25,8 @@ export async function lookupBarcode(value,{fetcher=fetch,signal,products=[]}={})
   requests.push(Date.now());
   const url=new URL(`https://world.openfoodfacts.org/api/v3/product/${code}`);
   url.searchParams.set('fields','code,product_name,product_name_it,brands,nutriments,nutrition_data_per,product_quantity_unit,serving_quantity_unit');
-  url.searchParams.set('lc','it');url.searchParams.set('app_name','CoachOS');url.searchParams.set('app_version','0.7.0');
-  url.searchParams.set('User-Agent','CoachOS/0.7.0 (https://github.com/sommellafr/coach-os)');
+  url.searchParams.set('lc','it');url.searchParams.set('app_name','CoachOS');url.searchParams.set('app_version','0.8.0');
+  url.searchParams.set('User-Agent','CoachOS/0.8.0 (https://github.com/sommellafr/coach-os)');
   let response;
   try{response=await fetcher(url,{signal,credentials:'omit',referrerPolicy:'no-referrer'});}catch(e){if(e.name==='AbortError')throw e;throw Error('Ricerca non disponibile: controlla la connessione o inserisci l’etichetta.');}
   if(response.status===404)throw Error('Prodotto non trovato. Inserisci i valori della confezione.');

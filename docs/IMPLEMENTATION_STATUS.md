@@ -1,5 +1,11 @@
 # Stato implementazione
 
+## Menu mensile — 0.8.0
+
+Completato il quarto passo alimentare concordato: tre schermate per obiettivi, 5/6 giorni e anteprima; tre pasti giornalieri, kcal/proteine con scostamenti espliciti, varietà, esclusioni, frutta/contorni facoltativi, blocchi e sostituzioni. Riapertura del mese salvato con un tocco. Nuove dosi di riferimento collegate alla spesa, dati precedenti protetti e nessun consumo/scarico implicito. Gestione cancellazioni per settimana/mese/tutti, diario mangiato su scelta distinta e backup. Metodo e limiti: [MONTHLY_MENU.md](MONTHLY_MENU.md).
+
+102 test automatici e 48 controlli browser nuovi superati. Il caso sintetico 1.600 kcal/80 kg su cinque giorni in novembre genera 63 pasti e raggiunge gli obiettivi nel test; nessuna garanzia per ogni target. Mobile simulato e ispezione visiva; telefono fisico/Safari non verificati. Le sezioni sotto sono storico delle fasi precedenti.
+
 ## Stime delle ricette — 0.7.0
 
 Completato lo step 3: 34 ricette, 164 ingredienti, 105 profili tracciati USDA/etichette, pesi medi e scelte redazionali espliciti, personalizzazione con anteprima e snapshot nei nuovi menu. Cinque casi con ambiguità importanti richiedono controllo. Fonti e dati precedenti conservati. Quantità nutrizionali distinte da spesa/dispensa. Metodi e audit in [NUTRITION_ESTIMATES.md](NUTRITION_ESTIMATES.md) e [RECIPE_NUTRITION_AUDIT.md](RECIPE_NUTRITION_AUDIT.md).

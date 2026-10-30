@@ -20,7 +20,7 @@ function measure(profile,kind){
   const aliases={cup:/^cup(?:$|,| \()/i,tbsp:/^(tablespoon|tbsp)(?:$|,| \()/i,tsp:/^(tsp|teaspoon)(?:$|,| \()/i};
   const row=profile?.portions.find(p=>aliases[kind]?.test(p.modifier));return row?row.grams/row.amount:null;
 }
-function density(profile){
+export function nutritionDensity(profile){
   const cup=measure(profile,'cup');if(cup!==null)return cup/240;
   const spoon=measure(profile,'tbsp');if(spoon!==null)return spoon/15;
   const tsp=measure(profile,'tsp');return tsp===null?null:tsp/5;
@@ -31,7 +31,7 @@ function amountFor(item,profile,count){
   if(item.quantityRange){notes.push(`Usato il punto medio ${q} ${item.unit} dell’intervallo originale.`);estimated=true;}
   if(q!==null&&['g','kg','oz'].includes(item.unit))return {grams:q*(item.unit==='kg'?1000:item.unit==='oz'?28.349523125:1),notes,estimated};
   if(q!==null&&['ml','l','cl'].includes(item.unit)){
-    const d=profile?.sourceId==='173647'?1:density(profile),volume=q*(item.unit==='l'?1000:item.unit==='cl'?10:1);
+    const d=profile?.sourceId==='173647'?1:nutritionDensity(profile),volume=q*(item.unit==='l'?1000:item.unit==='cl'?10:1);
     if(d!==null){notes.push(`Volume convertito con densità di riferimento ${d.toFixed(3)} g/ml (misura USDA cup assunta da 240 ml).`);return {grams:volume*d,notes,estimated:true};}
     return {grams:null,notes:['Densità non disponibile: indicare il peso in grammi.'],estimated:true};
   }
@@ -63,7 +63,7 @@ export function estimateRecipe(recipe,count=1,{settings=null,multiplier=1,metric
     const metric=metricOverrides.find(m=>m.index===index);
     if(metric){
       if(metric.unit==='g')amount.grams=metric.quantity;
-      else if(metric.unit==='ml'){const d=profile?.sourceId==='173647'?1:density(profile);amount.grams=d===null?null:metric.quantity*d;}
+      else if(metric.unit==='ml'){const d=profile?.sourceId==='173647'?1:nutritionDensity(profile);amount.grams=d===null?null:metric.quantity*d;}
       notes.push('Quantità fornita manualmente nel menu. Per la panatura verificare la sola quota mangiata.');
     }
     if(item.optional&&!included)notes.push('Facoltativo escluso; includilo se lo utilizzi.');

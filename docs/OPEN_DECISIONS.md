@@ -15,7 +15,7 @@ Le proposte sotto non sono conferme dell'utente. Procedere con scelte reversibil
 | Dispendio | Modello, attività base e calorie nette/lorde | Un'unica convenzione senza doppi conteggi |
 | Giornata completa | Chiusura esplicita del diario | Stato bozza/completo, correzione sempre possibile |
 | Ricette | Una o più ricette per immagine, duplicati, leggibilità | Leggere tutte le fonti prima di dichiarare il catalogo completo |
-| Nutrienti | Conferma dei prodotti e pesi personali, cinque ricette con ambiguità importanti | Stime tracciate 0.7.0 separate dalla fonte e modificabili; mancanti distinti da zero. Conciliare dosi del piano e della spesa prima del generatore mensile |
+| Nutrienti | Conferma dei prodotti e pesi personali, cinque ricette con ambiguità importanti | Stime tracciate e modificabili; dosi generate collegate alla spesa nella 0.8.0. Il generatore esclude i casi da controllare; mancanti distinti da zero, nessuna certificazione clinica/allergeni |
 | Design | Preferenze ulteriori dell'utente | Richiesta app moderna applicata in v0.3: scuro blu/antracite, azzurro/lime, SVG locali, schede illustrate e navigazione flottante mobile |
 | Menu e spesa | Porzioni redazionali e formati personali da validare | Implementata in v0.5: porzioni singole, confezioni modificabili, scorte reali e prenotazioni separate; riferimenti confezioni parziali. Nessuna conversione di densità o crudo/cotto |
 | Multi-sessione | Più allenamenti al giorno | Modello dati capace di contenerli; interfaccia iniziale semplice |

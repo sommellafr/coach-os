@@ -1,8 +1,10 @@
 # Coach OS — diario personale
 
-Piano delle prossime migliorie: [registrazione rapida, prodotti, schede, menu mensile e Fat Bank](docs/NEXT_IMPROVEMENTS.md). Priorità: risparmiare tempo nell'uso quotidiano. Diario e scanner nella 0.6.0, stime delle ricette nella 0.7.0; generatore mensile e fasi successive restano pianificati.
+**Novità 0.8.0 — menu mensile attivo:** apri **Pasti → Crea menu del mese**, inserisci kcal e peso, scegli 5 o 6 giorni e controlla l'anteprima di colazione/pranzo/cena. Puoi sostituire un piatto, bloccarlo e rigenerare gli altri prima di salvare. **Vedi menu del mese** riapre il piano; **Gestisci pasti salvati** permette di svuotare settimana, mese o tutti i pasti con backup e scelta distinta per il diario mangiato. Dosi del piano collegate alla spesa e scostamenti dagli obiettivi espliciti. [Guida e limiti](docs/MONTHLY_MENU.md).
 
-**Novità 0.7.0:** tutte le 34 ricette mostrano kcal e macro stimati per porzione. In **Ricettario → ricetta → Controlla dosi, prodotti e fonti** puoi correggere pesi ed etichette; il totale cambia nell'anteprima e puoi salvare la tua versione. Le scelte importanti da verificare sono segnalate. I nuovi menu conservano la stima, quelli precedenti restano intatti. Le dosi nutrizionali di riferimento non cambiano automaticamente la spesa. Fonti e limiti: [Stime nutrizionali](docs/NUTRITION_ESTIMATES.md). **Il generatore del mese non è ancora attivo.**
+Piano delle prossime migliorie: [registrazione rapida, prodotti, schede, menu mensile e Fat Bank](docs/NEXT_IMPROVEMENTS.md). Priorità: risparmiare tempo nell'uso quotidiano. Diario/scanner 0.6.0, stime 0.7.0 e menu mensile 0.8.0 implementati; nuove schede e Fat Bank restano pianificate.
+
+**Novità 0.7.0:** tutte le 34 ricette mostrano kcal e macro stimati per porzione. In **Ricettario → ricetta → Controlla dosi, prodotti e fonti** puoi correggere pesi ed etichette; il totale cambia nell'anteprima e puoi salvare la tua versione. Le scelte importanti da verificare sono segnalate. I nuovi menu conservano la stima, quelli precedenti restano intatti. Le dosi nutrizionali di riferimento non cambiano automaticamente la spesa. Fonti e limiti: [Stime nutrizionali](docs/NUTRITION_ESTIMATES.md). Il generatore mensile è stato aggiunto nella 0.8.0.
 
 ## Pronto per GitHub e GitHub Pages
 

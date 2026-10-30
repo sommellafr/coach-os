@@ -1,6 +1,7 @@
 import { scaleRecipe } from './recipes.js';
 import { metricIngredient, validateMetricOverrides } from './metric.js';
 import { cookedMovement } from './pantry.js';
+import { validateEstimateSnapshot } from './recipe-nutrition.js';
 
 export const MEAL_SLOTS = { breakfast: 'Colazione', lunch: 'Pranzo', dinner: 'Cena' };
 // Unità organizzative della fonte, non porzioni nutrizionali prescritte.
@@ -21,7 +22,7 @@ export function validatePeople(value) {
   assert(Number.isInteger(value)&&value>=1&&value<=20,'Indica da 1 a 20 persone. Una porzione per persona.');
   return value;
 }
-export function createMeal(recipe, slot, batchPortions, {people=1,metricOverrides=[]}={}) {
+export function createMeal(recipe, slot, batchPortions, {people=1,metricOverrides=[],nutritionEstimate=null}={}) {
   assert(Object.hasOwn(MEAL_SLOTS, slot), 'Pasto non valido.');
   validateBatchPortions(batchPortions);
   // Snapshot degli ingredienti originali, non un riferimento al catalogo vivo.
@@ -31,6 +32,7 @@ export function createMeal(recipe, slot, batchPortions, {people=1,metricOverride
     nutrition: recipe.nutrition, uncertainties: recipe.uncertainties,
   });
   const meal = { id: crypto.randomUUID(), slot, status: 'planned', quantity: 1, batchPortions, snapshot, people:validatePeople(people), metricOverrides:structuredClone(metricOverrides) };
+  if(nutritionEstimate!==null)meal.nutritionEstimate=structuredClone(nutritionEstimate);
   validateMeals([meal]);
   return meal;
 }
@@ -60,6 +62,7 @@ export function validateMeals(meals, ids = new Set()) {
     assert(meal.status === 'planned' && meal.quantity === 1, 'Questa versione supporta pasti pianificati in dose singola.');
     validateBatchPortions(meal.batchPortions);
     if(meal.people!==undefined) validatePeople(meal.people);
+    if(meal.nutritionEstimate!==undefined)validateEstimateSnapshot(meal.nutritionEstimate);
     const s = meal.snapshot;
     assert(s && validId(s.id) && Number.isSafeInteger(s.version) && s.version > 0 && validText(s.title,160) && s.title.trim(), 'Snapshot ricetta non valido.');
     assert(s.yield && (s.yield.quantity === null || (validNumber(s.yield.quantity) && s.yield.quantity > 0)) && (s.yield.unit === null || validText(s.yield.unit,80)), 'Resa della ricetta non valida.');

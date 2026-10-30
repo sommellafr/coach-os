@@ -1,6 +1,8 @@
 # Coach OS — diario personale
 
-Piano delle prossime migliorie: [registrazione rapida, prodotti, schede, menu mensile e Fat Bank](docs/NEXT_IMPROVEMENTS.md). Priorità: risparmiare tempo nell'uso quotidiano. Le prime due fasi sono implementate nella 0.6.0; le successive restano pianificate.
+Piano delle prossime migliorie: [registrazione rapida, prodotti, schede, menu mensile e Fat Bank](docs/NEXT_IMPROVEMENTS.md). Priorità: risparmiare tempo nell'uso quotidiano. Diario e scanner nella 0.6.0, stime delle ricette nella 0.7.0; generatore mensile e fasi successive restano pianificati.
+
+**Novità 0.7.0:** tutte le 34 ricette mostrano kcal e macro stimati per porzione. In **Ricettario → ricetta → Controlla dosi, prodotti e fonti** puoi correggere pesi ed etichette; il totale cambia nell'anteprima e puoi salvare la tua versione. Le scelte importanti da verificare sono segnalate. I nuovi menu conservano la stima, quelli precedenti restano intatti. Le dosi nutrizionali di riferimento non cambiano automaticamente la spesa. Fonti e limiti: [Stime nutrizionali](docs/NUTRITION_ESTIMATES.md). **Il generatore del mese non è ancora attivo.**
 
 ## Pronto per GitHub e GitHub Pages
 

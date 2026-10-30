@@ -1,0 +1,42 @@
+// Scelte redazionali esplicite per la versione di riferimento. Pesi dell'intera fonte.
+// Non cambiano le dosi da acquistare né il testo originale.
+export const RECIPE_ASSUMPTIONS = {
+  'burrito-chipotle':{review:true,notes:['La fonte non chiarisce salsa e chipotle: questa versione usa 60 g di salsa per la preparazione e il solo peperoncino, senza sommare una scatola aggiuntiva.'],rows:{1:{grams:60,note:'Dose redazionale della salsa; unità mancante nella fonte.'},7:{grams:0,note:'Scatola trattata come alternativa al singolo peperoncino, esclusa per evitare un doppio conteggio.'}}},
+  'pollo-miele-aglio':{review:true,notes:['Panatura: conta quella che aderisce, non tutta la farina preparata. Per la spesa restano le dosi originali.'],rows:{5:{grams:100,note:'Stima della farina aderente: 12,5 g per ciascuna delle 8 strisce (intervallo fonte 10–15 g).'},6:{grams:52,note:'Stima fecola aderente: 6,5 g per ciascuna delle 8 strisce (fonte 5–8 g).'}}},
+  'piadina-salmone':{rows:{0:{grams:100,note:'Piadina di riferimento da 100 g; peso non indicato nella fonte.'},2:{grams:30,note:'Lattuga: dose redazionale.'},6:{grams:10,note:'Lime: dose redazionale della parte utilizzata.'}}},
+  'piadina-caprese':{rows:{0:{grams:100,note:'Piadina di riferimento da 100 g.'},1:{grams:20,note:'Rucola: dose redazionale.'},2:{grams:100,note:'Pomodoro: dose redazionale.'},3:{grams:100,note:'Mozzarella: riferimento La Leggera da 100 g, non una mozzarella proteica identificata.'}}},
+  'piadina-veggie':{rows:{0:{grams:100,note:'Piadina di riferimento da 100 g.'},1:{note:'Ceci considerati cotti e sgocciolati; stato assente nella fonte.'},3:{grams:30,note:'Insalata: dose redazionale.'},4:{grams:50,note:'Carote: dose redazionale.'}}},
+  'piadina-tonno':{rows:{0:{grams:100,note:'Piadina di riferimento da 100 g.'},1:{note:'Tonno scelto al naturale e sgocciolato.'},2:{grams:30,note:'Due cucchiai di yogurt assunti pari a 30 g.'},3:{grams:30,note:'Lattuga: dose redazionale.'},4:{grams:20,note:'Cipolla: dose redazionale.'}}},
+  'piadina-pollo':{rows:{0:{grams:100,note:'Piadina di riferimento da 100 g.'},2:{grams:2,note:'Basilico: dose redazionale.'}}},
+  'crepes-cacao':{rows:{5:{grams:50,note:'Yogurt di farcitura: dose redazionale.'},6:{grams:15,note:'Marmellata light: dose redazionale.'}}},
+  'banana-snack':{rows:{3:{grams:42.5,note:'Quarto di cup di gocce assunto pari a 42,5 g; riferimento nutrizionale cioccolato fondente.'}}},
+  'cloud-bread':{rows:{3:{grams:2,note:'Cacao di guarnizione: dose redazionale.'}}},
+  'rotolo-patate':{rows:{3:{note:'Salsa 0 kcal non identificata: riferimento barbecue tradizionale, non considerata automaticamente a zero.'},12:{grams:30,note:'Insalata: dose redazionale.'}}},
+  'brownies':{notes:['Tra eritritolo e zucchero questa versione usa zucchero; tra gli oli usa olio di cocco. Cambia il riferimento se usi l’alternativa.'],rows:{2:{profileId:'sugar',note:'Scelta esplicita: zucchero. Se usi eritritolo seleziona il relativo riferimento.'}}},
+  'bowl-patate-manzo':{review:true,notes:['La salsa ranch proteica non è identificata: riferimento ranch a ridotto contenuto di grassi. Confermare o sostituire l’etichetta prima di usarla nel generatore.'],rows:{8:{grams:20,note:'Cipollotto: dose redazionale per l’intera preparazione.'},9:{grams:40,note:'Cipolla: dose redazionale.'},10:{grams:100,note:'Pomodoro: dose redazionale.'}}},
+  'piadine-ceci':{rows:{3:{grams:80,note:'Prosciutto: 20 g per piadina, scelta redazionale.'},4:{grams:80,note:'Spalmabile: 20 g per piadina, scelta redazionale.'},5:{grams:40,note:'Rucola: 10 g per piadina, scelta redazionale.'}}},
+  'piadine-zucchine':{rows:{5:{grams:60,note:'Spalmabile: 20 g per piadina, scelta redazionale.'},6:{grams:90,note:'Fesa: 30 g per piadina, scelta redazionale.'}}},
+  'riso-pollo-broccoli':{review:true,notes:['Il kg di riso è considerato secco: la fonte non specifica lo stato. Può produrre una porzione molto abbondante; seleziona riso cotto solo se quello era il peso effettivo.'],rows:{3:{grams:6,note:'Curry: cucchiaio assunto pari a 6 g.'},4:{grams:200,note:'Barattolo di formaggio cremoso assunto da 200 g.'}}},
+  'polpette-tacchino':{review:true,notes:['La mollica da 80 g bagnata è stimata come 40 g di pane e 40 g d’acqua; confermare il peso del pane prima dell’ammollo.'],rows:{1:{grams:40,note:'Peso di pane asciutto utilizzato nella stima, non peso bagnato.'}}},
+  'pasta-lenticchie':{rows:{1:{note:'Usata l’alternativa con lenticchie secche; quelle cotte non si sommano.'}}},
+  'couscous-ceci':{rows:{2:{profileId:'zucchini',note:'Verdure miste rappresentate da zucchine; sostituire con la propria combinazione se diversa.'}}},
+  'risotto-radicchio':{notes:['Non si stima la quota di alcol evaporata: il vino resta conteggiato integralmente.'],rows:{2:{grams:100,note:'Vino: unità assunta come circa 100 g per la preparazione.'},5:{grams:30,note:'Sedano: dose redazionale.'},6:{grams:30,note:'Carota: dose redazionale.'},7:{grams:30,note:'Cipolla: dose redazionale.'}}},
+  'pasta-ragu':{rows:{2:{profileId:'carrot',note:'Soffritto misto rappresentato da carota: composizione effettiva non nota.'}}},
+};
+
+export const PROXY_NOTES = {
+ 'macinato-magro-di-manzo-96-4':'Riferimento USDA 95/5 al posto del 96/4: stima rappresentativa, non stesso prodotto.',
+ 'prosciutto-crudo':'Riferimento USDA di prosciutto generico: verificare l’etichetta del proprio crudo.',
+ 'fecola-di-patate':'Amido di mais come riferimento rappresentativo della fecola; controllare la propria etichetta.',
+ 'fecola-di-patate-per-la-salsa':'Amido di mais come riferimento rappresentativo della fecola.',
+ 'tortilla-a-calorie-ridotte':'Tortilla di frumento standard: prodotto a calorie ridotte non identificato. Sostituire i valori della confezione.',
+ 'crema-proteica-bigusto':'Riferimento BioTechUSA bianca: non è identificato il prodotto bigusto originale.',
+ 'mozzarella-proteica':'Riferimento mozzarella La Leggera, non una mozzarella proteica identificata.',
+ 'gorgonzola-dolce':'Formaggio erborinato USDA come riferimento del gorgonzola dolce.',
+ 'burro-di-nocciole':'Nocciole pure come riferimento del burro 100% nocciole.',
+ 'latte-o-bevanda-vegetale':'Scelto latte 1% grassi: una bevanda vegetale può avere macro differenti.',
+ 'sale-all-aglio':'Sale usato come riferimento della miscela, senza inventare la proporzione di aglio.',
+ 'salsa-ranch-proteica':'Ranch a ridotto contenuto di grassi come riferimento; non ne prova il contenuto proteico.',
+ 'peperoncino-chipotle-in-scatola':'Peperoncino conservato USDA come riferimento del chipotle.',
+ 'spezie-per-la-farina':'Miscela rappresentata da paprika: proporzioni originali non indicate.',
+};

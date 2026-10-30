@@ -14,6 +14,9 @@ import { setPantryStock, pantryEntry, purchasePack, consumePantry, undoPantryMov
 import { metricIngredient } from './metric.js';
 import { planRecipeOnDates, copyMenuWeek } from './planner.js';
 import { renderFoodDiary, setupFoodDiary } from './food-ui.js';
+import { estimateForRecipe, readNutritionSettings, estimateSummary } from './nutrition-ui.js';
+import { snapshotEstimate, validateNutritionSettings, estimateRecipe } from './recipe-nutrition.js';
+import { NUTRITION_DATA } from './nutrition-data.js';
 
 let storage;
 try { storage = window.localStorage; } catch { storage = { getItem() { throw Error('Accesso al browser negato.'); } }; }
@@ -176,7 +179,7 @@ function render() {
   });
   document.querySelector('#current-section').textContent = ({today:'Oggi',calendar:'Calendario',menu:'Menu e spesa',templates:'Le mie schede',recipes:'Ricettario',data:'Profilo e dati'})[view];
   document.body.dataset.view = view;
-  main.innerHTML = view === 'menu' ? renderMenu() : view === 'recipes' ? renderRecipeLibrary({catalog:recipeCatalog,error:recipeLoadError,query:recipeQuery,category:recipeCategory,mealSlot:recipeMealSlot,selectedId:selectedRecipe,multiplier:recipeMultiplier}) : view === 'templates' ? renderTemplates() : view === 'data' ? renderData() : renderToday();
+  main.innerHTML = view === 'menu' ? renderMenu() : view === 'recipes' ? renderRecipeLibrary({catalog:recipeCatalog,state:repo.state,error:recipeLoadError,query:recipeQuery,category:recipeCategory,mealSlot:recipeMealSlot,selectedId:selectedRecipe,multiplier:recipeMultiplier}) : view === 'templates' ? renderTemplates() : view === 'data' ? renderData() : renderToday();
   revealSelectedDay();
   if (['recipes','calendar','menu'].includes(view) && !recipeCatalog && !recipeLoadError && !recipeLoading) fetchRecipes();
 }
@@ -274,18 +277,47 @@ function protectOtherForms(formId) {
   }
   return true;
 }
+function refreshNutritionPreview(form) {
+  const preview=main.querySelector('#recipe-estimate-preview');
+  if(!preview)return;
+  try {
+    const recipe=recipeCatalog.recipes.find(r=>r.id===form.dataset.recipeId),settings=readNutritionSettings(form,recipe);
+    validateNutritionSettings([settings]);
+    preview.innerHTML=estimateSummary(estimateRecipe(recipe,servingBasis(recipe).count,{settings,multiplier:recipeMultiplier}));
+  }catch{preview.textContent='Completa le dosi per aggiornare l’anteprima.';}
+}
 document.addEventListener('input', event => {
   const form = event.target.closest('form');
+  if(form?.id==='recipe-estimate-form'){
+    const match=/^(kcal|proteinG|carbsG|fatG)-(\d+)$/.exec(event.target.name);
+    if(match)form.elements[`custom-${match[2]}`].checked=true;
+    refreshNutritionPreview(form);
+  }
   if(form&&['calendar','menu'].includes(view)&&!['recipe-filter-form','recipe-scale-form'].includes(form.id)) plannerDateAutomatic=false;
   if (form && !['recipe-filter-form','recipe-scale-form'].includes(form.id)) { dirty = true; dirtyForms.add(form.id); }
   if(form?.id==='weekly-meal-form' && mealPicker?.recipeId && event.target.id!=='planner-search') {
     const recipe=recipeCatalog.recipes.find(r=>r.id===mealPicker.recipeId);
     const preview=document.querySelector('#portion-preview');
-    if(preview) {try {preview.innerHTML=portionPreview(recipe,servingBasis(recipe).count,Number(form.querySelector('#planner-portions').value),readMetricFields(form,recipe));} catch {preview.textContent='Completa le misure con valori numerici validi.';}}
+    if(preview) {try {preview.innerHTML=portionPreview(recipe,servingBasis(recipe).count,Number(form.querySelector('#planner-portions').value),readMetricFields(form,recipe),repo.state);} catch {preview.textContent='Completa le misure con valori numerici validi.';}}
   }
   if(event.target.id==='planner-search') document.querySelector('#planner-results').innerHTML=pickerRecipeResults(recipeCatalog,event.target.value,mealPicker.recipeId,mealPicker.slot);
 });
 document.addEventListener('change', async event => {
+  if(event.target.closest('#recipe-estimate-form')) {
+    const row=event.target.closest('[data-estimate-index]');
+    if(row){
+      const index=row.dataset.estimateIndex,form=row.closest('form');
+      if(event.target.name===`profile-${index}`){
+        const profile=NUTRITION_DATA.profiles[event.target.value];
+        for(const [key,value] of Object.entries(profile.nutrients))form.elements[`${key}-${index}`].value=value??'';
+        form.elements[`custom-${index}`].checked=false;
+        const details=event.target.closest('details');details.querySelector('summary').textContent=`${profile.label} · cambia alimento o valori`;
+        const link=details.querySelector('a');if(link){link.href=profile.url;link.textContent=`${profile.source} · ${profile.sourceId}`;}
+      }
+      form.elements[`grams-${index}`].required=form.elements[`include-${index}`].checked;
+    }
+    refreshNutritionPreview(event.target.closest('form'));
+  }
   const target = event.target;
   if(target.name==='unit'&&target.form?.id==='pantry-stock-form') {
     const form=target.form,old=form.dataset.stockUnit||'g',next=target.value;
@@ -342,6 +374,14 @@ document.addEventListener('change', async event => {
 });
 document.addEventListener('submit', event => {
   event.preventDefault();
+  if(event.target.id==='recipe-estimate-form') {
+    try {
+      const recipe=recipeCatalog?.recipes.find(r=>r.id===event.target.dataset.recipeId);
+      if(!recipe)throw Error('Ricetta non disponibile.');
+      const settings=readNutritionSettings(event.target,recipe);validateNutritionSettings([settings]);
+      save(state=>{state.recipeNutritionSettings??=[];state.recipeNutritionSettings=state.recipeNutritionSettings.filter(s=>s.recipeId!==recipe.id);state.recipeNutritionSettings.push(settings);},'Versione nutrizionale salvata. I pasti già registrati non sono stati modificati.',{backup:true});
+    }catch(error){notify(error.message,true);}return;
+  }
   if(event.target.id==='weekly-meal-form') {
     try {
       const recipe=recipeCatalog?.recipes.find(r=>r.id===mealPicker?.recipeId);
@@ -352,7 +392,7 @@ document.addEventListener('submit', event => {
       const dates=[...event.target.querySelectorAll('input[name=dates]:checked')].map(input=>input.value);
       if(!dates.length) throw Error('Seleziona almeno un giorno.');
       const slot=mealPicker.slot; const targetDate=mealPicker.date;
-      const saved=save(state=>planRecipeOnDates(state,recipe,slot,portions,dates,{people,metricOverrides}),`${dates.length} pasti salvati: una porzione per persona in ciascun giorno.`);
+      const saved=save(state=>planRecipeOnDates(state,recipe,slot,portions,dates,{people,metricOverrides,nutritionEstimate:snapshotEstimate(estimateForRecipe(recipe,repo.state,1,metricOverrides))}),`${dates.length} pasti salvati: una porzione per persona in ciascun giorno.`);
       if(saved) {
         document.querySelector('#meal-picker').close(); selectedDate=targetDate; render();
         main.querySelector(`[data-plan-date="${targetDate}"][data-plan-slot="${slot}"]`)?.focus({preventScroll:true});
@@ -396,7 +436,7 @@ document.addEventListener('submit', event => {
       const portions = servingBasis(recipe).count;
       const people=validatePeople(Number(event.target.elements.people.value));
       const previous=Object.values(repo.state.days).flatMap(day=>day.meals||[]).find(meal=>meal.snapshot.id===recipe.id&&meal.metricOverrides?.length&&JSON.stringify(meal.snapshot.ingredients)===JSON.stringify(recipe.ingredients));
-      const meal = createMeal(recipe,event.target.dataset.mealSlot,portions,{people,metricOverrides:previous?.metricOverrides||[]});
+      const meal = createMeal(recipe,event.target.dataset.mealSlot,portions,{people,metricOverrides:previous?.metricOverrides||[],nutritionEstimate:snapshotEstimate(estimateForRecipe(recipe,repo.state,1,previous?.metricOverrides||[]))});
       save(state=>{
         state.days[selectedDate] ??= {date:selectedDate,assignment:null,sessions:[],notes:''};
         state.days[selectedDate].meals ??= [];
@@ -419,8 +459,9 @@ document.addEventListener('submit', event => {
         meal.slot = slot;
         meal.people=people;
         meal.metricOverrides=metricOverrides;
+        meal.nutritionEstimate=snapshotEstimate(estimateForRecipe(meal.snapshot,state,1,metricOverrides));
         if(applyWeek) for(const date of weekDates(selectedDate)) for(const other of state.days[date]?.meals||[]) {
-          if(other.snapshot.id===meal.snapshot.id&&JSON.stringify(other.snapshot.ingredients)===JSON.stringify(meal.snapshot.ingredients)) other.metricOverrides=clone(metricOverrides);
+          if(other.snapshot.id===meal.snapshot.id&&JSON.stringify(other.snapshot.ingredients)===JSON.stringify(meal.snapshot.ingredients)) {other.metricOverrides=clone(metricOverrides);other.nutritionEstimate=snapshotEstimate(estimateForRecipe(other.snapshot,state,1,metricOverrides));}
         }
       },'Pasto e misure aggiornati. Fonte originale conservata.',{backup:true});
       return;
@@ -464,6 +505,7 @@ document.addEventListener('click', event => {
   const button = event.target.closest('button, .brand');
   if (!button) return;
   try {
+    if(button.dataset.resetEstimate){const id=button.dataset.resetEstimate;if(window.confirm('Ripristinare le dosi e i riferimenti nutrizionali? I pasti salvati restano invariati.'))save(state=>{state.recipeNutritionSettings=(state.recipeNutritionSettings||[]).filter(s=>s.recipeId!==id);},'Riferimenti ripristinati.',{backup:true});return;}
     if(button.dataset.planDate) {openMealPicker(button.dataset.planDate,button.dataset.planSlot);return;}
     if(button.dataset.pickRecipe) {
       const recipe=recipeCatalog.recipes.find(r=>r.id===button.dataset.pickRecipe);
@@ -472,7 +514,7 @@ document.addEventListener('click', event => {
       const dialog=document.querySelector('#meal-picker');
       dialog.querySelector('#picker-selection').hidden=false;
       const previous=Object.values(repo.state.days).flatMap(day=>day.meals||[]).find(meal=>meal.snapshot.id===recipe.id&&meal.metricOverrides?.length&&JSON.stringify(meal.snapshot.ingredients)===JSON.stringify(recipe.ingredients));
-      dialog.querySelector('#picker-selection').innerHTML=pickerPortionSetup(recipe,previous?.metricOverrides||[]);
+      dialog.querySelector('#picker-selection').innerHTML=pickerPortionSetup(recipe,previous?.metricOverrides||[],repo.state);
       dialog.querySelector('#save-weekly-meal').disabled=false;
       dialog.querySelectorAll('[data-pick-recipe]').forEach(b=>{b.classList.toggle('chosen',b.dataset.pickRecipe===recipe.id);b.setAttribute('aria-pressed',b.dataset.pickRecipe===recipe.id);});
       dialog.querySelector('#picker-error').textContent='';
@@ -598,7 +640,7 @@ document.addEventListener('click', event => {
     }
     if (action === 'recipe-back') { selectedRecipe = null; render(); return; }
     if (action === 'recipe-reset') { recipeQuery = ''; recipeCategory = ''; recipeMealSlot = ''; selectedRecipe = null; render(); return; }
-    if (action === 'recipe-export') { download(JSON.stringify({...recipeCatalog,normalization:'single-portion',recipes:recipeCatalog.recipes.map(singleServingRecipe)},null,2),'coach-os-ricettario.json'); return; }
+    if (action === 'recipe-export') { download(JSON.stringify({...recipeCatalog,normalization:'single-portion',recipes:recipeCatalog.recipes.map(r=>({...singleServingRecipe(r),nutritionEstimate:snapshotEstimate(estimateForRecipe(r,repo.state))}))},null,2),'coach-os-ricettario.json'); return; }
     if (['today', 'week-prev', 'week-next', 'month-prev', 'month-next'].includes(action)) {
       if (!discard()) return;
       if (action === 'today') {

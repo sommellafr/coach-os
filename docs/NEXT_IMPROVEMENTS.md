@@ -1,6 +1,6 @@
 # Prossime migliorie: meno tempo per registrare, più utilità
 
-Piano del 30 ottobre 2026. Stato aggiornato: fasi 1 e 2 implementate nella 0.6.0, con verifiche e limiti in [FOOD_DIARY.md](FOOD_DIARY.md); le fasi successive rimangono pianificate. Base precedente: versione 0.5.0 con ricette monoporzioni, planner settimanale, confezioni e dispensa. Gli obiettivi di usabilità sotto restano da misurare con utenti.
+Piano del 30 ottobre 2026. Stato aggiornato: fasi 1 e 2 implementate nella 0.6.0 ([FOOD_DIARY.md](FOOD_DIARY.md)); fase 3 implementata nella 0.7.0 ([NUTRITION_ESTIMATES.md](NUTRITION_ESTIMATES.md)). Le fasi successive rimangono pianificate. Priorità alimentare concordata: nutrienti delle ricette, poi generatore mensile (fase 5 della tabella), anticipato rispetto alle nuove schede/Fat Bank. Gli obiettivi di usabilità sotto restano da misurare con utenti.
 
 ## Richieste confermate
 

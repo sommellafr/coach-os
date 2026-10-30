@@ -1,5 +1,6 @@
 import { isMetricConvertible, sourceAmount, validateMetricOverrides, metricIngredient } from './metric.js';
 import { servingBasis } from './single-serving.js';
+import { estimateForRecipe, estimateSummary } from './nutrition-ui.js';
 const safe=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 export function metricFields(recipe, overrides=[]) {
   const items=recipe.ingredients.map((item,index)=>({item,index})).filter(({item,index})=>!isMetricConvertible(item)||item.quantity===null||overrides.some(entry=>entry.index===index));
@@ -18,16 +19,16 @@ export function readMetricFields(form,recipe) {
   });
   return validateMetricOverrides(entries,recipe.ingredients.length);
 }
-export function portionPreview(recipe,portions,people,overrides=[]) {
+export function portionPreview(recipe,portions,people,overrides=[],state={}) {
   if(!Number.isInteger(portions)||portions<1||!Number.isInteger(people)||people<1) return '<p>Indica la resa della preparazione per vedere le quantità del pasto.</p>';
-  return `<p><strong>Ingredienti per questo pasto · ${people} ${people===1?'persona':'persone'}</strong></p><ul>${recipe.ingredients.map((item,index)=>{
+  return `${estimateSummary(estimateForRecipe(recipe,state,people,overrides))}<p><strong>Ingredienti per questo pasto · ${people} ${people===1?'persona':'persone'}</strong></p><ul>${recipe.ingredients.map((item,index)=>{
     const metric=metricIngredient(item,overrides.find(entry=>entry.index===index));
     if(metric.quantity!==null) metric.quantity*=people/portions;
     if(metric.quantityRange) {metric.quantityRange.min*=people/portions;metric.quantityRange.max*=people/portions;}
     return `<li>${safe(item.label)}: <strong>${metric.metricPending?'Peso/volume da confermare':safe(sourceAmount(metric))}</strong></li>`;
   }).join('')}</ul>`;
 }
-export function pickerPortionSetup(recipe,overrides=[]) {
+export function pickerPortionSetup(recipe,overrides=[],state={}) {
   const basis=servingBasis(recipe);
-  return `<h3 id="picker-selected-title">${safe(recipe.title)}</h3><p class="portion-promise"><strong>Ricetta base: 1 porzione.</strong></p><label for="planner-portions">Quante porzioni vuoi preparare?<input type="number" id="planner-portions" min="1" max="20" step="1" required value="1" inputmode="numeric"></label><p class="hint">Una porzione per persona, in ciascun giorno selezionato.</p>${basis.provenance==='editorial'?'<p class="hint">Porzione pratica redazionale: la fonte non dichiarava un numero di pasti. Non equivale a una prescrizione nutrizionale.</p>':''}<div class="portion-preview" id="portion-preview">${portionPreview(recipe,basis.count,1,overrides)}</div>${metricFields(recipe,overrides)}`;
+  return `<h3 id="picker-selected-title">${safe(recipe.title)}</h3><p class="portion-promise"><strong>Ricetta base: 1 porzione.</strong></p><label for="planner-portions">Quante porzioni vuoi preparare?<input type="number" id="planner-portions" min="1" max="20" step="1" required value="1" inputmode="numeric"></label><p class="hint">Una porzione per persona, in ciascun giorno selezionato.</p>${basis.provenance==='editorial'?'<p class="hint">Porzione pratica redazionale: la fonte non dichiarava un numero di pasti. Non equivale a una prescrizione nutrizionale.</p>':''}<div class="portion-preview" id="portion-preview">${portionPreview(recipe,basis.count,1,overrides,state)}</div>${metricFields(recipe,overrides)}`;
 }

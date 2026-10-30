@@ -1,5 +1,11 @@
 # Stato implementazione
 
+## Stime delle ricette — 0.7.0
+
+Completato lo step 3: 34 ricette, 164 ingredienti, 105 profili tracciati USDA/etichette, pesi medi e scelte redazionali espliciti, personalizzazione con anteprima e snapshot nei nuovi menu. Cinque casi con ambiguità importanti richiedono controllo. Fonti e dati precedenti conservati. Quantità nutrizionali distinte da spesa/dispensa. Metodi e audit in [NUTRITION_ESTIMATES.md](NUTRITION_ESTIMATES.md) e [RECIPE_NUTRITION_AUDIT.md](RECIPE_NUTRITION_AUDIT.md).
+
+93 test automatici e 59 controlli browser nuovi superati; ancora superati 85 ricettario e 36 porzioni/dispensa. Integrità delle fonti e build verificate. Nessuna validazione su telefono fisico/Safari. Generatore mensile non ancora implementato; è la prossima priorità alimentare indicata dall'utente.
+
 ## Registrazione rapida e codici a barre — 0.6.0
 
 Implementate le prime due fasi: diario alimenti consumati da Oggi/Calendario, composizione con più alimenti, quantità, nutrienti per 100 g/ml, recenti/preferiti/abituali, modifica/rimozione, lookup gratuito OFF v3 e scanner locale ZXing. Nuovi dati opzionali e snapshot, senza trasformare menu o scorte in consumi. Dettagli e limitazioni in [FOOD_DIARY.md](FOOD_DIARY.md). Schede, generatore mensile e Fat Bank rimangono pianificati.

@@ -27,6 +27,7 @@ Fonti: sorgente V21 e quattro messaggi dell'utente, riportati in sintesi in USER
 | NUT-07 | Acquisti in confezioni modificabili, scorte reali distinte dalle prenotazioni e scarichi annullabili | P1 |
 | NUT-08 | Diario alimenti consumati: quantità g/ml, valori per 100, pasti composti, recenti/preferiti/abituali e snapshot storici | P1 |
 | NUT-09 | Codici a barre con fotocamera e API gratuita; alternativa manuale, gestione dati incompleti e riuso prodotti salvati | P1 |
+| NUT-10 | Stime nutrizionali delle ricette da tabelle/etichette, pesi medi e alternative dichiarati, personalizzazione e storico invariato | P1 |
 | ENE-01 | Revisione stima dispendio; attività pianificate diverse da completate | P1 |
 | ENE-02 | Assunzione, dispendio e bilancio giornaliero/settimanale | P1 |
 | ENE-03 | Contatore deficit cumulato stimato dall'inizio e confronto con obiettivo | P1 |

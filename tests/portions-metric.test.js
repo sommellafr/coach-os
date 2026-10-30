@@ -89,19 +89,20 @@ test('resa mancante non viene dedotta, pasti fuori intervallo e spunte con nuovo
   assert.ok(shoppingForWeek(state,dates[0]).ingredients.every(row=>row.unit===null||['g','ml'].includes(row.unit)));
   assert.ok(!shoppingAmount(shoppingForWeek(state,dates[0]).ingredients.find(row=>row.label.startsWith('Tortilla'))).includes('pezzi'));
 });
-test('UI separa resa bloccata e persone; anteprima burrito indica 170 g per una persona',()=>{
+test('UI mostra una porzione e chiede solo quante prepararne; il lotto non e un campo visibile',()=>{
   const r=recipe('burrito-manzo'),html=pickerPortionSetup(r);
-  assert.match(html,/id="planner-portions"[^>]*readonly[^>]*value="10"/);
-  assert.match(html,/id="planner-people"[^>]*value="1"/);
+  assert.match(html,/id="planner-portions"[^>]*value="1"/);
+  assert.ok(!html.includes('readonly'));
+  assert.ok(!html.includes('id="planner-people"'));
+  assert.ok(html.includes('Ricetta base: 1 porzione'));
   assert.ok(portionPreview(r,10,1).includes('170 g'));
   assert.ok(portionPreview(r,10,2).includes('340 g'));
-  assert.ok(!pickerPortionSetup(recipe('pancake-banana')).includes('readonly'));
 });
-test('undici polpette o otto strisce non diventano automaticamente undici od otto pasti',()=>{
+test('polpette, strisce e dolci hanno una porzione pratica redazionale esplicita',()=>{
   for(const id of ['polpette-tacchino','pollo-miele-aglio','banana-snack']) {
-    const r=recipe(id);assert.equal(mealBatchYield(r),null);
-    const html=pickerPortionSetup(r);assert.ok(!html.includes('readonly'));
-    assert.match(html,/id="planner-portions"[^>]*value=""/);
-    assert.ok(html.includes('non equivale automaticamente a pasti'));
+    const html=pickerPortionSetup(recipe(id));
+    assert.match(html,/id="planner-portions"[^>]*value="1"/);
+    assert.ok(html.includes('Porzione pratica redazionale'));
+    assert.ok(!html.includes('readonly'));
   }
 });

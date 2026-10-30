@@ -8,6 +8,16 @@ Sono inclusi controlli automatici su push/PR e un workflow di pubblicazione **ma
 
 Prima del passaggio dal sito locale a quello GitHub, esportare il diario da **Profilo e dati** e ripristinarlo nel nuovo indirizzo. GitHub ospita l'app; il diario rimane nel browser e non si sincronizza tra dispositivi. Sito pubblicato su GitHub Pages: https://sommellafr.github.io/coach-os/.
 
+## Versione 0.5.0 · porzioni, confezioni e dispensa
+
+Tutte le 34 ricette si aprono con le dosi per **1 porzione**. Nel calendario scegli soltanto **Quante porzioni vuoi preparare?**, da 1 a 20; per esempio il burrito parte da 170 g di manzo, due porzioni da 340 g. Le rese assenti o espresse in pezzi hanno una base redazionale dichiarata, modificabile in futuro: non sono porzioni nutrizionali validate.
+
+In **Pasti → Lista della spesa** trovi fabbisogno, scorte e confezioni da acquistare: 50 g di farina possono richiedere una confezione da 1 kg. Il formato è modificabile; i riferimenti italiani sono esempi documentati, non minimi universali. **Ho acquistato** carica le confezioni nella dispensa. In **Pasti → Dispensa** registri ciò che hai davvero e consulti quantità riservate e previsione di esaurimento. **Ho preparato** sul piatto scala gli ingredienti misurabili, con conferma e annullamento. Pianificare un pasto riserva gli ingredienti senza consumarli.
+
+I pesi inseriti manualmente sono ora **per una porzione**. Cup, pezzi e quantità ambigue richiedono una misura reale in g/ml; non si inventano densità. Le fonti, gli snapshot e i menu salvati restano conservati. Eventuali vecchie divisioni discordanti si correggono con anteprima e backup. Dettagli, provenienza, casi limite e verifiche: [Porzioni e dispensa](docs/PANTRY_AND_PACKAGES.md).
+
+Le sezioni sulle versioni 0.4 sotto sono storico: i vecchi campi sul lotto e la lista a spunte sono sostituiti da questo flusso.
+
 **Correzione 0.4.2 — giorno del calendario:** dopo scelta, salvataggio o annullamento di una ricetta, il calendario mantiene il giorno da cui sei partito e lo riporta in vista, anche se hai aggiunto il piatto a più giorni. Lo stesso giorno resta selezionato passando tra Pasti, Calendario, Spesa e Oggi nella sessione. All'apertura il giorno proposto è oggi fino alle 20:59 e domani dalle 21:00, nell'ora locale del dispositivo. Una data scelta manualmente rimane ferma; **Giorno proposto** riattiva la regola automatica. La schermata Oggi e le registrazioni conservano la data civile reale. La scelta della giornata non viene salvata nel diario o imposta alle voci già registrate.
 
 **Correzione 0.4.3 — tutti i giorni raggiungibili:** sopra il menu è disponibile **Scegli il giorno · tutta la settimana**, con sette pulsanti e il numero di ricette pianificate per ciascuna data. Sul telefono sono disposti su due righe, senza scorrimento orizzontale. Tocca lunedì, martedì o un altro giorno per aprirlo, mantenendo il giorno selezionato quando torni dalla scelta di una ricetta. Il contatore riguarda le ricette pianificate, non alimenti consumati. Nessun pasto viene copiato o modificato automaticamente. La guida ai pasti è apribile; la griglia resta scorribile in entrambe le direzioni.

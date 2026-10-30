@@ -34,9 +34,10 @@ async (page) => {
       check(!await p.locator('#meal-picker').isVisible(),`Salvataggio con touch anche in orizzontale ${tag}`);
       await p.locator('[data-planner-tab=shopping]').first().tap();
       check(await fits(),`Spesa senza overflow ${tag}`);
-      const purchase=p.locator('.shopping-check').first();await purchase.scrollIntoViewIfNeeded();await purchase.tap();
-      check(await purchase.locator('input').isChecked(),`Spunta acquistato con touch ${tag}`);
-      check(await size('.shopping-check,.shopping-export button'),`Acquisti ed export >=44px ${tag}`);
+      check(await p.locator('.shopping-row').count()>0,`Ingredienti visibili con touch ${tag}`);
+      await p.locator('[data-planner-tab=pantry]').first().tap();
+      check(await fits(),`Dispensa senza overflow ${tag}`);
+      check(await p.locator('#pantry-stock-form').isVisible(),`Scorte registrabili da smartphone ${tag}`);
       await p.locator('nav [data-view=recipes]').tap();
       check(await fits(),`Ricettario senza overflow ${tag}`);
       await p.locator('#recipe-meal').selectOption('breakfast');await p.getByRole('button',{name:'Filtra ricette',exact:true}).tap();

@@ -46,7 +46,7 @@ test('intervalli sommati sui due estremi, ignoti mai trasformati in zero',()=>{
   assert.ok(shoppingAmount(row).includes('50–60 g + dosi non indicate'));
   const u=freshState();add(u,'2026-11-02',[item(null,null)]);
   assert.equal(shoppingForWeek(u,'2026-11-02').ingredients[0].min,null);
-  assert.ok(shoppingText(shoppingForWeek(u,'2026-11-02')).includes('DA VALUTARE A MANO'));
+  assert.ok(shoppingText(shoppingForWeek(u,'2026-11-02')).includes('DATI INCOMPLETI'));
 });
 test('facoltativi esclusi per default e inclusi soltanto su scelta, senza cambiare il piano',()=>{
   const s=freshState();add(s,'2026-11-02',[item(100),item(20,'g',{optional:true})]);
@@ -106,5 +106,5 @@ test('spunte e menu si esportano, ripristinano e non producono falso successo su
   repo.commit(s);const exported=repo.export();repo.restore(exported);assert.deepEqual(new Repository(store).state.shoppingWeeks,s.shoppingWeeks);
   const raw=store.getItem(STORAGE_KEY);store.fail=true;
   assert.throws(()=>repo.update(d=>{d.shoppingWeeks[report.weekStart].checked=[];}),/Quota/);assert.equal(store.getItem(STORAGE_KEY),raw);
-  assert.ok(shoppingText(report,s.shoppingWeeks[report.weekStart].checked).includes('[x] Pasta: 100 g'));
+  assert.ok(shoppingText(report,s.shoppingWeeks[report.weekStart].checked).includes('Pasta: servono 100 g'));
 });

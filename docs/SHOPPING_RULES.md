@@ -1,5 +1,7 @@
 # Menu settimanale e lista della spesa
 
+Aggiornamento 0.5.0: [porzioni singole, confezioni e dispensa](PANTRY_AND_PACKAGES.md). Questo documento conserva le regole della versione precedente; i campi visibili sul lotto e la lista a spunte sono stati sostituiti.
+
 Versione 0.4.1, 29 ottobre 2026. Richiesta esplicita: pianificare i pasti della settimana e ricavarne la spesa con un'interfaccia agevole. La correzione delle porzioni e delle unità è descritta in [PORTIONS_AND_METRIC.md](PORTIONS_AND_METRIC.md).
 
 ## Flusso

@@ -1,5 +1,6 @@
 import { scaleRecipe } from './recipes.js';
 import { metricIngredient, validateMetricOverrides } from './metric.js';
+import { cookedMovement } from './pantry.js';
 
 export const MEAL_SLOTS = { breakfast: 'Colazione', lunch: 'Pranzo', dinner: 'Cena' };
 // Unità organizzative della fonte, non porzioni nutrizionali prescritte.
@@ -43,7 +44,7 @@ export function metricPortionForMeal(meal) {
   return {ingredients:scaled.recipe.ingredients,nutrition:scaled.nutritionTotal};
 }
 export function portionIssues(state,dates) {
-  return dates.flatMap(date=>(state.days[date]?.meals||[]).filter(meal=>mealBatchYield(meal.snapshot)!==null&&meal.batchPortions!==mealBatchYield(meal.snapshot)).map(meal=>({date,mealId:meal.id,title:meal.snapshot.title,before:meal.batchPortions,after:mealBatchYield(meal.snapshot)})));
+  return dates.flatMap(date=>(state.days[date]?.meals||[]).filter(meal=>!cookedMovement(state,meal.id)&&mealBatchYield(meal.snapshot)!==null&&meal.batchPortions!==mealBatchYield(meal.snapshot)).map(meal=>({date,mealId:meal.id,title:meal.snapshot.title,before:meal.batchPortions,after:mealBatchYield(meal.snapshot)})));
 }
 export function correctPortions(state,dates) {
   const issues=portionIssues(state,dates);

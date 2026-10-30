@@ -1,5 +1,12 @@
 # Stato implementazione
 
+## Porzioni singole e dispensa — 0.5.0
+
+Richiesta esplicita: tutte le ricette monoporzioni, scelta del numero da preparare, spesa in confezioni e scorte che diminuiscono con l'utilizzo. Implementato lo strato di normalizzazione separato dalle fonti e un registro di acquisti/preparazioni annullabili. Le prenotazioni derivate dai menu non sono scarichi reali. Dettagli e limiti in [PANTRY_AND_PACKAGES.md](PANTRY_AND_PACKAGES.md); le sezioni delle release precedenti descrivono lo stato storico.
+
+Validazione locale: 80 test automatici; 36 controlli browser sul ciclo porzioni/spesa/dispensa, 85 sul ricettario, 111 su smartphone simulati (incluso orizzontale), 18 sulla data e soglia delle 21, 57 sui sette giorni. Nessun errore JavaScript nei contesti isolati. Ispezione visiva della dispensa mobile eseguita. Telefono fisico e Safari non verificati. Build e pubblicazione sono controllate separatamente prima del rilascio.
+
+
 Aggiornato il 30 ottobre 2026. Versione 0.4.3: accesso esplicito a tutti i giorni della settimana, continuità del giorno nel calendario e proposta del giorno successivo dalle 21. Restano planner e spesa, porzioni personali, schede V21/personali e ricettario. Il sito è pubblicato su GitHub Pages; nessun servizio a pagamento attivato.
 
 ## Accesso a tutti i giorni — 0.4.3

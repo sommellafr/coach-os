@@ -15,8 +15,9 @@ async (page) => {
     await p.locator('[data-pick-recipe=pasta-fredda-pollo]').click();await p.locator('#save-weekly-meal').click();
     check(await p.locator('.weekly-dish').count()===1,'Catalogo e menu salvabili nella build Pages');
     await p.locator('#weekly-planner [data-planner-tab=shopping]').first().click();
-    const pasta=p.locator('.shopping-row').filter({has:p.getByRole('checkbox',{name:'Segna Pasta come acquistato',exact:true})});
-    check(await pasta.locator('.shopping-check b').textContent()==='75 g','Spesa calcolata dalle dosi della build');
+    const pasta=p.locator('.shopping-row').filter({has:p.getByRole('heading',{name:'Pasta',exact:true})});
+    check((await pasta.locator('.shopping-demand').textContent()).includes('75 g'),'Spesa calcolata dalle dosi della build');
+    check((await pasta.textContent()).includes('500 g'),'Confezioni disponibili nella build Pages');
     await p.getByRole('button',{name:'Le mie schede',exact:true}).click();
     check(await p.locator('.template-editor .exercise').count()===3,'Schede preimpostate nella build');
     await p.getByRole('button',{name:'Ricettario',exact:true}).click();await p.locator('[data-recipe="burrito-manzo"]').click();

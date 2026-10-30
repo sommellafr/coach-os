@@ -3,12 +3,15 @@ import { Repository, STORAGE_KEY } from './storage.js';
 import { loadCatalog, renderRecipeLibrary } from './recipes.js';
 import { icon } from './ui.js';
 import { recipeMatchesMeal } from './recipe-tags.js';
+import { servingBasis, singleServingRecipe } from './single-serving.js';
 import { createMeal, validateBatchPortions, validatePeople, portionIssues, correctPortions, mealBatchYield } from './meals.js';
 import { pickerPortionSetup, readMetricFields, portionPreview } from './portion-ui.js';
 import { renderMeals } from './meal-ui.js';
 import { templateWorkspace } from './templates-ui.js';
 import { renderWeeklyPlanner, renderMealPicker, pickerRecipeResults } from './planner-ui.js';
-import { shoppingForWeek, shoppingText } from './shopping.js';
+import { shoppingForWeek, shoppingText, mealShoppingRows } from './shopping.js';
+import { setPantryStock, pantryEntry, purchasePack, consumePantry, undoPantryMovement, cookedMovement } from './pantry.js';
+import { metricIngredient } from './metric.js';
 import { planRecipeOnDates, copyMenuWeek } from './planner.js';
 
 let storage;
@@ -124,11 +127,11 @@ function renderWorkout() {
   return `<section class="panel workout">${header}<div class="session-switch">${sessions.map(s => `<button class="secondary ${s.id === session.id ? 'chosen' : ''}" data-session="${s.id}">${safe(s.title)} · ${s.status === 'completed' ? 'Completata' : 'Bozza'}</button>`).join('')}</div><form id="session-form"><div class="section-line"><h3>${safe(session.title)}</h3><span class="pill ${session.status === 'completed' ? 'complete' : 'draft'}">${session.status === 'completed' ? 'Completata' : 'Bozza'}</span></div><p class="hint">Target copiati all’avvio · versione ${session.templateVersion}. Le modifiche alla scheda non cambiano questa seduta. Il trattino indica un dato mancante; 0 è un valore esplicito.</p>${session.exercises.map((e, i) => `<article class="exercise"><div class="section-line"><div><h3>${safe(e.name)}</h3><p class="hint">${safe(e.equipment) || 'Attrezzatura non specificata'} · ${e.mode === 'cardio' ? 'Cardio' : 'Pesi / corpo libero'}</p></div><button type="button" class="text-button" data-action="add-set" data-index="${i}">+ Serie</button></div><div class="sets-columns"><div><h4>Target</h4>${setFields(e, i, 'target', false)}</div><div><h4>Risultato effettivo</h4>${setFields(e, i, 'result')}</div></div></article>`).join('')}${addExerciseForm()}<div class="add-grid"><label>Durata effettiva (min)<input type="number" id="session-duration" min="0" max="1440" step="any" value="${session.durationMinutes ?? ''}" placeholder="Non registrata"></label><label>Stato della seduta<select id="session-status"><option value="draft" ${session.status === 'draft' ? 'selected' : ''}>Bozza / parziale</option><option value="completed" ${session.status === 'completed' ? 'selected' : ''}>Completata</option></select></label></div><label for="session-notes">Note della seduta</label><textarea id="session-notes" maxlength="4000" rows="2">${safe(session.notes)}</textarea><div class="save-line"><button class="primary" type="submit">Salva seduta</button><span class="hint">Per completare: almeno un risultato o una durata positiva. I campi mancanti restano mancanti.</span></div></form>${canStart ? '<button class="text-button" data-action="start-session">+ Un’altra seduta in questa data</button>' : ''}</section>`;
 }
 function renderMenu() {
-  return `${pageHeading('DALLA CUCINA ALLA SPESA', 'Menu e spesa.', 'Scegli colazione, pranzo e cena. Dalle 21:00 proponiamo domani; le date scelte da te restano selezionate.')}<div class="day-toolbar"><div class="date-picker"><label for="selected-date">Settimana della data</label>${dateInput('selected-date',selectedDate)}<button class="secondary" data-action="today">Giorno proposto</button></div></div>${renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError})}${plannerTab==='menu' ? renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true}) : ''}`;
+  return `${pageHeading('DALLA CUCINA ALLA SPESA', 'Menu e spesa.', 'Scegli colazione, pranzo e cena. Dalle 21:00 proponiamo domani; le date scelte da te restano selezionate.')}<div class="day-toolbar"><div class="date-picker"><label for="selected-date">Settimana della data</label>${dateInput('selected-date',selectedDate)}<button class="secondary" data-action="today">Giorno proposto</button></div></div>${renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError})}${plannerTab==='menu' ? renderMeals({state:repo.state,date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true}) : ''}`;
 }
 function mealShortcut() {
   const report=shoppingForWeek(repo.state,localDate());
-  return `<section class="meal-shortcut" aria-label="Organizza menu e spesa"><div><p class="eyebrow">COSA MANGIAMO QUESTA SETTIMANA?</p><h2>Prima scegli i pasti, poi fai la spesa.</h2><p>${report.filledSlots} pasti con ricette questa settimana. Puoi iniziare anche da un solo pasto.</p></div><div class="inline"><button class="primary" data-view="menu" data-open-planner="menu">${icon('plate')} Scegli i pasti</button><button class="secondary" data-view="menu" data-open-planner="shopping">${icon('cart')} Lista della spesa</button></div></section>`;
+  return `<section class="meal-shortcut" aria-label="Organizza menu e spesa"><div><p class="eyebrow">COSA MANGIAMO QUESTA SETTIMANA?</p><h2>Prima scegli i pasti, poi fai la spesa.</h2><p>${report.filledSlots} pasti con ricette questa settimana. Puoi iniziare anche da un solo pasto.</p></div><div class="inline"><button class="primary" data-view="menu" data-open-planner="menu">${icon('plate')} Scegli i pasti</button><button class="secondary" data-view="menu" data-open-planner="shopping">${icon('cart')} Lista della spesa</button><button class="secondary" data-view="menu" data-open-planner="pantry">${icon('leaf')} Dispensa</button></div></section>`;
 }
 function renderToday() {
   const completed = Object.values(repo.state.days).flatMap(d => d.sessions).filter(s => s.status === 'completed').length;
@@ -136,7 +139,7 @@ function renderToday() {
   const plans = Object.values(repo.state.days).filter(d => d.assignment?.status === 'planned' && d.assignment.kind !== 'rest' && d.date >= localDate()).length;
   const heading = pageHeading(view === 'calendar' ? 'ORGANIZZA IL TUO TEMPO' : 'IL TUO BENESSERE, OGNI GIORNO', view === 'calendar' ? 'Il tuo calendario.' : 'Un giorno alla volta.', view === 'calendar' ? 'Colazione, pranzo e cena. Il menu diventa la tua lista della spesa.' : 'Pianifica con libert\u00e0. Registra quello che fai davvero.');
   const today = repo.state.days[localDate()];
-  const meals = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:view==='calendar'});
+  const meals = renderMeals({state:repo.state,date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:view==='calendar'});
   const hero = view === 'today' ? `<section class="today-hero"><div class="hero-copy"><span class="hero-label">${icon('spark')} IL TUO PROSSIMO PASSO</span><h2>Trova il tuo ritmo.<br><span>Allenamento e cucina, al ritmo tuo.</span></h2><p>Organizza quello che vuoi fare.<br>Ritrova quello che hai fatto davvero.</p><div class="hero-actions"><button class="primary" data-view="calendar">Pianifica la settimana ${icon('arrow')}</button><button class="hero-link" data-view="recipes">Esplora le ricette ${icon('arrowUp')}</button></div></div><div class="hero-visual" aria-hidden="true"><span class="hero-orbit hero-orbit-one"></span><span class="hero-orbit hero-orbit-two"></span><div class="hero-emblem">${icon('dumbbell')}</div><div class="hero-float float-top">${icon('leaf')} Mangia con gusto</div><div class="hero-float float-bottom">${icon('check')} Segui il tuo ritmo</div></div><div class="hero-day"><span class="hero-day-icon">${icon('calendar')}</span><div><span>${formatDate(localDate(),{weekday:'long',day:'numeric',month:'long'})}</span><strong>${safe(assignmentName(today))}</strong></div><span class="hero-day-status">${dayStatus(today)}</span></div></section>` : '';
   return `${heading}${hero}${view==='today' ? mealShortcut() : ''}<div class="stats"><div><span class="stat-icon">${icon('check')}</span><div><strong>${completed}</strong><span>Sedute completate · archivio</span></div></div><div><span class="stat-icon blue">${icon('calendar')}</span><div><strong>${plans}</strong><span>Allenamenti pianificati da oggi</span></div></div><div><span class="stat-icon amber">${icon('clock')}</span><div><strong>${drafts}</strong><span>Sedute in bozza · archivio</span></div></div></div><div class="day-toolbar"><div><span class="toolbar-icon">${icon('calendar')}</span><span>La tua agenda</span></div><div class="date-picker"><label for="selected-date">Vai alla data</label>${dateInput('selected-date', selectedDate)}<button class="secondary" data-action="today">${view==='calendar'?'Giorno proposto':'Oggi'}</button></div></div>${view === 'calendar' ? renderWeeklyPlanner({state:repo.state,date:selectedDate,tab:plannerTab,catalog:recipeCatalog,error:recipeLoadError}) : renderWeek()}${view === 'calendar' ? `<details class="monthly-disclosure"><summary>Apri calendario mensile</summary>${renderCalendar()}</details>${meals}` : ''}<div class="day-layout">${renderDay()}${renderWorkout()}</div>${view === 'today' ? meals : ''}<details class="next-phase"><summary>Cosa arriverà in Coach OS ${icon('arrow')}</summary><p>Diario alimentare, energia e peso, andamento delle prestazioni.</p><span class="hint">Non ancora disponibili. Nessuna stima scientifica attiva in questa versione.</span></details>`;
 }
@@ -209,7 +212,7 @@ async function fetchRecipes() {
     else if (view === 'menu') render();
     else if (view === 'calendar') {
       const section = main.querySelector('#meal-section');
-      if (section) section.outerHTML = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true});
+      if (section) section.outerHTML = renderMeals({state:repo.state,date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,error:recipeLoadError,editable:true});
       refreshPlanner();
     }
   }
@@ -277,12 +280,21 @@ document.addEventListener('input', event => {
   if(form?.id==='weekly-meal-form' && mealPicker?.recipeId && event.target.id!=='planner-search') {
     const recipe=recipeCatalog.recipes.find(r=>r.id===mealPicker.recipeId);
     const preview=document.querySelector('#portion-preview');
-    if(preview) {try {preview.innerHTML=portionPreview(recipe,Number(form.querySelector('#planner-portions').value),Number(form.querySelector('#planner-people').value),readMetricFields(form,recipe));} catch {preview.textContent='Completa le misure con valori numerici validi.';}}
+    if(preview) {try {preview.innerHTML=portionPreview(recipe,servingBasis(recipe).count,Number(form.querySelector('#planner-portions').value),readMetricFields(form,recipe));} catch {preview.textContent='Completa le misure con valori numerici validi.';}}
   }
   if(event.target.id==='planner-search') document.querySelector('#planner-results').innerHTML=pickerRecipeResults(recipeCatalog,event.target.value,mealPicker.recipeId,mealPicker.slot);
 });
 document.addEventListener('change', async event => {
   const target = event.target;
+  if(target.name==='unit'&&target.form?.id==='pantry-stock-form') {
+    const form=target.form,old=form.dataset.stockUnit||'g',next=target.value;
+    const factors={g:1,kg:1000,ml:1,l:1000};
+    if((['g','kg'].includes(old))===(['g','kg'].includes(next))) {
+      for(const name of ['quantity','packSize']) if(form.elements[name].value.trim()) form.elements[name].value=Number((Number(form.elements[name].value)*factors[old]/factors[next]).toPrecision(12));
+    } else {form.elements.quantity.value='';form.elements.packSize.value='';notify('Massa e volume sono diversi: indica la nuova quantità misurata.');}
+    form.dataset.stockUnit=next;
+    return;
+  }
   if(target.dataset.shoppingIndex!==undefined || target.id==='include-shopping-optional') {
     if(!protectOtherForms('shopping')) {target.checked=!target.checked;return;}
     const {report,preferences}=currentShopping();
@@ -308,9 +320,9 @@ document.addEventListener('change', async event => {
   if (target.dataset.mealSelect) {
     const slot = target.dataset.mealSelect;
     const recipe = recipeCatalog?.recipes.find(r=>r.id===target.value);
-    const batchYield=recipe?mealBatchYield(recipe):null;
+    const batchYield=recipe?servingBasis(recipe).count:null;
     main.querySelector(`#meal-portions-${slot}`).value = batchYield ?? '';
-    main.querySelector(`#meal-portions-${slot}`).readOnly = !recipe || batchYield!==null;
+    main.querySelector(`#meal-portions-${slot}`).readOnly = true;
     main.querySelector(`#meal-yield-${slot}`).textContent = batchYield!==null ? `Fonte: ${recipe.yield.quantity} ${recipe.yield.unit}. La divisione è automatica: una porzione per te. Per gli ospiti usa Preparo anche per altre persone.` : 'Indica quanti pasti ricavi da tutta la preparazione. Pezzi, strisce e polpette non equivalgono automaticamente a pasti; non viene assunto che il lotto sia per una persona.';
   }
   if (target.id === 'selected-date') {
@@ -333,8 +345,8 @@ document.addEventListener('submit', event => {
     try {
       const recipe=recipeCatalog?.recipes.find(r=>r.id===mealPicker?.recipeId);
       if(!recipe || !recipeMatchesMeal(recipe,mealPicker.slot)) throw Error('Scegli una ricetta per questo pasto.');
-      const portions=validateBatchPortions(mealBatchYield(recipe)??Number(document.querySelector('#planner-portions').value));
-      const people=validatePeople(Number(document.querySelector('#planner-people').value));
+      const portions=servingBasis(recipe).count;
+      const people=validatePeople(Number(document.querySelector('#planner-portions').value));
       const metricOverrides=readMetricFields(event.target,recipe);
       const dates=[...event.target.querySelectorAll('input[name=dates]:checked')].map(input=>input.value);
       if(!dates.length) throw Error('Seleziona almeno un giorno.');
@@ -355,15 +367,32 @@ document.addEventListener('submit', event => {
   }
   if (event.target.id === 'recipe-scale-form') {
     const value = Number(main.querySelector('#recipe-multiplier').value);
-    if (!Number.isFinite(value) || value <= 0 || value > 20) { notify('Moltiplicatore non valido: maggiore di 0 e al massimo 20.',true); return; }
+    if (!Number.isInteger(value) || value < 1 || value > 20) { notify('Indica da 1 a 20 porzioni.',true); return; }
     recipeMultiplier = value; render(); return;
   }
   if (!protectOtherForms(event.target.id)) return;
   try {
+    if(event.target.id==='pantry-stock-form') {
+      const form=event.target;
+      const quantity=metricIngredient({quantity:Number(form.elements.quantity.value),unit:form.elements.unit.value});
+      const pack=form.elements.packSize.value.trim()?metricIngredient({quantity:Number(form.elements.packSize.value),unit:form.elements.unit.value}).quantity:null;
+      save(state=>setPantryStock(state,{label:form.elements.label.value,unit:quantity.unit,quantity:quantity.quantity,packSize:pack,preparationState:form.elements.preparationState.value}),'Scorta aggiornata. Menu e spesa ricalcolati.',{backup:true});return;
+    }
+    if(event.target.dataset.packageIndex!==undefined) {
+      const row=currentShopping().report.ingredients[Number(event.target.dataset.packageIndex)];
+      if(!row) throw Error('Voce della spesa non disponibile: ricarica la settimana.');
+      const size=Number(event.target.elements.packSize.value);
+      if(!Number.isFinite(size)||size<=0||size>1e9) throw Error('Indica il contenuto positivo di una confezione in g o ml.');
+      if(event.submitter?.value==='purchase') {
+        const count=Math.max(1,Math.ceil(row.shortage/size-1e-10));
+        save(state=>purchasePack(state,row,size,count),`Acquisto registrato: ${count} confezioni aggiunte alla dispensa.`,{backup:true});
+      } else save(state=>setPantryStock(state,{...row,quantity:pantryEntry(state,row)?.quantity||0,packSize:size}),'Formato salvato. Confezioni ricalcolate.');
+      return;
+    }
     if (event.target.dataset.mealSlot) {
       const recipe = recipeCatalog?.recipes.find(r=>r.id===event.target.elements.recipeId.value);
       if (!recipe || !recipeMatchesMeal(recipe,event.target.dataset.mealSlot)) throw Error('Scegli una ricetta disponibile per questo pasto.');
-      const portions = validateBatchPortions(mealBatchYield(recipe)??Number(event.target.elements.batchPortions.value));
+      const portions = servingBasis(recipe).count;
       const people=validatePeople(Number(event.target.elements.people.value));
       const previous=Object.values(repo.state.days).flatMap(day=>day.meals||[]).find(meal=>meal.snapshot.id===recipe.id&&meal.metricOverrides?.length&&JSON.stringify(meal.snapshot.ingredients)===JSON.stringify(recipe.ingredients));
       const meal = createMeal(recipe,event.target.dataset.mealSlot,portions,{people,metricOverrides:previous?.metricOverrides||[]});
@@ -379,6 +408,7 @@ document.addEventListener('submit', event => {
       const portions = validateBatchPortions(Number(event.target.elements.batchPortions.value));
       const slot = event.target.elements.slot.value;
       const original=repo.state.days[selectedDate].meals.find(m=>m.id===id);
+      if(cookedMovement(repo.state,id)) throw Error('Il pasto è già stato scaricato: annulla lo scarico prima di cambiarne dosi o ingredienti.');
       const people=validatePeople(Number(event.target.elements.people.value));
       const metricOverrides=readMetricFields(event.target,original.snapshot);
       const applyWeek=event.target.elements.applyWeekMeasures?.checked;
@@ -485,8 +515,41 @@ document.addEventListener('click', event => {
       render(); main.focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'}); return;
     }
     if (button.dataset.backup) { download(storage.getItem(button.dataset.backup), `${button.dataset.backup}.json`); return; }
+    if(button.dataset.stockRow!==undefined) {
+      if(!discard()) return;
+      const row=currentShopping().report.ingredients[Number(button.dataset.stockRow)];if(!row) return;
+      const stock=pantryEntry(repo.state,row);plannerTab='pantry';render();
+      const form=main.querySelector('#pantry-stock-form');
+      form.elements.label.value=row.label;form.elements.unit.value=row.unit;form.elements.preparationState.value=row.preparationState;
+      form.dataset.stockUnit=row.unit;
+      form.elements.quantity.value=stock?.quantity||0;form.elements.packSize.value=stock?.packSize??row.packSize??'';
+      form.scrollIntoView({block:'start',behavior:'instant'});form.elements.quantity.focus({preventScroll:true});return;
+    }
+    if(button.dataset.pantryEdit) {
+      if(!discard()) return;
+      const entry=repo.state.pantry?.find(item=>item.id===button.dataset.pantryEdit),form=main.querySelector('#pantry-stock-form');
+      if(!entry||!form) return;
+      for(const name of ['label','quantity','unit','preparationState','packSize']) form.elements[name].value=entry[name]??'';
+      form.dataset.stockUnit=entry.unit;
+      form.scrollIntoView({block:'start',behavior:'instant'});form.elements.quantity.focus({preventScroll:true});return;
+    }
+    if(button.dataset.pantryUndo) {
+      if(!discard()||!window.confirm('Annullare questo movimento e aggiornare le scorte? La traccia resterà nello storico.')) return;
+      save(state=>undoPantryMovement(state,button.dataset.pantryUndo),'Movimento annullato. Scorte e prenotazioni aggiornate.',{backup:true});return;
+    }
     const action = button.dataset.action;
     if (!action) return;
+    if(action==='cook-meal') {
+      if(!discard()) return;
+      const meal=repo.state.days[selectedDate]?.meals?.find(item=>item.id===button.dataset.mealId);
+      if(!meal) throw Error('Pasto non disponibile.');
+      const include=repo.state.shoppingWeeks?.[weekDates(selectedDate)[0]]?.includeOptional||false;
+      const rows=mealShoppingRows(meal,selectedDate,include);
+      const known=rows.filter(row=>!row.needsReview&&row.min===row.max),unknown=rows.filter(row=>!known.includes(row));
+      const summary=known.map(row=>`${row.label}: ${row.max} ${row.unit}`).join('\n');
+      if(!window.confirm(`Ho preparato ${meal.snapshot.title}.\n\nScarico dalla dispensa:\n${summary||'Nessun peso esatto disponibile.'}${unknown.length?`\n\nNon verranno scaricati perché senza quantità esatta: ${unknown.map(row=>row.label).join(', ')}.`:''}\n\nConfermare? L’operazione si può annullare dalla Dispensa.`)) return;
+      save(state=>consumePantry(state,meal,rows),'Preparazione registrata. Scorte aggiornate; eventuali pesi incerti non sono stati scaricati.',{backup:true});return;
+    }
     if(action==='correct-week-portions') {
       if(!discard()) return;
       const dates=weekDates(selectedDate);const issues=portionIssues(repo.state,dates);
@@ -527,14 +590,14 @@ document.addEventListener('click', event => {
       if (view === 'recipes') render();
       else if (view === 'menu') render();
       else if (view === 'calendar') {
-        main.querySelector('#meal-section').outerHTML = renderMeals({date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,editable:true});
+        main.querySelector('#meal-section').outerHTML = renderMeals({state:repo.state,date:selectedDate,day:repo.state.days[selectedDate],catalog:recipeCatalog,editable:true});
         refreshPlanner();
       }
       return;
     }
     if (action === 'recipe-back') { selectedRecipe = null; render(); return; }
     if (action === 'recipe-reset') { recipeQuery = ''; recipeCategory = ''; recipeMealSlot = ''; selectedRecipe = null; render(); return; }
-    if (action === 'recipe-export') { download(JSON.stringify(recipeCatalog,null,2),'coach-os-ricettario.json'); return; }
+    if (action === 'recipe-export') { download(JSON.stringify({...recipeCatalog,normalization:'single-portion',recipes:recipeCatalog.recipes.map(singleServingRecipe)},null,2),'coach-os-ricettario.json'); return; }
     if (['today', 'week-prev', 'week-next', 'month-prev', 'month-next'].includes(action)) {
       if (!discard()) return;
       if (action === 'today') {

@@ -17,7 +17,7 @@ Le proposte sotto non sono conferme dell'utente. Procedere con scelte reversibil
 | Ricette | Una o più ricette per immagine, duplicati, leggibilità | Leggere tutte le fonti prima di dichiarare il catalogo completo |
 | Nutrienti | Attendibilità e porzioni delle fonti | null se mancanti, stime riconoscibili e documentate |
 | Design | Preferenze ulteriori dell'utente | Richiesta app moderna applicata in v0.3: scuro blu/antracite, azzurro/lime, SVG locali, schede illustrate e navigazione flottante mobile |
-| Menu e spesa | Dispensa e arrotondamento confezioni | Richiesta confermata e implementata in v0.4: planner settimanale, ricerca ricette, dosi singole e lista aggregata. Nessuna conversione tra densità o pesi crudi/cotti; facoltativi su scelta |
+| Menu e spesa | Porzioni redazionali e formati personali da validare | Implementata in v0.5: porzioni singole, confezioni modificabili, scorte reali e prenotazioni separate; riferimenti confezioni parziali. Nessuna conversione di densità o crudo/cotto |
 | Multi-sessione | Più allenamenti al giorno | Modello dati capace di contenerli; interfaccia iniziale semplice |
 
 Non bloccare la fase calendario per scelte che riguardano esclusivamente suggerimenti avanzati, hosting o sincronizzazione.

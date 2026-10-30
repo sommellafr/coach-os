@@ -1,5 +1,7 @@
 # Porzioni personali e unità metriche — correzione 0.4.1
 
+Aggiornamento 0.5.0: [porzioni singole, confezioni e dispensa](PANTRY_AND_PACKAGES.md). Questo documento conserva le regole della versione precedente; i campi visibili sul lotto e la lista a spunte sono stati sostituiti.
+
 ## Richiesta esplicita
 
 Un pasto rappresenta una porzione per una persona; eventuali ospiti sono una scelta separata. La spesa deve usare g o ml, senza cup, oz o pezzi nei totali principali. Correggere il caso segnalato di circa 2 kg di manzo e 16 tortilla per due giorni.

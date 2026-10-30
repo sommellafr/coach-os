@@ -22,7 +22,9 @@ Fonti: sorgente V21 e quattro messaggi dell'utente, riportati in sintesi in USER
 | NUT-02 | Ingredienti con unità e porzioni, procedimento numerato, tempi/temperature quando disponibili | P1 |
 | NUT-03 | Diario pasti, quantità/porzioni modificabili, extra e correzioni | P1 |
 | NUT-04 | Distinguere menu pianificato da alimenti effettivamente consumati | P1 |
-| NUT-05 | Planner, lista spesa aggregata e sottrazione dispensa con unità compatibili | P2 |
+| NUT-05 | Planner, lista spesa aggregata e sottrazione dispensa con unità compatibili | P1 |
+| NUT-06 | Ricette per una porzione e numero da preparare; provenienza delle rese redazionali esplicita | P1 |
+| NUT-07 | Acquisti in confezioni modificabili, scorte reali distinte dalle prenotazioni e scarichi annullabili | P1 |
 | ENE-01 | Revisione stima dispendio; attività pianificate diverse da completate | P1 |
 | ENE-02 | Assunzione, dispendio e bilancio giornaliero/settimanale | P1 |
 | ENE-03 | Contatore deficit cumulato stimato dall'inizio e confronto con obiettivo | P1 |
